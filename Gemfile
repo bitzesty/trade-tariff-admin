@@ -8,6 +8,7 @@ gem "her"
 
 gem "kaminari"
 gem "simple_form"
+gem "redcarpet"
 
 gem "gds-api-adapters", "4.1.3"
 gem "plek", ">=1.0.0"
