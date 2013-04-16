@@ -1,4 +1,4 @@
-TradeTariffFrontend::Application.configure do
+TradeTariffAdmin::Application.configure do
   config.slimmer.logger = Rails.logger
 
   if Rails.env.production?
