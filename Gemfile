@@ -22,6 +22,10 @@ gem "lograge", "0.1.2"
 gem "aws-ses", require: "aws/ses" # Needed by exception_notification
 gem "exception_notification"
 
+group :development, :test do
+  gem "pry-rails"
+end
+
 group :test do
   gem "brakeman", "~> 1.7.0"
   gem "factory_girl_rails"
