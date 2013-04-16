@@ -8,6 +8,7 @@ gem "multi_json"
 gem "httparty"
 
 gem "kaminari"
+gem "simple_form"
 
 gem "gds-api-adapters", "4.1.3"
 gem "plek", ">=1.0.0"
