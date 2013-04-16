@@ -4,8 +4,7 @@ source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 gem "rails", "3.2.13"
 
 gem "yajl-ruby"
-gem "multi_json"
-gem "httparty"
+gem "her"
 
 gem "kaminari"
 gem "simple_form"
