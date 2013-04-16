@@ -55,6 +55,14 @@ module TradeTariffAdmin
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
 
+    # Generators
+    config.generators do |g|
+      g.orm                 nil
+      g.template_engine     :erb
+      g.test_framework      :rspec, fixture: false
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    end
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
