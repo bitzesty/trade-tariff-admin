@@ -34,4 +34,7 @@ TradeTariffAdmin::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Host for Trade Tariff API endpoint
+  config.api_host = "http://tariff-api.dev.gov.uk"
 end

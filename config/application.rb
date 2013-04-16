@@ -11,6 +11,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+APP_SLUG = 'trade-tariff-admin'
+
 module TradeTariffAdmin
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -68,5 +70,8 @@ module TradeTariffAdmin
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Disable Rack::Cache.
+    config.action_dispatch.rack_cache = nil
   end
 end

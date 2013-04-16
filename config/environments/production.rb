@@ -50,6 +50,7 @@ TradeTariffAdmin::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :ses
 
   # Enable threaded mode
   # config.threadsafe!
@@ -64,4 +65,14 @@ TradeTariffAdmin::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.action_controller.asset_host = ENV['GOVUK_ASSET_HOST']
+  # Log the query plan for queries taking more than this (works
+  # with SQLite, MySQL, and PostgreSQL)
+  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Host for Trade Tariff API endpoint
+  config.api_host = Plek.new.find("tariff-api")
+
+  config.lograge.enabled = true
 end

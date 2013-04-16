@@ -34,4 +34,7 @@ TradeTariffAdmin::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Host for Trade Tariff API endpoint
+  config.api_host = "http://tariff-api.dev.gov.uk"
 end
