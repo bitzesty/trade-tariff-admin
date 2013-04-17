@@ -1,3 +1,2 @@
-class Section
-  include Her::Model
+class Section < Sequel::Model
 end

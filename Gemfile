@@ -3,8 +3,9 @@ source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
 gem "rails", "3.2.13"
 
-gem "yajl-ruby"
-gem "her"
+gem "mysql2"
+gem "sequel"
+gem "sequel-rails"
 
 gem "kaminari"
 gem "simple_form"

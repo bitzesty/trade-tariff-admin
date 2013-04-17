@@ -1,3 +1,2 @@
-class ChapterNote
-  include Her::Model
+class ChapterNote < Sequel::Model
 end

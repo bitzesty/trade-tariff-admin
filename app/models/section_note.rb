@@ -1,3 +1,2 @@
-class SectionNote
-  include Her::Model
+class SectionNote < Sequel::Model
 end
