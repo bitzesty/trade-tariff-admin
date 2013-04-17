@@ -31,6 +31,13 @@ class ChapterNotesController < ApplicationController
     end
   end
 
+  def destroy
+    @chapter_note = ChapterNote.with_pk(params[:id])
+    @chapter_note.destroy
+
+    redirect_to index_path, notice: 'Chapter note was successfully removed.'
+  end
+
   private
 
   def chapter_note_create_params

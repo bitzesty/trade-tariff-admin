@@ -31,6 +31,13 @@ class SectionNotesController < ApplicationController
     end
   end
 
+  def destroy
+    @section_note = SectionNote.with_pk(params[:id])
+    @section_note.destroy
+
+    redirect_to index_path, notice: 'Section note was successfully removed.'
+  end
+
   private
 
   def section_note_create_params
