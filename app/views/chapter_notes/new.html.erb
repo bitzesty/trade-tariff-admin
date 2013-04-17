@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h1>New Chapter Note</h1>
+</div>
+
+<%= simple_form_for @chapter_note do |f| %>
+  <div class='row'>
+    <div class='span12'>
+      <%= f.input :chapter_id, as: :select, label: 'Chapter ID', collection: @chapters.map{|c| [c.goods_nomenclature_item_id, c.short_code]}, include_blank: false, input_html: { class: 'span6' } %>
+    </div>
+  </div>
+
+  <%= render 'fields', f: f %>
+
+  <div class='row'>
+    <div class="form-actions">
+      <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= link_to "Back", :back, class: 'btn' %>
+    </div>
+  </div>
+<% end %>

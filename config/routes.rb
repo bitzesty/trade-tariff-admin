@@ -3,8 +3,9 @@ TradeTariffAdmin::Application.routes.draw do
     resources :section_notes
     resources :chapter_notes
 
-    get "healthcheck" => "healthcheck#check"
-    get "/" => "pages#index"
+    post "preview" => "previewer#render", as: :preview
+    get  "healthcheck" => "healthcheck#check", as: :healthcheck
+    get  "/" => "pages#index", as: :index
   end
 
   root :to => redirect("/#{APP_SLUG}", :status => 302)

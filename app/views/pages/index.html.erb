@@ -5,15 +5,20 @@
     <table class='table table-bordered table-striped table-condensed'>
       <thead>
         <tr>
-          <td>Section</td>
-          <td></td>
+          <td colspan="2">Section</td>
+          <td>
+            <%= link_to "New", new_section_note_path, class: 'btn btn-small' %>
+          </td>
         </tr>
       </thead>
       <tbody>
         <% @section_notes.each do |section_note| %>
           <tr>
             <td>
-              <%= section_note.section.title %>
+              <%= section_note.section.position %>
+            </td>
+            <td>
+              <%= section_note.section %>
             </td>
             <td>
               <%= link_to "Edit", edit_section_note_path(section_note) %>
@@ -30,7 +35,9 @@
       <thead>
         <tr>
           <td>Section</td>
-          <td></td>
+          <td>
+            <%= link_to "New", new_chapter_note_path, class: 'btn btn-small' %>
+          </td>
         </tr>
       </thead>
       <tbody>

@@ -9,7 +9,7 @@ gem "sequel-rails"
 
 gem "kaminari"
 gem "simple_form"
-gem "redcarpet"
+gem "strong_parameters"
 
 gem "gds-sso"
 gem "gds-api-adapters", "4.1.3"
