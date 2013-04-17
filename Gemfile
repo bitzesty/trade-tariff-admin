@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
 gem "rails", "3.2.13"
@@ -11,6 +11,7 @@ gem "kaminari"
 gem "simple_form"
 gem "redcarpet"
 
+gem "gds-sso"
 gem "gds-api-adapters", "4.1.3"
 gem "plek", ">= 1.0.0"
 gem "addressable"
@@ -38,12 +39,11 @@ group :test do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass'
+  gem "sass-rails",   "~> 3.2.3"
+  gem "coffee-rails", "~> 3.2.1"
+  gem "uglifier", ">= 1.0.3"
+  gem "jquery-rails"
+  gem "bootstrap-sass"
   gem "govuk_frontend_toolkit", "0.15.0"
   gem "therubyracer"
 end
-
-gem 'jquery-rails'
