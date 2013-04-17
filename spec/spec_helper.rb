@@ -10,7 +10,6 @@ require File.expand_path("../../config/environment", __FILE__)
 
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'slimmer/test'
 require 'gds_api/test_helpers/content_api'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}

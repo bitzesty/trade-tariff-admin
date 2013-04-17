@@ -191,13 +191,6 @@ GEM
     simplecov-html (0.5.3)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
-    slimmer (3.9.5)
-      json
-      lrucache (~> 0.1.3)
-      nokogiri (~> 1.5.0)
-      null_logger
-      plek (>= 0.1.8)
-      rack (>= 1.3.5)
     slop (3.4.4)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -259,7 +252,6 @@ DEPENDENCIES
   simple_form
   simplecov (~> 0.6.4)
   simplecov-rcov (~> 0.2.3)
-  slimmer (= 3.9.5)
   therubyracer
   uglifier (>= 1.0.3)
   unicorn (~> 4.3.1)
