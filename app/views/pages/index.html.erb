@@ -1,0 +1,50 @@
+<div class='row'>
+  <div class='span6'>
+    <h2>Section Notes</h2>
+
+    <table class='table table-bordered table-striped table-condensed'>
+      <thead>
+        <tr>
+          <td>Section</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @section_notes.each do |section_note| %>
+          <tr>
+            <td>
+              <%= section_note.section.title %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_section_note_path(section_note) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class='span6'>
+    <h2>Chapter Notes</h2>
+
+    <table class='table table-bordered table-striped table-condensed'>
+      <thead>
+        <tr>
+          <td>Section</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @chapter_notes.each do |chapter_note| %>
+          <tr>
+            <td>
+              <%= chapter_note.chapter.goods_nomenclature_item_id %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_chapter_note_path(chapter_note) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

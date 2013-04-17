@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
-    render text: "Hello World"
+    @section_notes = SectionNote.eager(:section).all
+    @chapter_notes = ChapterNote.all
   end
 end
