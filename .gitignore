@@ -5,3 +5,4 @@
 .rbenv*
 .rvm*
 coverage
+db/schema.rb
