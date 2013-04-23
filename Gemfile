@@ -19,7 +19,6 @@ gem "addressable"
 
 gem "unicorn", "~> 4.3.1"
 
-gem "ci_reporter"
 gem "lograge", "0.1.2"
 gem "aws-ses", require: "aws/ses" # Needed by exception_notification
 gem "exception_notification"
@@ -30,6 +29,7 @@ end
 
 group :test do
   gem "brakeman", "~> 1.7.0"
+  gem "ci_reporter"
   gem "factory_girl_rails"
   gem "shoulda-matchers"
   gem "simplecov", "~> 0.6.4"
