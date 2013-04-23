@@ -35,7 +35,7 @@ group :test do
   gem "simplecov", "~> 0.6.4"
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
-  gem "capybara"
+  gem "capybara", "2.0.3"
   gem "webmock"
 end
 
