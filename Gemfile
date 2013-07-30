@@ -3,11 +3,6 @@ source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
 gem "rails", "3.2.13"
 
-gem "mysql2"
-gem "sequel"
-gem "sequel-rails", github: "TalentBox/sequel-rails",
-                    ref: "fea4e02"  # use stable once 0.4.4 gets released
-
 gem "kaminari"
 gem "simple_form"
 gem "strong_parameters"

@@ -73,8 +73,5 @@ module TradeTariffAdmin
 
     # Disable Rack::Cache.
     config.action_dispatch.rack_cache = nil
-
-    # Use SQL schema dump format
-    config.sequel.schema_format = :sql
   end
 end

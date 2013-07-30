@@ -1,12 +1,3 @@
-GIT
-  remote: git://github.com/TalentBox/sequel-rails.git
-  revision: fea4e02bc3daafff359c544115d999cfbcf657c8
-  ref: fea4e02
-  specs:
-    sequel-rails (0.4.3)
-      railties (>= 3.2.0)
-      sequel (~> 3.28)
-
 GEM
   remote: https://rubygems.org/
   remote: https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/
@@ -140,7 +131,6 @@ GEM
     mime-types (1.22)
     multi_json (1.7.2)
     multipart-post (1.2.0)
-    mysql2 (0.3.11)
     nokogiri (1.5.9)
     null_logger (0.0.1)
     oauth2 (0.8.1)
@@ -221,7 +211,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
-    sequel (3.46.0)
     sexp_processor (3.2.0)
     shoulda-matchers (2.0.0)
       activesupport (>= 3.0.0)
@@ -290,14 +279,11 @@ DEPENDENCIES
   jquery-rails
   kaminari
   lograge (= 0.1.2)
-  mysql2
   plek (>= 1.0.0)
   pry-rails
   rails (= 3.2.13)
   rspec-rails
   sass-rails (~> 3.2.3)
-  sequel
-  sequel-rails!
   shoulda-matchers
   simple_form
   simplecov (~> 0.6.4)
