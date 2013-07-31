@@ -1,22 +1,21 @@
 source "https://rubygems.org"
 source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
-gem "rails", "3.2.14"
+gem "rails", "4.0.0"
 
 gem "mysql2"
 gem "sequel", "~> 4.0.0"
 gem "sequel-rails", "~> 0.5.0"
 
 gem "kaminari"
-gem "simple_form"
-gem "strong_parameters"
+gem "simple_form", github: "plataformatec/simple_form", branch: "master", ref: "87323fd62"
 
 gem "gds-sso"
-gem "gds-api-adapters", "4.1.3"
+gem "gds-api-adapters", "> 4.1.3"
 gem "plek", ">= 1.0.0"
 gem "addressable"
 
-gem "unicorn", "~> 4.3.1"
+gem "unicorn", "~> 4.6.3"
 
 gem "lograge", "0.1.2"
 gem "aws-ses", require: "aws/ses" # Needed by exception_notification
@@ -34,13 +33,13 @@ group :test do
   gem "simplecov", "~> 0.6.4"
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
-  gem "capybara", "2.0.3"
+  gem "capybara", "~> 2.1.0"
   gem "webmock"
 end
 
 group :assets do
-  gem "sass-rails",   "~> 3.2.3"
-  gem "coffee-rails", "~> 3.2.1"
+  gem "sass-rails",   "~> 4.0.0"
+  gem "coffee-rails", "~> 4.0.0"
   gem "uglifier", ">= 1.0.3"
   gem "jquery-rails"
   gem "bootstrap-sass"
