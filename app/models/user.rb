@@ -2,6 +2,9 @@ class User < Sequel::Model
   include GDS::SSO::User
 
   plugin :timestamps
+  plugin :serialization
+
+  serialize_attributes :yaml, :permissions
 
   def self.find_by_uid(uid)
     find(uid: uid)
