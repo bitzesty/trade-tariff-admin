@@ -1,11 +1,15 @@
 Sequel.migration do
   up do
     create_table :users do
-      primary_key :uid
+      primary_key :id
+      String      :uid
       String      :name
       String      :email
+      Integer     :version
       String      :permission, text: true
       TrueClass   :remotely_signed_out, default: false
+      DateTime    :updated_at
+      DateTime    :created_at
     end
   end
 
