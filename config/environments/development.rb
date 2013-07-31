@@ -7,7 +7,7 @@ TradeTariffAdmin::Application.configure do
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
+  # config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -34,6 +34,8 @@ TradeTariffAdmin::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.eager_load = false
 
   # Host for Trade Tariff API endpoint
   config.api_host = "http://tariff-api.dev.gov.uk"

@@ -10,7 +10,7 @@ gem "sequel-rails", "~> 0.5.0"
 gem "kaminari"
 gem "simple_form", github: "plataformatec/simple_form", branch: "master", ref: "87323fd62"
 
-gem "gds-sso"
+gem "gds-sso", github: "alphagov/gds-sso", branch: "master", ref: "bf4b6d13a1"
 gem "gds-api-adapters", "> 4.1.3"
 gem "plek", ">= 1.0.0"
 gem "addressable"
@@ -43,6 +43,6 @@ group :assets do
   gem "uglifier", ">= 1.0.3"
   gem "jquery-rails"
   gem "bootstrap-sass"
-  gem "govuk_frontend_toolkit", "0.15.0"
+  gem "govuk_frontend_toolkit", ">= 0.15.0"
   gem "therubyracer"
 end
