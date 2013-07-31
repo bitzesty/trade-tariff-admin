@@ -1,0 +1,17 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: true
+  database: tariff_admin_development
+  single_threaded: true
+  username: tariff_admin
+  password: tariff_admin
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: true
+  database: tariff_admin_test
+  single_threaded: true
+  username: tariff_admin
+  password: tariff_admin

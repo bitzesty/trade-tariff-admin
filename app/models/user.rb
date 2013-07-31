@@ -1,4 +1,4 @@
-class User
+class User < Sequel::Model
   include GDS::SSO::User
 
   def self.find_by_uid(uid)

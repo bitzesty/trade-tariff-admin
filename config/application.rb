@@ -73,5 +73,9 @@ module TradeTariffAdmin
 
     # Disable Rack::Cache.
     config.action_dispatch.rack_cache = nil
+
+    config.action_dispatch.rescue_responses.merge!(
+      'Sequel::Plugins::RailsExtensions::ModelNotFound' => :not_found
+    )
   end
 end

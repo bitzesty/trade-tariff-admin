@@ -3,6 +3,10 @@ source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
 gem "rails", "3.2.13"
 
+gem "mysql2"
+gem "sequel", "~> 4.0.0"
+gem "sequel-rails", "~> 0.5.0"
+
 gem "kaminari"
 gem "simple_form"
 gem "strong_parameters"
