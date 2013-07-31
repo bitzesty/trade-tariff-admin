@@ -4,7 +4,7 @@ describe "section Note management" do
   let!(:user)    { create :user }
   let!(:section) { create :section, title: 'new section' }
 
-  describe "Section Note creation" do
+  pending "Section Note creation" do
     let(:section_note) { build :section_note }
 
     it 'can be created' do
@@ -17,7 +17,7 @@ describe "section Note management" do
     end
   end
 
-  describe "section Note editing" do
+  pending "section Note editing" do
     let!(:section_note) { create :section_note }
 
     it 'can be updated' do
@@ -30,7 +30,7 @@ describe "section Note management" do
     end
   end
 
-  describe "section Note deletion" do
+  pending "section Note deletion" do
     let!(:section_note) { create :section_note }
 
     it 'can be removed' do

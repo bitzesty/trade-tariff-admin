@@ -4,7 +4,7 @@ describe "Chapter Note management" do
   let!(:user)    { create :user }
   let!(:chapter) { create :chapter }
 
-  describe "Chapter Note creation" do
+  pending "Chapter Note creation" do
     let(:chapter_note) { build :chapter_note }
 
     it 'can be created' do
@@ -17,7 +17,7 @@ describe "Chapter Note management" do
     end
   end
 
-  describe "Chapter Note editing" do
+  pending "Chapter Note editing" do
     let!(:chapter_note) { create :chapter_note }
 
     it 'can be updated' do
@@ -30,7 +30,7 @@ describe "Chapter Note management" do
     end
   end
 
-  describe "Chapter Note deletion" do
+  pending "Chapter Note deletion" do
     let!(:chapter_note) { create :chapter_note }
 
     it 'can be removed' do
