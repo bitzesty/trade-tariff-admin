@@ -6,7 +6,7 @@ Sequel.migration do
       String      :name
       String      :email
       Integer     :version
-      String      :permission, text: true
+      String      :permissions, text: true
       TrueClass   :remotely_signed_out, default: false
       DateTime    :updated_at
       DateTime    :created_at
