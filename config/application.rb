@@ -5,7 +5,7 @@ require "action_mailer/railtie"
 require "sprockets/railtie"
 
 if defined?(Bundler)
-  Bundler.require(:default, Rails.env)
+  Bundler.require(*Rails.groups(:assets => %w(development test)))
 end
 
 APP_SLUG = 'trade-tariff-admin'
