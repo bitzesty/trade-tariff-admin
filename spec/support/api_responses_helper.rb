@@ -8,12 +8,16 @@ module ApiResponsesHelper
     end
   end
 
-  def api_response_success(response = {}, headers = {})
+  def api_success_response(response = {}, headers = {})
      [200, headers, response.to_json]
   end
 
   def api_created_response(body = {}, headers = {})
     api_response(201, headers, body)
+  end
+
+  def api_no_content_response(body = {}, headers = {})
+    api_response(204, headers, body)
   end
 
   def api_response(status, headers, body)
