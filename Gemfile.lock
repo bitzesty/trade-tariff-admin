@@ -198,7 +198,6 @@ GEM
     raindrops (0.11.0)
     rake (10.1.0)
     ref (1.0.5)
-    request_store (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (2.14.4)
@@ -298,7 +297,6 @@ DEPENDENCIES
   plek (>= 1.0.0)
   pry-rails
   rails (= 4.0.0)
-  request_store
   rspec-rails
   sass-rails (~> 4.0.0)
   sequel (~> 4.0.0)
