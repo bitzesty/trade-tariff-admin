@@ -42,15 +42,31 @@ describe "section Note management" do
     end
   end
 
-  pending "section Note editing" do
-    let(:section_note) { build :section_note }
+  describe "section Note editing" do
+    let(:section)      { build :section, :with_note }
+    let(:section_note) { build :section_note, section_id: section.id }
+    let(:new_content)  { "new content" }
 
-    it 'can be updated' do
-      verify_note_created_for section_note
+    specify do
+      stub_api_for(Section) { |stub|
+        stub.get("/sections") { |env| api_success_response([section.attributes]) }
+        stub.get("/sections/#{section.id}") { |env| api_success_response(section.attributes) }
+      }
 
-      update_note note: section_note
+      verify note_created_for(section)
 
-      verify_note_updated_for section_note, content: 'Hello World'
+      stub_api_for(SectionNote) { |stub|
+        stub.get("/sections/#{section.id}/section_note") { |env| api_success_response(section_note.attributes) }
+        stub.put("/sections/#{section.id}/section_note") { |env| api_no_content_response }
+      }
+
+      update_note_for section, content: new_content
+
+      stub_api_for(SectionNote) { |stub|
+        stub.get("/sections/#{section.id}/section_note") { |env| api_success_response(section_note.attributes.merge(content: new_content)) }
+      }
+
+      verify note_updated_for(section, content: new_content)
     end
   end
 
@@ -58,7 +74,7 @@ describe "section Note management" do
     let(:section)      { build :section, :with_note }
     let(:section_note) { build :section_note, section_id: section.id }
 
-    it 'can be removed' do
+    specify do
       stub_api_for(Section) { |stub|
         stub.get("/sections") { |env| api_success_response([section.attributes]) }
         stub.get("/sections/#{section.id}") { |env| api_success_response(section.attributes) }
@@ -95,10 +111,14 @@ describe "section Note management" do
     click_button 'Create Section note'
   end
 
-  def update_note(args = {})
-    visit edit_section_note_path(args[:note])
+  def update_note_for(section, fields_and_values = {})
+    ensure_on edit_section_section_note_path(section)
 
-    fill_in 'section_note_content', with: args[:content]
+    fields_and_values.each do |field, value|
+      fill_in "section_note_#{field}", with: value
+    end
+
+    yield if block_given?
 
     click_button 'Update Section note'
   end
@@ -111,10 +131,10 @@ describe "section Note management" do
     end
   end
 
-  def verify_note_updated_for(section_note, args = {})
-    visit edit_section_note_path(section_note)
+  def note_updated_for(section, args = {})
+    ensure_on edit_section_section_note_path(section)
 
-    page.should have_field('section_note_content', with: args[:content])
+    page.has_field?('section_note_content', with: args[:content])
   end
 
   def note_created_for(section)
