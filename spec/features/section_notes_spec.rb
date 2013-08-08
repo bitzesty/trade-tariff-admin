@@ -7,18 +7,24 @@ describe "section Note management" do
   describe "Section Note creation" do
     let(:section_note) { build :section_note }
 
-    it 'can be created' do
+    specify do
       stub_api_for(Section) { |stub|
-        stub.get("/sections") { |env| api_response_success([section.attributes]) }
-        stub.get("/sections/#{section.id}") { |env| api_response_success(section) }
+        stub.get("/sections") { |env|
+          api_response_success([section.attributes])
+        }
+        stub.get("/sections/#{section.id}") { |env|
+          api_response_success(section.attributes)
+        }
       }
 
       stub_api_for(Chapter) { |stub|
-        stub.get("/chapters") { |env| api_response_success([]) }
+        stub.get("/chapters") { |env|
+          api_response_success([])
+        }
       }
 
       stub_api_for(SectionNote) { |stub|
-        stub.post("/sections/#{section.id}/section_note") { |env| [201, {}, {}.to_json] }
+        stub.post("/sections/#{section.id}/section_note") { |env| api_created_response }
       }
 
       refute note_created_for(section)
