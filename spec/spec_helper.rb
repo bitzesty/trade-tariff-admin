@@ -21,7 +21,9 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.treat_symbols_as_metadata_keys_with_true_values = true
 
+  config.include ApiResponsesHelper
   config.include FactoryGirl::Syntax::Methods
+  config.include FeaturesHelper, type: :feature
   config.include GdsApi::TestHelpers::ContentApi
 
   config.before(type: :request) do
