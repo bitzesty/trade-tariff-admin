@@ -2,30 +2,29 @@ module Chapters
   class ChapterNotesController < ApplicationController
     def new
       @chapter_note = ChapterNote.new
-      @chapters = Chapter.without_notes.all
     end
 
     def create
-      @chapter_note = ChapterNote.new(chapter_note_create_params)
+      @chapter_note = chapter.chapter_note.build(chapter_note_create_params)
 
       if @chapter_note.save
         redirect_to index_path, notice: 'Chapter note was successfully created.'
       else
-        @chapters = Chapter.without_notes.all
-
         render :new
       end
     end
 
     def edit
-      @chapter_note = ChapterNote.with_pk(params[:id])
+      @chapter_note = chapter.chapter_note.fetch
     end
 
     def update
-      @chapter_note = ChapterNote.with_pk(params[:id])
-      @chapter_note.set(chapter_note_update_params)
+      @chapter_note = chapter.chapter_note.fetch
+      @chapter_note.assign_attributes(chapter_note_update_params)
 
-      if @chapter_note.save
+      if @chapter_note.valid?
+        @chapter_note.save
+
         redirect_to index_path, notice: 'Chapter note was successfully updated.'
       else
         render :edit
@@ -33,7 +32,7 @@ module Chapters
     end
 
     def destroy
-      @chapter_note = ChapterNote.with_pk(params[:id])
+      @chapter_note = chapter.chapter_note.fetch
       @chapter_note.destroy
 
       redirect_to index_path, notice: 'Chapter note was successfully removed.'
@@ -41,12 +40,17 @@ module Chapters
 
     private
 
+    def chapter
+      @chapter ||= Chapter.find(params[:chapter_id])
+    end
+    helper_method :chapter
+
     def chapter_note_create_params
       params.require(:chapter_note).permit(:content, :chapter_id)
     end
 
     def chapter_note_update_params
-      params.require(:chapter_note).permit(:content)
+      params.require(:chapter_note).permit(:content).merge(chapter_id: chapter.id)
     end
   end
 end

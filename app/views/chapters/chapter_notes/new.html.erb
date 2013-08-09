@@ -2,10 +2,10 @@
   <h1>New Chapter Note</h1>
 </div>
 
-<%= simple_form_for @chapter_note do |f| %>
+<%= simple_form_for @chapter_note, url: chapter_chapter_note_path(chapter) do |f| %>
   <div class='row'>
     <div class='span12'>
-      <%= f.input :chapter_id, as: :select, label: 'Chapter ID', collection: @chapters.map{|c| [c.goods_nomenclature_item_id, c.short_code]}, include_blank: false, input_html: { class: 'span6' } %>
+      <%= f.input 'section_title', disabled: true, input_html: { class: 'span6', value: chapter.goods_nomenclature_item_id } %>
     </div>
   </div>
 
