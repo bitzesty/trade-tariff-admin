@@ -6,6 +6,12 @@ class User < Sequel::Model
 
   serialize_attributes :yaml, :permissions
 
+  module Permissions
+    SIGNIN = 'signin'
+    HMRC_EDITOR = 'HMRC Editor'
+    GDS_EDITOR = 'GDS Editor'
+  end
+
   def self.find_for_gds_oauth(auth_hash)
     user_params = user_params_from_auth_hash(auth_hash)
 
@@ -23,6 +29,14 @@ class User < Sequel::Model
 
   def self.find_by_uid(uid)
     find(uid: uid)
+  end
+
+  def gds_editor?
+    has_permission?(Permissions::GDS_EDITOR)
+  end
+
+  def hmrc_editor?
+    has_permission?(Permissions::HMRC_EDITOR)
   end
 
   def remotely_signed_out?
