@@ -1,5 +1,7 @@
 module Sections
   class SectionNotesController < ApplicationController
+    before_filter :authorize_user
+
     def new
       @section_note = SectionNote.new
     end
@@ -44,6 +46,10 @@ module Sections
       @section ||= Section.find(params[:section_id])
     end
     helper_method :section
+
+    def authorize_user
+      authorize SectionNote, :edit?
+    end
 
     def section_note_create_params
       params.require(:section_note).permit(:content, :section_id)

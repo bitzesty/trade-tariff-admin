@@ -1,5 +1,7 @@
 module Chapters
   class ChapterNotesController < ApplicationController
+    before_filter :authorize_user
+
     def new
       @chapter_note = ChapterNote.new
     end
@@ -44,6 +46,10 @@ module Chapters
       @chapter ||= Chapter.find(params[:chapter_id])
     end
     helper_method :chapter
+
+    def authorize_user
+      authorize ChapterNote, :edit?
+    end
 
     def chapter_note_create_params
       params.require(:chapter_note).permit(:content, :chapter_id)

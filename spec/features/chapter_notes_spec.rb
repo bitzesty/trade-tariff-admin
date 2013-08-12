@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "chapter Note management" do
-  let!(:user)   { create :user }
+describe "Chapter Note management" do
+  let!(:user)   { create :user, :gds_editor }
 
   before {
     # chapter note specs do not concern sections

@@ -7,6 +7,7 @@ gem "mysql2"
 gem "sequel", "~> 4.0.0"
 gem "sequel-rails", "~> 0.5.0"
 gem "her"
+gem "pundit"
 
 gem "kaminari"
 gem "simple_form", github: "plataformatec/simple_form", branch: "master", ref: "87323fd62"
