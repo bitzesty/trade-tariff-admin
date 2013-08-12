@@ -74,5 +74,7 @@ TradeTariffAdmin::Application.configure do
   # Host for Trade Tariff API endpoint
   config.api_host = Plek.new.find("tariff-api")
 
+  config.eager_load = true
+
   config.lograge.enabled = true
 end

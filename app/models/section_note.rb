@@ -1,13 +1,25 @@
-class SectionNote < Sequel::Model
-  plugin :validation_helpers
+class SectionNote
+  include Her::Model
+  extend ActiveModel::Naming
 
-  set_dataset order(:section_id.asc)
+  attributes :content
 
-  many_to_one :section
+  validates :content, presence: true
 
-  def validate
-    super
+  primary_key nil
 
-    validates_presence [:section_id, :content]
+  resource_path "sections/:section_id/section_note"
+  collection_path "sections/:section_id/section_note"
+
+  include_root_in_json :section_note
+
+  belongs_to :section
+
+  # NOTE singular resource
+  def request_path
+    self.class.build_request_path("/sections/:section_id/section_note", attributes.dup)
+  end
+
+  def section_title
   end
 end

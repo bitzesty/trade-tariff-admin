@@ -1,10 +1,14 @@
-class Section < Sequel::Model
-  one_to_one :section_note
+class Section
+  include Her::Model
 
-  dataset_module do
-    def without_notes
-      where{ ~{id: SectionNote.select(:section_id)} }
-    end
+  has_one :section_note, name: '_section_note', data_key: '_section_note'
+
+  def has_section_note?
+    section_note_id.present?
+  end
+
+  def to_param
+    position
   end
 
   def to_s

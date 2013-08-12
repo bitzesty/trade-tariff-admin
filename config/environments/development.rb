@@ -7,7 +7,7 @@ TradeTariffAdmin::Application.configure do
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
+  # config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -35,6 +35,18 @@ TradeTariffAdmin::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  config.eager_load = false
+
   # Host for Trade Tariff API endpoint
   config.api_host = "http://tariff-api.dev.gov.uk"
+
+  config.after_initialize do
+    Her::API.setup url: Rails.application.config.api_host do |c|
+      c.use Faraday::Request::BasicAuthentication, ENV['TRADE_TARIFF_USER'], ENV['TRADE_TARIFF_PASSWORD']
+      c.use Faraday::Request::UrlEncoded
+      c.use Her::Middleware::AcceptJSON
+      c.use Her::Middleware::DefaultParseJSON
+      c.use Faraday::Adapter::NetHttp
+    end
+  end
 end

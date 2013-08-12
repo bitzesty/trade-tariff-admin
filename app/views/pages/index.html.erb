@@ -6,22 +6,25 @@
       <tr>
         <td colspan="2" class='span10'>Section</td>
         <td class='span2'>
-          <%= link_to "New", new_section_note_path, class: 'btn btn-small' %>
         </td>
       </tr>
     </thead>
     <tbody>
-      <% @section_notes.each do |section_note| %>
-        <tr>
+      <% @sections.each do |section| %>
+        <tr id='<%= dom_id(section) %>'>
           <td>
-            <%= section_note.section.position %>
+            <%= section.position %>
           </td>
           <td>
-            <%= section_note.section %>
+            <%= section %>
           </td>
           <td>
-            <%= link_to "Edit", edit_section_note_path(section_note), class: 'btn btn-small' %>
-            <%= link_to "Remove", section_note_path(section_note), method: :delete, confirm: 'Are you sure?', class: 'btn btn-small btn-warning' %>
+          <% if section.has_section_note? %>
+              <%= link_to "Edit", edit_section_section_note_path(section), class: 'btn btn-small' %>
+              <%= link_to "Remove", section_section_note_path(section), method: :delete, data: { confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
+            <% else %>
+              <%= link_to "Create", new_section_section_note_path(section), class: 'btn btn-small' %>
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -34,19 +37,23 @@
       <tr>
         <td class='span10'>Section</td>
         <td class='span2'>
-          <%= link_to "New", new_chapter_note_path, class: 'btn btn-small' %>
+          <%# <%= link_to "New", new_chapter_note_path, class: 'btn btn-small' %1> %>
         </td>
       </tr>
     </thead>
     <tbody>
-      <% @chapter_notes.each do |chapter_note| %>
-        <tr>
+      <% @chapters.each do |chapter| %>
+        <tr id='<%= dom_id(chapter) %>'>
           <td>
-            <%= chapter_note.chapter.goods_nomenclature_item_id %>
+            <%= chapter %>
           </td>
           <td>
-            <%= link_to "Edit", edit_chapter_note_path(chapter_note), class: 'btn btn-small' %>
-            <%= link_to "Remove", chapter_note_path(chapter_note), method: :delete, confirm: 'Are you sure?', class: 'btn btn-small btn-warning' %>
+            <% if chapter.has_chapter_note? %>
+              <%= link_to "Edit", edit_chapter_chapter_note_path(chapter), class: 'btn btn-small' %>
+              <%= link_to "Remove", chapter_chapter_note_path(chapter), method: :delete, data: {confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
+            <% else %>
+              <%= link_to "Create", new_chapter_chapter_note_path(chapter), class: 'btn btn-small' %>
+            <% end %>
           </td>
         </tr>
       <% end %>

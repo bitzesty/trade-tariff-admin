@@ -1,4 +1,3 @@
-Sequel::Model.raise_on_save_failure = false
-Sequel::Model.raise_on_typecast_failure = false
+require 'sequel_rails/sequel/plugins/rails_extensions'
 
-Sequel::Model.plugin :active_model
+Sequel::Model.plugin :rails_extensions
