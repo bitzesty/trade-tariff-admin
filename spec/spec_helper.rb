@@ -29,4 +29,13 @@ RSpec.configure do |config|
   config.before(type: :request) do
     stub_content_api_default_artefact
   end
+
+  config.before(:suite) do
+    Sequel::Model.db.tables.delete_if{|t| t == :schema_migrations }
+                           .each{|table| Sequel::Model.db.from(table).truncate}
+  end
+
+  config.around(:each) do |example|
+    Sequel::Model.db.transaction(rollback: :always){example.run}
+  end
 end
