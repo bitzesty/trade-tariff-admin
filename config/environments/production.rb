@@ -22,7 +22,7 @@ TradeTariffAdmin::Application.configure do
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
-  config.assets.prefix = 'trade-tariff-admin'
+  config.assets.prefix = '/trade-tariff-admin'
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
