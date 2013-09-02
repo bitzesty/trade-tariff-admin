@@ -45,6 +45,5 @@ group :assets do
   gem "uglifier", ">= 1.0.3"
   gem "jquery-rails"
   gem "bootstrap-sass"
-  gem "govuk_frontend_toolkit", ">= 0.15.0"
   gem "therubyracer"
 end
