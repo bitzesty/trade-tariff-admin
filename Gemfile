@@ -23,6 +23,7 @@ gem "jquery-rails", "3.0.4"
 gem "lograge", "0.1.2"
 gem "aws-ses", require: "aws/ses" # Needed by exception_notification
 gem "exception_notification", "4.0.0"
+gem "twitter-bootstrap-rails", "2.2.8"
 
 group :development, :test do
   gem "pry-rails"
