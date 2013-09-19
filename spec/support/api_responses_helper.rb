@@ -2,7 +2,8 @@ module ApiResponsesHelper
   def stub_api_for(klass)
     klass.use_api (api = Her::API.new)
 
-    api.setup url: "http://api.example.com" do |c|
+    api.setup url: Rails.application.config.api_host do |c|
+      c.use Her::Middleware::HeaderMetadataParse # lib/her/middleware/header_metadata_parse.rb
       c.use Her::Middleware::FirstLevelParseJSON
       c.adapter(:test) { |s| yield(s) }
     end
