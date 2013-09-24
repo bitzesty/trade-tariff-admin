@@ -38,5 +38,5 @@ TradeTariffAdmin::Application.configure do
   config.eager_load = false
 
   # Host for Trade Tariff API endpoint
-  config.api_host = "http://tariff-api.dev.gov.uk"
+  config.api_host = "http://api.example.org"
 end

@@ -1,9 +1,13 @@
+require 'chapter/search_reference'
+
 class Chapter
   include Her::Model
 
   attributes :chapter_note_id
 
   has_one :chapter_note, name: '_chapter_note', data_key: '_chapter_note_id', path: '/chapter_note'
+  has_many :headings
+  has_many :search_references, class_name: 'Chapter::SearchReference'
 
   def has_chapter_note?
     chapter_note_id.present?
@@ -15,6 +19,10 @@ class Chapter
 
   def id
     to_param
+  end
+
+  def reference_title
+    "Chapter (#{short_code})"
   end
 
   def to_param

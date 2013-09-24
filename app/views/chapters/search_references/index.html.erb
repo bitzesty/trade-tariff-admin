@@ -1,0 +1,30 @@
+<div class='row'>
+  <h2>Search synonyms for <%= chapter.reference_title %></h2>
+
+  <table class='table table-bordered table-striped table-condensed table-search-references'>
+    <thead>
+      <tr>
+        <th class='span7'>Title</th>
+        <th class='span2'>Associated to</th>
+        <th class='span3'>
+          <%= link_to 'New Search Synonym', new_chapter_search_reference_path(chapter), class: 'btn btn-small' %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @search_references.each do |search_reference| %>
+        <tr id='<%= dom_id(search_reference) %>'>
+          <td><%= search_reference.title %></td>
+          <td><%= search_reference.referenced_entity.reference_title %></td>
+          <td>
+            <%= link_to 'Headings', chapter_headings_path(chapter), class: 'btn btn-small' %>
+            <%= link_to "Edit", edit_chapter_search_reference_path(chapter, search_reference), class: 'btn btn-small' %>
+            <%= link_to "Remove", chapter_search_reference_path(chapter, search_reference), method: :delete, data: { confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @search_references %>
+</div>

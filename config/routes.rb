@@ -2,11 +2,25 @@ TradeTariffAdmin::Application.routes.draw do
   scope :path => "#{APP_SLUG}" do
 
     resources :sections, only: [:index, :show] do
-      resource :section_note, module: 'sections'
+      scope module: 'sections' do
+        resource :section_note
+        resources :search_references
+        resources :chapters, only: [:index]
+      end
     end
 
     resources :chapters, only: [:index, :show] do
-      resource :chapter_note, module: 'chapters'
+      scope module: 'chapters' do
+        resource :chapter_note
+        resources :search_references
+        resources :headings, only: [:index]
+      end
+    end
+
+    resources :headings do
+      scope module: 'headings' do
+        resources :search_references
+      end
     end
 
     post "preview" => "previewer#render", as: :preview
