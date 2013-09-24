@@ -23,6 +23,8 @@ TradeTariffAdmin::Application.routes.draw do
       end
     end
 
+    resources :tariff_updates, only: [:index]
+
     post "preview" => "previewer#render", as: :preview
     get  "healthcheck" => "healthcheck#check", as: :healthcheck
     get  "/" => "pages#index", as: :index
