@@ -6,3 +6,4 @@
 .rvm*
 coverage
 db/schema.rb
+/spec/reports

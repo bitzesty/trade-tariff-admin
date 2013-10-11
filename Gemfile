@@ -10,9 +10,9 @@ gem "her", "0.6.8"
 gem "pundit", "0.2.1"
 
 gem "kaminari", "0.14.1"
-gem "simple_form", github: "plataformatec/simple_form", branch: "master", ref: "87323fd62"
+gem "simple_form", "3.0.0"
 
-gem "gds-sso", github: "alphagov/gds-sso", branch: "master", ref: "bf4b6d13a1"
+gem "gds-sso", "3.1.0"
 gem "gds-api-adapters", "> 4.1.3"
 gem "plek", ">= 1.0.0"
 gem "addressable", "2.3.5"
