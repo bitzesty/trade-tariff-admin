@@ -21,6 +21,7 @@
           <td>
           <% if section.has_section_note? %>
               <%= link_to "Edit", edit_section_section_note_path(section), class: 'btn btn-small' %>
+              <%= link_to "Remove", section_section_note_path(section), method: :delete, data: { confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
             <% else %>
               <%= link_to "Create", new_section_section_note_path(section), class: 'btn btn-small' %>
             <% end %>
@@ -49,6 +50,7 @@
           <td>
             <% if chapter.has_chapter_note? %>
               <%= link_to "Edit", edit_chapter_chapter_note_path(chapter), class: 'btn btn-small' %>
+              <%= link_to "Remove", chapter_chapter_note_path(chapter), method: :delete, data: {confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
             <% else %>
               <%= link_to "Create", new_chapter_chapter_note_path(chapter), class: 'btn btn-small' %>
             <% end %>
