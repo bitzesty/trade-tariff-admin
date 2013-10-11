@@ -10,7 +10,7 @@ gem "her", "0.6.8"
 gem "pundit", "0.2.1"
 
 gem "kaminari", "0.14.1"
-gem "simple_form", github: "plataformatec/simple_form", branch: "master", ref: "87323fd62"
+gem "simple_form", "3.0.0"
 
 gem "gds-sso", "3.1.0"
 gem "gds-api-adapters", "> 4.1.3"
