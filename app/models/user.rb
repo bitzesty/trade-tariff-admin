@@ -24,7 +24,7 @@ class User < Sequel::Model
   end
 
   def self.user_params_from_auth_hash(auth_hash)
-    GDS::SSO::User.user_params_from_auth_hash(auth_hash.to_hash).merge(access_token: auth_hash.credentials.token)
+    GDS::SSO::User.user_params_from_auth_hash(auth_hash.to_hash)
   end
 
   def self.find_by_uid(uid)
