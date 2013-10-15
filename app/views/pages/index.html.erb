@@ -4,9 +4,10 @@
   <table class='table table-bordered table-striped table-condensed table-section-notes'>
     <thead>
       <tr>
-        <td colspan="2" class='span10'>Section</td>
-        <td class='span2'>
-        </td>
+        <th class='span1'>Section</th>
+        <th class='span1'>Chapters</th>
+        <th class='span9'>Title</th>
+        <th class='span1'>Notes</th>
       </tr>
     </thead>
     <tbody>
@@ -16,43 +17,16 @@
             <%= section.position %>
           </td>
           <td>
+            <%= link_to section.chapters_range, notes_section_chapters_path(section) %>
+          </td>
+          <td>
             <%= section %>
           </td>
           <td>
           <% if section.has_section_note? %>
-              <%= link_to "Edit", edit_section_section_note_path(section), class: 'btn btn-small' %>
-              <%= link_to "Remove", section_section_note_path(section), method: :delete, data: { confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
+              <%= link_to "Edit", edit_notes_section_section_note_path(section), class: 'btn btn-small btn-primary' %>
             <% else %>
-              <%= link_to "Create", new_section_section_note_path(section), class: 'btn btn-small' %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <h2>Chapter Notes</h2>
-
-  <table class='table table-bordered table-striped table-condensed table-chapter-notes'>
-    <thead>
-      <tr>
-        <td class='span10'>Section</td>
-        <td class='span2'>
-          <%# <%= link_to "New", new_chapter_note_path, class: 'btn btn-small' %1> %>
-        </td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @chapters.each do |chapter| %>
-        <tr id='<%= dom_id(chapter) %>'>
-          <td>
-            <%= chapter %>
-          </td>
-          <td>
-            <% if chapter.has_chapter_note? %>
-              <%= link_to "Edit", edit_chapter_chapter_note_path(chapter), class: 'btn btn-small' %>
-              <%= link_to "Remove", chapter_chapter_note_path(chapter), method: :delete, data: {confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
-            <% else %>
-              <%= link_to "Create", new_chapter_chapter_note_path(chapter), class: 'btn btn-small' %>
+              <%= link_to "Add", new_notes_section_section_note_path(section), class: 'btn btn-small' %>
             <% end %>
           </td>
         </tr>

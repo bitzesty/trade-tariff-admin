@@ -27,7 +27,7 @@ module Chapters
       if @chapter_note.valid?
         @chapter_note.save
 
-        redirect_to index_path, notice: 'Chapter note was successfully updated.'
+        redirect_to section_chapters_path(chapter.section.fetch), notice: 'Chapter note was successfully updated.'
       else
         render :edit
       end

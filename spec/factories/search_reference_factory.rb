@@ -19,12 +19,12 @@ FactoryGirl.define do
   factory :chapter_search_reference, parent: :search_reference, class: Chapter::SearchReference do
     reference_class { 'Chapter' }
     referenced_entity { build(:chapter) }
-    chapter_id { referenced_entity.id }
+    chapter_id { referenced_entity[:id] }
   end
 
   factory :heading_search_reference, parent: :search_reference, class: Heading::SearchReference do
-    heading_id { referenced_entity.id }
     reference_class { 'Heading' }
     referenced_entity { build(:heading) }
+    heading_id { referenced_entity[:id] }
   end
 end

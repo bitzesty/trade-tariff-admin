@@ -1,0 +1,24 @@
+<div class='row'>
+  <h3>Headings of chapter <%= chapter.description.titleize %></h3>
+
+  <table class='table table-bordered table-striped table-condensed table-headings'>
+    <thead>
+      <tr>
+        <th class='span1'>Code</th>
+        <th class='span9'>Description</th>
+        <th class='span2'></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @headings.each do |heading| %>
+        <tr id='<%= dom_id(heading) %>'>
+          <td><%= heading.goods_nomenclature_item_id %></td>
+          <td><%= heading.description.titleize %></td>
+          <td>
+            <%= link_to 'Search synonyms', heading_search_references_path(heading), class: 'btn btn-small' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

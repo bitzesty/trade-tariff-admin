@@ -18,7 +18,7 @@ class SearchReferencesController < ApplicationController
     if @search_reference.valid?
       @search_reference.save
 
-      redirect_to [search_reference_parent, :search_references], notice: 'Search synonym was successfully created.'
+      redirect_to [scope, search_reference_parent, :search_references], notice: 'Search synonym was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class SearchReferencesController < ApplicationController
     if search_reference.valid?
       search_reference.save
 
-      redirect_to [search_reference_parent, :search_references], notice: 'Search synonym was successfully updated.'
+      redirect_to [scope, search_reference_parent, :search_references], notice: 'Search synonym was successfully updated.'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class SearchReferencesController < ApplicationController
   def destroy
     search_reference.destroy
 
-    redirect_to [search_reference_parent, :search_references], notice: 'Search synonym was successfully removed.'
+    redirect_to [scope, search_reference_parent, :search_references], notice: 'Search synonym was successfully removed.'
   end
 
   private
@@ -70,5 +70,9 @@ class SearchReferencesController < ApplicationController
 
   def search_reference_parent
     raise NotImplementedError.new("Please override #search_reference_parent")
+  end
+
+  def scope
+    raise NotImplementedError.new("Please override #scope")
   end
 end

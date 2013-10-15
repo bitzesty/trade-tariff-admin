@@ -2,7 +2,7 @@
   <h1>New Search Synonym</h1>
 </div>
 
-<%= simple_form_for @search_reference, url: heading_search_references_path(heading), html: { class: 'search-reference-form' } do |f| %>
+<%= simple_form_for [chapter, @search_reference], html: { class: 'search-reference-form' } do |f| %>
   <div class='row'>
     <div class='span12'>
       <%= f.input :title, label: 'Synonym',  input_html: { class: 'span6' } %>
