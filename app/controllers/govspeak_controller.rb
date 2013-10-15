@@ -1,4 +1,4 @@
-class GovspeakController < ActionController::Base
+class GovspeakController < ApplicationController
   def preview
     if params[:govspeak]
       doc = Govspeak::Document.new params[:govspeak]
