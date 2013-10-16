@@ -4,6 +4,8 @@ class Heading
   include Her::Model
 
   has_many :search_references, class_name: 'Heading::SearchReference'
+  has_one :section
+  has_one :chapter
 
   def heading_id
     goods_nomenclature_item_id.first(4)

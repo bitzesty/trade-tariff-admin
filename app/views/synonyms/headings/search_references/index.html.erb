@@ -1,0 +1,27 @@
+<%= link_to 'Headings', synonyms_chapter_headings_path(chapter_id: heading.chapter.id) %>
+
+<h2>Search synonyms <%= heading.reference_title %></h2>
+
+<table class='table table-bordered table-striped table-condensed table-search-references'>
+  <thead>
+    <tr>
+      <th class='span9'>Title</th>
+      <th class='span3'>
+        <%= link_to 'New Search Synonym', new_synonyms_heading_search_reference_path(heading), class: 'btn btn-small' %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @search_references.each do |search_reference| %>
+      <tr id='<%= dom_id(search_reference) %>'>
+        <td><%= search_reference.title %></td>
+        <td>
+          <%= link_to "Edit", edit_synonyms_heading_search_reference_path(heading, search_reference), class: 'btn btn-small' %>
+          <%= link_to "Remove", synonyms_heading_search_reference_path(heading, search_reference), method: :delete, data: { confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @search_references %>

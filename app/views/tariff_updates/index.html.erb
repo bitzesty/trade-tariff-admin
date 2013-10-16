@@ -1,24 +1,22 @@
-<div class='row'>
-  <h2>Tariff Updates</h2>
+<h2>Tariff Updates</h2>
 
-  <table class='table table-bordered table-striped table-condensed table-tariff-updates'>
-    <thead>
-      <tr>
-        <th class='span2'>Update type</th>
-        <th class='span2'>File name</th>
-        <th class='span2'>State</th>
-        <th class='span2'>Created at</th>
+<table class='table table-bordered table-striped table-condensed table-tariff-updates'>
+  <thead>
+    <tr>
+      <th class='span2'>Update type</th>
+      <th class='span2'>File name</th>
+      <th class='span2'>State</th>
+      <th class='span2'>Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tariff_updates.each do |tariff_update| %>
+      <tr id='<%= dom_id(tariff_update) %>'>
+        <td><%= tariff_update.update_type %></td>
+        <td><%= tariff_update.filename %></td>
+        <td><%= tariff_update.state %></td>
+        <td><%= tariff_update.created_at %></td>
       </tr>
-    </thead>
-    <tbody>
-      <% @tariff_updates.each do |tariff_update| %>
-        <tr id='<%= dom_id(tariff_update) %>'>
-          <td><%= tariff_update.update_type %></td>
-          <td><%= tariff_update.filename %></td>
-          <td><%= tariff_update.state %></td>
-          <td><%= tariff_update.created_at %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+    <% end %>
+  </tbody>
+</table>

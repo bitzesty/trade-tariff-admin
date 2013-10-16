@@ -1,0 +1,24 @@
+<h2>Sections</h2>
+
+<table class='table table-bordered table-striped table-condensed table-sections'>
+  <thead>
+    <tr>
+      <th class='span1'>Section</th>
+      <th class='span1'>Chapters</th>
+      <th class='span9'>Title</th>
+      <th class='span1'>Synonyms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr id='<%= dom_id(section) %>'>
+        <td><%= section.position %></td>
+        <td><%= link_to section.chapters_range, synonyms_section_chapters_path(section) %></td>
+        <td><%= section.title %></td>
+        <td>
+          <%= link_to 'Edit', synonyms_section_search_references_path(section), class: 'btn btn-small btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

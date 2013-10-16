@@ -133,7 +133,7 @@ describe "Section Search Reference management" do
   private
 
   def create_search_reference_for(section, fields_and_values = {})
-    ensure_on new_section_search_reference_path(section)
+    ensure_on new_synonyms_section_search_reference_path(section)
 
     fields_and_values.each do |field, value|
       fill_in "search_reference_#{field}", with: value
@@ -145,7 +145,7 @@ describe "Section Search Reference management" do
   end
 
   def update_section_search_reference_for(section, search_reference, fields_and_values = {})
-    ensure_on edit_section_search_reference_path(section, search_reference)
+    ensure_on edit_synonyms_section_search_reference_path(section, search_reference)
 
     fields_and_values.each do |field, value|
       fill_in "search_reference_#{field}", with: value
@@ -157,7 +157,7 @@ describe "Section Search Reference management" do
   end
 
   def remove_section_search_reference_for(section, section_search_reference)
-    ensure_on section_search_references_path(section)
+    ensure_on synonyms_section_search_references_path(section)
 
     within(dom_id_selector(section_search_reference)) do
       click_link 'Remove'
@@ -165,13 +165,13 @@ describe "Section Search Reference management" do
   end
 
   def section_search_reference_updated_for(section, search_reference, args = {})
-    ensure_on edit_section_search_reference_path(section, search_reference)
+    ensure_on edit_synonyms_section_search_reference_path(section, search_reference)
 
     page.has_field?('search_reference_title', with: args[:title])
   end
 
   def search_reference_created_for(section, attributes = {})
-    ensure_on section_search_references_path(section)
+    ensure_on synonyms_section_search_references_path(section)
 
     within("table") do
       page.has_content? attributes.fetch(:title)

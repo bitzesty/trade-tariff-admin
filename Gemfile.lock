@@ -35,8 +35,6 @@ GEM
       mail (> 2.2.5)
       mime-types
       xml-simple
-    bootstrap-sass (2.3.2.1)
-      sass (~> 3.2)
     brakeman (1.7.1)
       activesupport
       erubis (~> 2.6)
@@ -66,6 +64,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    commonjs (0.2.7)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
     diff-lcs (1.2.4)
@@ -115,6 +114,13 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
+    less (2.3.3)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
+      actionpack (>= 3.1)
+      less (~> 2.3.1)
+    less-rails-bootstrap (2.3.3)
+      less-rails (~> 2.3.1)
     libv8 (3.11.8.17)
     link_header (0.0.7)
     lograge (0.1.2)
@@ -264,7 +270,6 @@ PLATFORMS
 DEPENDENCIES
   addressable (= 2.3.5)
   aws-ses
-  bootstrap-sass (= 2.3.2.1)
   brakeman (~> 1.7.0)
   capybara (~> 2.1.0)
   ci_reporter
@@ -276,6 +281,7 @@ DEPENDENCIES
   her (= 0.6.8)
   jquery-rails (= 3.0.4)
   kaminari (= 0.14.1)
+  less-rails-bootstrap (= 2.3.3)
   lograge (= 0.1.2)
   mysql2 (= 0.3.13)
   plek (>= 1.0.0)

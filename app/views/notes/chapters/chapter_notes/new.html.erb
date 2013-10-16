@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h1>New Chapter Note</h1>
+</div>
+
+<%= simple_form_for @chapter_note, url: notes_chapter_chapter_note_path(chapter) do |f| %>
+  <div class='row'>
+    <div class='span12'>
+      <%= f.input 'section_title', disabled: true, input_html: { class: 'span6', value: chapter.goods_nomenclature_item_id } %>
+    </div>
+  </div>
+
+  <%= render 'fields', f: f %>
+
+  <div class='row'>
+    <div class="form-actions">
+      <%= f.button :submit, class: 'btn btn-primary', data: { 'disable-with' => 'Working' } %>
+      <%= link_to "Back", :back, class: 'btn' %>
+    </div>
+  </div>
+<% end %>

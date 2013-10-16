@@ -70,37 +70,10 @@ describe "Section Note management" do
     end
   end
 
-  describe "Section Note deletion" do
-    let(:section)      { build :section, :with_note }
-    let(:section_note) { build :section_note, section_id: section.id }
-
-    specify do
-      stub_api_for(Section) { |stub|
-        stub.get("/sections") { |env| api_success_response([section.attributes]) }
-        stub.get("/sections/#{section.id}") { |env| api_success_response(section.attributes) }
-      }
-
-      stub_api_for(SectionNote) { |stub|
-        stub.get("/sections/#{section.id}/section_note") { |env| api_success_response(section_note.attributes) }
-        stub.delete("/sections/#{section.id}/section_note") { |env| api_no_content_response }
-      }
-
-      verify note_created_for(section)
-
-      remove_note_for section
-
-      stub_api_for(Section) { |stub|
-        stub.get("/sections") { |env| api_success_response([section.attributes.except(:section_note_id)]) }
-      }
-
-      refute note_created_for(section)
-    end
-  end
-
   private
 
   def create_note_for(section, fields_and_values = {})
-    ensure_on new_section_section_note_path(section)
+    ensure_on new_notes_section_section_note_path(section)
 
     fields_and_values.each do |field, value|
       fill_in "section_note_#{field}", with: value
@@ -112,7 +85,7 @@ describe "Section Note management" do
   end
 
   def update_note_for(section, fields_and_values = {})
-    ensure_on edit_section_section_note_path(section)
+    ensure_on edit_notes_section_section_note_path(section)
 
     fields_and_values.each do |field, value|
       fill_in "section_note_#{field}", with: value
@@ -123,16 +96,8 @@ describe "Section Note management" do
     click_button 'Update Section note'
   end
 
-  def remove_note_for(section)
-    ensure_on root_path
-
-    within(dom_id_selector(section)) do
-      click_link 'Remove'
-    end
-  end
-
   def note_updated_for(section, args = {})
-    ensure_on edit_section_section_note_path(section)
+    ensure_on edit_notes_section_section_note_path(section)
 
     page.has_field?('section_note_content', with: args[:content])
   end
@@ -142,7 +107,7 @@ describe "Section Note management" do
 
     page.has_selector?(dom_id_selector(section)) && (
       within(dom_id_selector(section)) do
-        page.has_link?('Remove')
+        page.has_link?('Edit')
       end
     )
   end

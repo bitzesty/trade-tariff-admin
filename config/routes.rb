@@ -1,25 +1,41 @@
 TradeTariffAdmin::Application.routes.draw do
   scope :path => "#{APP_SLUG}" do
 
-    resources :sections, only: [:index, :show] do
-      scope module: 'sections' do
-        resource :section_note
-        resources :search_references
-        resources :chapters, only: [:index]
+    namespace :notes, module: :notes do
+      resources :sections, only: [:index, :show] do
+        scope module: 'sections' do
+          resource :section_note
+          resources :chapters, only: [:index]
+        end
+      end
+
+      resources :chapters, only: [:index, :show] do
+        scope module: 'chapters' do
+          resource :chapter_note
+          resources :headings, only: [:index]
+        end
       end
     end
 
-    resources :chapters, only: [:index, :show] do
-      scope module: 'chapters' do
-        resource :chapter_note
-        resources :search_references
-        resources :headings, only: [:index]
+    namespace :synonyms, module: :synonyms do
+      resources :sections, only: [:index, :show] do
+        scope module: 'sections' do
+          resources :search_references
+          resources :chapters, only: [:index]
+        end
       end
-    end
 
-    resources :headings do
-      scope module: 'headings' do
-        resources :search_references
+      resources :chapters, only: [:index, :show] do
+        scope module: 'chapters' do
+          resources :search_references
+          resources :headings, only: [:index]
+        end
+      end
+
+      resources :headings do
+        scope module: 'headings' do
+          resources :search_references
+        end
       end
     end
 

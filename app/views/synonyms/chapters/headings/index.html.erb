@@ -1,0 +1,24 @@
+<%= link_to 'Chapters', synonyms_section_chapters_path(section_id: chapter.section_id) %>
+
+<h3>Headings of chapter <%= chapter.description.titleize %></h3>
+
+<table class='table table-bordered table-striped table-condensed table-headings'>
+  <thead>
+    <tr>
+      <th class='span1'>Heading</th>
+      <th class='span9'>Title</th>
+      <th class='span2'>Synonyms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @headings.each do |heading| %>
+      <tr id='<%= dom_id(heading) %>'>
+        <td><%= heading.heading_id %></td>
+        <td><%= heading.description.titleize %></td>
+        <td>
+          <%= link_to 'Edit', synonyms_heading_search_references_path(heading), class: 'btn btn-small btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

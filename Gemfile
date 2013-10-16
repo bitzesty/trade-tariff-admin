@@ -12,6 +12,8 @@ gem "pundit", "0.2.1"
 gem "kaminari", "0.14.1"
 gem "simple_form", "3.0.0"
 
+gem "less-rails-bootstrap", "2.3.3"
+
 gem "gds-sso", "3.1.0"
 gem "gds-api-adapters", "> 4.1.3"
 gem "plek", ">= 1.0.0"
@@ -44,6 +46,5 @@ group :assets do
   gem "sass-rails", "4.0.0"
   gem "coffee-rails", "4.0.0"
   gem "uglifier", "2.1.2"
-  gem "bootstrap-sass", "2.3.2.1"
   gem "therubyracer", "0.11.4"
 end

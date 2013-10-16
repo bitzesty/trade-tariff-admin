@@ -1,0 +1,17 @@
+<div class='row'>
+  <div class='span6'>
+    <%= f.input :content, as: :text, input_html: { class: 'span6', rows: 12 } %>
+  </div>
+  <div class='span6'>
+    <%= f.label :preview, required: false %>
+    <div class='well' data-preview='markdown' data-preview-for='#section_note_content'>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary', data: { 'disable-with' => 'Working' } %>
+    <%= link_to "Back", :back, class: 'btn' %>
+  </div>
+</div>

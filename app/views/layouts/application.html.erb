@@ -2,29 +2,51 @@
 <html>
 <head>
   <title>TradeTariffAdmin</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <ul class="nav">
-        <li><%= link_to 'Sections & Chapters', root_path  %></li>
-        <li><%= link_to 'Search Synonyms', sections_path %></li>
-        <li><%= link_to 'Tariff Updates', tariff_updates_path  %></li>
-      </ul>
+  <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%= link_to 'GOV.UK Trade Tariff Admin', root_path, class: "brand" %>
+        <nav role="navigation" class="nav-collapse">
+          <ul class="nav">
+            <%= nav_link 'Section & chapter notes', root_path, /trade-tariff-admin\/notes|trade-tariff-admin$/ %>
+            <%= nav_link 'Search Synonyms', synonyms_sections_path, /trade-tariff-admin\/synonyms/ %>
+            <%= nav_link 'Tariff Updates', tariff_updates_path, /trade-tariff-admin\/tariff_updates/ %>
+          </ul>
+          <ul class="nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Sign out', gds_sign_out_path %></li>
+              </ul>
+            </li>
+          </ul>
+          <p class="navbar-text pull-right">
+            Signed in as <%= link_to current_user.name, Plek.current.find('signon') %>
+          </p>
+        </nav><!--/.nav-collapse -->
+      </div>
     </div>
-  </div>
-</div>
+  </header>
 
-<div class="container">
-  <%= render 'flashes' %>
+  <section class="container-fluid" role="main">
+    <%= render 'flashes' %>
 
-  <%= yield %>
-</div>
+    <%= yield %>
+  </section>
 
 </body>
 </html>
