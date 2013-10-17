@@ -19,4 +19,8 @@ class ChapterNote
   def request_path
     self.class.build_request_path("/chapters/:chapter_id/chapter_note", attributes.dup.merge('chapter_id' => chapter.fetch.to_param))
   end
+
+  def preview
+    Govspeak::Document.new(content).to_sanitized_html.html_safe
+  end
 end
