@@ -1,14 +1,14 @@
-marked.setOptions({
-  tables: true,
-  pendatic: true,
-  sanitize: true,
-  breaks: true
-});
-
 $(document).ready(function(){
   var Previewer = {
     preview: function(content, output) {
-      output.html(marked(content.val()));
+      $.ajax({
+        type: 'POST',
+        url: "/trade-tariff-admin/preview",
+        data: { govspeak: content.val() },
+        dataType: 'json'
+      }).success(function(data){
+        output.html(data['govspeak']);
+      });
     }
   };
 
@@ -22,4 +22,7 @@ $(document).ready(function(){
 
     Previewer.preview(source_field, render_area);
   });
+
+  $('textarea').autosize();
+
 });

@@ -11,6 +11,7 @@ gem "pundit", "0.2.1"
 
 gem "kaminari", "0.14.1"
 gem "simple_form", "3.0.0"
+gem "govspeak", "1.2.3"
 
 gem "less-rails-bootstrap", "2.3.3"
 

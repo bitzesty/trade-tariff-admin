@@ -41,7 +41,7 @@ TradeTariffAdmin::Application.routes.draw do
 
     resources :tariff_updates, only: [:index]
 
-    post "preview" => "previewer#render", as: :preview
+    post "preview" => "govspeak#preview", as: :preview
     get  "healthcheck" => "healthcheck#check", as: :healthcheck
     get  "/" => "pages#index", as: :index
   end
