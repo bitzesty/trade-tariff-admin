@@ -76,5 +76,5 @@ TradeTariffAdmin::Application.configure do
 
   config.eager_load = true
 
-  # config.lograge.enabled = true
+  config.lograge.enabled = true
 end
