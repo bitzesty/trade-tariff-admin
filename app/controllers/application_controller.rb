@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   include GDS::SSO::ControllerMethods
 
-  protect_from_forgery
+  # protect_from_forgery
 
   prepend_before_filter :authenticate_user!
   before_filter :require_signin_permission!
