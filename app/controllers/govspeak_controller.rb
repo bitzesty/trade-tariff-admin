@@ -1,5 +1,9 @@
 class GovspeakController < ApplicationController
   def preview
+    # Keeps either the entire current flash or a specific flash entry
+    # available for the next action
+    flash.keep
+
     if params[:govspeak]
       doc = Govspeak::Document.new params[:govspeak]
 
