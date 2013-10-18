@@ -4,7 +4,6 @@ $(document).ready(function(){
       $.ajax({
         type: 'POST',
         url: "/trade-tariff-admin/preview",
-        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         data: { govspeak: content.val() },
         dataType: 'json'
       }).success(function(data){
@@ -20,10 +19,7 @@ $(document).ready(function(){
     source_field.keyup(function() {
       Previewer.preview(source_field, render_area);
     })
-
-    Previewer.preview(source_field, render_area);
   });
 
   $('textarea').autosize();
-
 });
