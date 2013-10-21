@@ -1,5 +1,5 @@
 class GovspeakController < ApplicationController
-  def preview
+  def govspeak
     # Keeps either the entire current flash or a specific flash entry
     # available for the next action
     flash.keep
