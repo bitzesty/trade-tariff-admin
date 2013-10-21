@@ -71,7 +71,7 @@ module TradeTariffAdmin
     config.assets.version = '1.0'
 
     # Disable Rack::Cache.
-    config.action_dispatch.rack_cache = nil
+    # config.action_dispatch.rack_cache = nil
 
     config.assets.js_compressor = :uglifier
 
