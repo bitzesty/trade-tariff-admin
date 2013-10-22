@@ -2,7 +2,7 @@
   <h1>Edit Chapter Note</h1>
 </div>
 
-<%= simple_form_for @chapter_note, url: notes_chapter_chapter_note_path(@chapter)  do |f| %>
+<%= simple_form_for @chapter_note, url: notes_chapter_chapter_note_url(@chapter)  do |f| %>
   <div class='row'>
     <div class='span12'>
       <%= f.input :chapter_title, disabled: true, as: :string, label: 'Chapter', input_html: { class: 'span6', value: @chapter.goods_nomenclature_item_id } %>
