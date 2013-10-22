@@ -1,5 +1,5 @@
 TradeTariffAdmin::Application.routes.draw do
-  scope :path => "#{APP_SLUG}" do
+  # scope :path => "#{APP_SLUG}" do
 
     namespace :notes, module: :notes do
       resources :sections, only: [:index, :show] do
@@ -44,7 +44,8 @@ TradeTariffAdmin::Application.routes.draw do
     post "govspeak" => "govspeak#govspeak", as: :govspeak
     get  "healthcheck" => "healthcheck#check", as: :healthcheck
     get  "/" => "pages#index", as: :index
-  end
+    root to: "pages#index"
+  # end
 
-  root :to => redirect("/#{APP_SLUG}", :status => 302)
+  # root :to => redirect("/#{APP_SLUG}", :status => 302)
 end

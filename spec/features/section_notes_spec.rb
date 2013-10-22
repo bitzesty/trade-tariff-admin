@@ -32,11 +32,14 @@ describe "Section Note management" do
 
       refute note_created_for(section)
 
-      create_note_for section, content: section_note.content
-
       stub_api_for(Section) { |stub|
         stub.get("/sections") { |env| api_success_response([section.attributes.merge(section_note_id: section_note.id)]) }
+        stub.get("/sections/#{section.id}") { |env|
+          api_success_response(section.attributes.merge(section_note_id: section_note.id))
+        }
       }
+
+      create_note_for section, content: section_note.content
 
       verify note_created_for(section)
     end
