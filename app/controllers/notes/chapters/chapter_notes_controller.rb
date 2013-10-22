@@ -11,7 +11,7 @@ module Notes
         @chapter_note = chapter.chapter_note.build(chapter_note_create_params)
 
         if @chapter_note.save
-          redirect_to notes_section_chapters_path(section_id: chapter.section[:id]), notice: 'Chapter note was successfully created.'
+          redirect_to notes_section_chapters_url(section_id: chapter.section[:id]), notice: 'Chapter note was successfully created.'
         else
           render :new
         end
@@ -28,7 +28,7 @@ module Notes
         if @chapter_note.valid?
           @chapter_note.save
 
-          redirect_to notes_section_chapters_path(section_id: chapter.section[:id]), notice: 'Chapter note was successfully updated.'
+          redirect_to notes_section_chapters_url(section_id: chapter.section[:id]), notice: 'Chapter note was successfully updated.'
         else
           render :edit
         end
@@ -38,7 +38,7 @@ module Notes
         @chapter_note = chapter.chapter_note.fetch
         @chapter_note.destroy
 
-        redirect_to index_path, notice: 'Chapter note was successfully removed.'
+        redirect_to index_url, notice: 'Chapter note was successfully removed.'
       end
 
       private

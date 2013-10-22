@@ -11,7 +11,7 @@ module Notes
         @section_note = section.section_note.build(section_note_create_params)
 
         if @section_note.save
-          redirect_to index_path, notice: 'Section note was successfully created.'
+          redirect_to index_url, notice: 'Section note was successfully created.'
         else
           render :new
         end
@@ -28,7 +28,7 @@ module Notes
         if @section_note.valid?
           @section_note.save
 
-          redirect_to index_path, notice: 'Section note was successfully updated.'
+          redirect_to index_url, notice: 'Section note was successfully updated.'
         else
           render :edit
         end
@@ -38,7 +38,7 @@ module Notes
         @section_note = section.section_note.fetch
         @section_note.destroy
 
-        redirect_to index_path, notice: 'Section note was successfully removed.'
+        redirect_to index_url, notice: 'Section note was successfully removed.'
       end
 
       private
