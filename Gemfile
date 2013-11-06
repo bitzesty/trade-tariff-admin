@@ -47,5 +47,5 @@ group :assets do
   gem "sass-rails", "4.0.0"
   gem "coffee-rails", "4.0.0"
   gem "uglifier", "2.1.2"
-  gem "therubyracer", "0.11.4"
+  gem "therubyracer", "0.12.0"
 end
