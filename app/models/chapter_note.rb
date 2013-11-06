@@ -4,6 +4,8 @@ class ChapterNote
 
   attributes :content
 
+  validates :content, presence: true
+
   primary_key nil
 
   resource_path "chapters/:chapter_id/chapter_note"

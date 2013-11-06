@@ -1,51 +1,46 @@
 TradeTariffAdmin::Application.routes.draw do
-  # scope :path => "#{APP_SLUG}" do
-
-    namespace :notes, module: :notes do
-      resources :sections, only: [:index, :show] do
-        scope module: 'sections' do
-          resource :section_note
-          resources :chapters, only: [:index]
-        end
-      end
-
-      resources :chapters, only: [:index, :show] do
-        scope module: 'chapters' do
-          resource :chapter_note
-          resources :headings, only: [:index]
-        end
+  namespace :notes, module: :notes do
+    resources :sections, only: [:index, :show] do
+      scope module: 'sections' do
+        resource :section_note
+        resources :chapters, only: [:index]
       end
     end
 
-    namespace :synonyms, module: :synonyms do
-      resources :sections, only: [:index, :show] do
-        scope module: 'sections' do
-          resources :search_references
-          resources :chapters, only: [:index]
-        end
+    resources :chapters, only: [:index, :show] do
+      scope module: 'chapters' do
+        resource :chapter_note
+        resources :headings, only: [:index]
       end
+    end
+  end
 
-      resources :chapters, only: [:index, :show] do
-        scope module: 'chapters' do
-          resources :search_references
-          resources :headings, only: [:index]
-        end
-      end
-
-      resources :headings do
-        scope module: 'headings' do
-          resources :search_references
-        end
+  namespace :synonyms, module: :synonyms do
+    resources :sections, only: [:index, :show] do
+      scope module: 'sections' do
+        resources :search_references
+        resources :chapters, only: [:index]
       end
     end
 
-    resources :tariff_updates, only: [:index]
+    resources :chapters, only: [:index, :show] do
+      scope module: 'chapters' do
+        resources :search_references
+        resources :headings, only: [:index]
+      end
+    end
 
-    post "govspeak" => "govspeak#govspeak", as: :govspeak
-    get  "healthcheck" => "healthcheck#check", as: :healthcheck
-    get  "/" => "pages#index", as: :index
-    root to: "pages#index"
-  # end
+    resources :headings do
+      scope module: 'headings' do
+        resources :search_references
+      end
+    end
+  end
 
-  # root :to => redirect("/#{APP_SLUG}", :status => 302)
+  resources :tariff_updates, only: [:index]
+
+  post "govspeak" => "govspeak#govspeak", as: :govspeak
+  get  "healthcheck" => "healthcheck#check", as: :healthcheck
+  get  "/" => "pages#index", as: :index
+  root to: "pages#index"
 end

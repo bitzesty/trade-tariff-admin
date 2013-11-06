@@ -1,5 +1,9 @@
 <div class="page-header">
-  <h1>Edit Chapter Note</h1>
+  <h1>
+    Edit Chapter Note
+
+    <%= link_to "Remove", notes_chapter_chapter_note_path(@chapter), method: :delete, data: { confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-danger pull-right' %>
+  </h1>
 </div>
 
 <%= simple_form_for @chapter_note, url: notes_chapter_chapter_note_url(@chapter)  do |f| %>

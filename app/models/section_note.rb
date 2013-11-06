@@ -4,6 +4,8 @@ class SectionNote
 
   attributes :content
 
+  validates :content, presence: true
+
   primary_key nil
 
   resource_path "sections/:section_id/section_note"

@@ -73,6 +73,34 @@ describe "Section Note management" do
     end
   end
 
+  describe "Section Note deletion" do
+    let(:section)      { build :section, :with_note }
+    let(:section_note) { build :section_note, section_id: section.id }
+
+    it 'can be removed' do
+      stub_api_for(Section) { |stub|
+        stub.get("/sections") { |env| api_success_response([section.attributes]) }
+        stub.get("/sections/#{section.id}") { |env| api_success_response(section.attributes) }
+      }
+
+      stub_api_for(SectionNote) { |stub|
+        stub.get("/sections/#{section.id}/section_note") { |env| api_success_response(section_note.attributes) }
+        stub.delete("/sections/#{section.id}/section_note") { |env| api_no_content_response }
+      }
+
+      verify note_created_for(section)
+
+      stub_api_for(Section) { |stub|
+        stub.get("/sections") { |env| api_success_response([section.attributes.except(:section_note_id)]) }
+        stub.get("/sections/#{section.id}") { |env| api_success_response(section.attributes.except(:section_note_id)) }
+      }
+
+      remove_note_for section
+
+      refute note_created_for(section)
+    end
+  end
+
   private
 
   def create_note_for(section, fields_and_values = {})
@@ -113,5 +141,11 @@ describe "Section Note management" do
         page.has_link?('Edit')
       end
     )
+  end
+
+  def remove_note_for(section)
+    ensure_on edit_notes_section_section_note_path(section)
+
+    click_link 'Remove'
   end
 end
