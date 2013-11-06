@@ -38,7 +38,7 @@ module Notes
         @chapter_note = chapter.chapter_note.fetch
         @chapter_note.destroy
 
-        redirect_to index_url, notice: 'Chapter note was successfully removed.'
+        redirect_to notes_section_chapters_url(section_id: chapter.section[:id]), notice: 'Chapter note was successfully removed.'
       end
 
       private
