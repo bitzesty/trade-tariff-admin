@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/alphagov/trade-tariff-admin.png?branch=master)](https://travis-ci.org/alphagov/trade-tariff-admin)
 
+[![Dependency Status](https://gemnasium.org/alphagov/trade-tariff-admin.png)](https://gemnasium.org/alphagov/trade-tariff-admin)
+
 # TradeTariffAdmin
 
 A web application admin backend end for use with the UK Trade Tariff API.
