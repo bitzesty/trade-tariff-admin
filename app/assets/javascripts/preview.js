@@ -3,7 +3,7 @@ $(document).ready(function(){
     preview: function(content, output) {
       $.ajax({
         type: 'POST',
-        url: "/trade-tariff-admin/govspeak",
+        url: "/govspeak",
         data: { govspeak: content.val() },
         dataType: 'json'
       }).success(function(data){
