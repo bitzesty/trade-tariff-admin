@@ -1,6 +1,6 @@
 module Synonyms
   module Chapters
-    class SearchReferencesController < ::SearchReferencesController
+    class SearchReferencesController < Synonyms::SearchReferencesController
       def update
         search_reference.referenced_id = search_reference.referenced_entity.id
         search_reference.referenced_class = 'Chapter'
