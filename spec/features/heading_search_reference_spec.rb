@@ -8,7 +8,7 @@ describe "Heading Search Reference management" do
   describe "Search Reference creation" do
     let(:title)        { 'new title' }
     let(:heading)      { build :heading, title: 'new heading', chapter: chapter }
-    let(:heading_search_reference) { build :heading_search_reference, title: title, referenced_entity: heading.attributes }
+    let(:heading_search_reference) { build :heading_search_reference, title: title, referenced: heading.attributes }
 
     specify do
       stub_api_for(Heading) { |stub|
@@ -43,7 +43,7 @@ describe "Heading Search Reference management" do
 
   describe "Search Reference deletion" do
     let(:heading)                  { build :heading, :with_chapter, chapter: chapter.attributes }
-    let(:heading_search_reference) { build :heading_search_reference, referenced_entity: heading.attributes }
+    let(:heading_search_reference) { build :heading_search_reference, referenced: heading.attributes }
 
     specify do
       stub_api_for(Heading) { |stub|
@@ -79,8 +79,8 @@ describe "Heading Search Reference management" do
   end
 
   describe "Search reference editing" do
-    let(:heading)                  { build :heading, :with_chapter, chapter: chapter.attributes }
-    let(:heading_search_reference) { build :heading_search_reference, referenced_entity: heading.attributes }
+    let(:heading)                  { build :heading, :with_chapter, chapter: chapter }
+    let(:heading_search_reference) { build :heading_search_reference, referenced: heading.attributes }
     let(:new_title)  { "new title" }
 
     specify do

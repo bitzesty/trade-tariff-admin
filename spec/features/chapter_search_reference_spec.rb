@@ -3,7 +3,7 @@ require 'search_reference'
 
 describe "Chapter Search Reference management" do
   let!(:user)   { create :user, :gds_editor }
-  let(:section)                  { build :section }
+  let(:section) { build :section }
 
   describe "Search Reference creation" do
     let(:title)        { 'new title' }
@@ -44,7 +44,7 @@ describe "Chapter Search Reference management" do
 
   describe "Search Reference deletion" do
     let(:chapter)                  { build :chapter, :with_section, section: section.attributes }
-    let(:chapter_search_reference) { build :chapter_search_reference, referenced_entity: chapter.attributes }
+    let(:chapter_search_reference) { build :chapter_search_reference, referenced: chapter.attributes }
 
     specify do
       stub_api_for(Chapter) { |stub|
@@ -82,7 +82,7 @@ describe "Chapter Search Reference management" do
   describe "Search reference editing" do
     let(:section)                  { build :section }
     let(:chapter)                  { build :chapter, :with_section, section: section.attributes }
-    let(:chapter_search_reference) { build :chapter_search_reference, referenced_entity: chapter.attributes }
+    let(:chapter_search_reference) { build :chapter_search_reference, referenced: chapter.attributes }
     let(:new_title)  { "new title" }
 
     specify do

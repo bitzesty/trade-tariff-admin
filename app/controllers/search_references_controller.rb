@@ -14,6 +14,7 @@ class SearchReferencesController < ApplicationController
 
   def create
     @search_reference = search_reference_parent.search_references.build(search_reference_params)
+    @search_reference.referenced_id = search_reference_parent.id
 
     if @search_reference.valid?
       @search_reference.save
