@@ -3,6 +3,8 @@ require 'commodity/search_reference'
 class Commodity
   include Her::Model
 
+  attributes :leaf
+
   has_many :search_references, class_name: 'Commodity::SearchReference'
 
   def id
@@ -19,6 +21,10 @@ class Commodity
 
   def reference_title
     "Commodity (#{to_param})"
+  end
+
+  def declarable
+    leaf
   end
 
   def request_path(opts = {})
