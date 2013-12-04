@@ -35,7 +35,7 @@ class Chapter
   end
 
   def id
-    to_param
+    short_code
   end
 
   def reference_title
@@ -43,7 +43,7 @@ class Chapter
   end
 
   def to_param
-    short_code
+    short_code.to_s
   end
 
   def to_s

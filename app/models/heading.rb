@@ -16,7 +16,7 @@ class Heading
   end
 
   def to_param
-    heading_id
+    heading_id.to_s
   end
 
   def reference_title
