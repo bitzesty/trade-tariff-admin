@@ -23,7 +23,7 @@ gem "addressable", "2.3.5"
 gem "unicorn", "~> 4.6.3"
 
 gem "jquery-rails", "3.0.4"
-gem 'logstasher', '0.3.0'
+gem 'logstasher', '0.4.0'
 gem "aws-ses", require: "aws/ses" # Needed by exception_notification
 gem "exception_notification", "4.0.0"
 
