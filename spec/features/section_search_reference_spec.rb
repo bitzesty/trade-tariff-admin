@@ -51,7 +51,7 @@ describe "Section Search Reference management" do
 
   describe "Search Reference deletion" do
     let(:section)                  { build :section }
-    let(:section_search_reference) { build :section_search_reference, referenced_entity: section }
+    let(:section_search_reference) { build :section_search_reference, referenced: section.attributes }
 
     specify do
       stub_api_for(Section) { |stub|
@@ -88,7 +88,7 @@ describe "Section Search Reference management" do
 
   describe "Search reference editing" do
     let(:section)                  { build :section }
-    let(:section_search_reference) { build :section_search_reference, referenced_entity: section }
+    let(:section_search_reference) { build :section_search_reference, referenced: section.attributes }
     let(:new_title)  { "new title" }
 
     specify do

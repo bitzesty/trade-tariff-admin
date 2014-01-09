@@ -1,14 +1,15 @@
 module Synonyms
   module Headings
-    class SearchReferencesController < ::SearchReferencesController
+    class SearchReferencesController < Synonyms::SearchReferencesController
       def update
-        search_reference.heading_id = search_reference.referenced_entity.heading_id
+        search_reference.referenced_id = search_reference.referenced_entity.id
+        search_reference.referenced_class = 'Heading'
 
         super
       end
 
       def destroy
-        search_reference.heading_id = search_reference.referenced_entity.heading_id
+        search_reference.referenced_id = search_reference.referenced_entity.id
 
         super
       end

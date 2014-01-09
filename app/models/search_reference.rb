@@ -4,21 +4,17 @@ class SearchReference
   include_root_in_json true
 
   attributes :title
-  attributes :section_id
-  attributes :heading_id
-  attributes :chapter_id
-  attributes :referenced_entity
-  attributes :reference_class
+  attributes :referenced
+  attributes :referenced_id
+  attributes :referenced_class
 
   validates :title, presence: true
 
   def referenced_entity
-    reference_class.new(attributes['referenced_entity'])
+    referenced_class.new(attributes['referenced'])
   end
 
-  private
-
-  def reference_class
-    attributes['reference_class'].constantize
+  def referenced_class
+    attributes['referenced_class'].constantize
   end
 end

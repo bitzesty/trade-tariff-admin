@@ -7,7 +7,7 @@ FactoryGirl.define do
 
     trait :with_note do
       chapter_note_id { generate(:chapter_note_id) }
-    end
+   end
 
     trait :with_section do
       association :section, strategy: :build
