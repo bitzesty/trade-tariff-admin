@@ -34,7 +34,7 @@ class Section
   end
 
   def to_param
-    position.to_s
+    id.to_s
   end
 
   def to_s

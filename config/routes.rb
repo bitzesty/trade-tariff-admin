@@ -33,6 +33,13 @@ TradeTariffAdmin::Application.routes.draw do
     resources :headings do
       scope module: 'headings' do
         resources :search_references
+        resources :commodities, only: [:index]
+      end
+    end
+
+    resources :commodities do
+      scope module: 'commodities' do
+        resources :search_references
       end
     end
   end

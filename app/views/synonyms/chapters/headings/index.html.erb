@@ -6,14 +6,18 @@
   <thead>
     <tr>
       <th class='span1'>Heading</th>
+      <th class='span1'>Commodities</th>
       <th class='span9'>Title</th>
-      <th class='span2'>Synonyms</th>
+      <th class='span1'>Synonyms</th>
     </tr>
   </thead>
   <tbody>
     <% @headings.each do |heading| %>
       <tr id='<%= dom_id(heading) %>'>
         <td><%= heading.heading_id %></td>
+        <td>
+          <%= link_to "Commodities in #{heading.to_param}", synonyms_heading_commodities_path(heading) %>
+        </td>
         <td><%= heading.description.titleize %></td>
         <td>
           <%= link_to 'Edit', synonyms_heading_search_references_path(heading), class: 'btn btn-small btn-primary' %>

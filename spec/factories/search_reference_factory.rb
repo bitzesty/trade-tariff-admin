@@ -24,4 +24,10 @@ FactoryGirl.define do
     referenced { attributes_for(:heading) }
     referenced_id { referenced[:goods_nomenclature_item_id].first(4) }
   end
+
+  factory :commodity_search_reference, parent: :search_reference, class: Commodity::SearchReference do
+    referenced_class { 'Commodity' }
+    referenced { attributes_for(:commodity) }
+    referenced_id { referenced[:goods_nomenclature_item_id] }
+  end
 end

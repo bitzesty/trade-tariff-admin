@@ -1,0 +1,28 @@
+<%= link_to 'Headings', synonyms_chapter_headings_path(chapter_id: heading.chapter_id) %>
+
+<h3>Commodities of heading <%= heading.to_param %>:<%= heading.description.titleize %></h3>
+
+<table class='table table-bordered table-striped table-condensed table-headings'>
+  <thead>
+    <tr>
+      <th class='span1'>Commodity</th>
+      <th class='span9'>Title</th>
+      <th class='span1'>Synonyms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @commodities.each do |commodity| %>
+      <tr id='<%= dom_id(commodity) %>'>
+        <td><%= commodity.goods_nomenclature_item_id %></td>
+        <td><%= commodity.description.titleize %></td>
+        <td>
+          <% if commodity.leaf %>
+            <%= link_to 'Edit', synonyms_commodity_search_references_path(commodity), class: 'btn btn-small btn-primary' %>
+          <% else %>
+            <em>Intermediate code</em>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
