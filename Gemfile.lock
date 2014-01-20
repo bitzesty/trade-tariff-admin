@@ -35,6 +35,8 @@ GEM
       mail (> 2.2.5)
       mime-types
       xml-simple
+    bootstrap-datepicker-rails (1.1.1.11)
+      railties (>= 3.0)
     brakeman (1.7.1)
       activesupport
       erubis (~> 2.6)
@@ -275,6 +277,7 @@ PLATFORMS
 DEPENDENCIES
   addressable (= 2.3.5)
   aws-ses
+  bootstrap-datepicker-rails (~> 1.1.1.11)
   brakeman (~> 1.7.0)
   capybara (~> 2.1.0)
   ci_reporter

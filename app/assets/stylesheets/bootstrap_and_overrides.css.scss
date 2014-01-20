@@ -56,3 +56,15 @@ td.icon {
 .modal input.span5 {
   width: 520px;
 }
+
+.control-group {
+  .help-block {
+    font-style: italic;
+  }
+
+  &.date {
+    select {
+      width: auto
+    }
+  }
+}

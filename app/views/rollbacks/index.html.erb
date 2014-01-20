@@ -1,0 +1,32 @@
+<h2>
+  Database rollbacks
+
+  <%= link_to 'New Rollback', new_rollback_path, class: 'btn btn-small pull-right' %>
+</h2>
+
+<% if @rollbacks.any? %>
+  <table class='table table-bordered table-striped table-condensed rollbacks'>
+    <thead>
+      <tr>
+        <th class='span2'>Job ID</th>
+        <th class='span2'>Rollback to (date)</th>
+        <th class='span2'>Redownload?</th>
+        <th class='span2'>Scheduled at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rollbacks.each do |rollback| %>
+        <tr id='<%= dom_id(rollback) %>'>
+          <td><%= rollback.jid %></td>
+          <td><%= rollback.date %></td>
+          <td><%= rollback.redownload %></td>
+          <td><%= rollback.enqueued_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class='alert alert-info'>
+    <strong>No database rollback jobs are enqueued at this time.</strong>
+  </div>
+<% end %>
