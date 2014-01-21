@@ -1,0 +1,27 @@
+<h2>National footnotes</h2>
+
+<table class='table table-bordered table-striped table-condensed table-footnotes'>
+  <thead>
+    <tr>
+      <th class='span1'>Footnote ID</th>
+      <th class='span6'>Description</th>
+      <th class='span3'>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @footnotes.each do |footnote| %>
+      <tr id='<%= dom_id(footnote) %>'>
+        <td>
+          <%= footnote.to_param %>
+        </td>
+        <td>
+          <%= truncate strip_tags(footnote.description), length: 100 %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_footnote_path(footnote), class: 'btn btn-small' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
