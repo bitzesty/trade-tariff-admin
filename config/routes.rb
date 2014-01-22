@@ -46,6 +46,7 @@ TradeTariffAdmin::Application.routes.draw do
 
   resources :tariff_updates, only: [:index]
   resources :rollbacks, only: [:index, :new, :create]
+  resources :footnotes, only: [:index, :edit, :update]
 
   post "govspeak" => "govspeak#govspeak", as: :govspeak
   get  "healthcheck" => "healthcheck#check", as: :healthcheck
