@@ -1,0 +1,27 @@
+<h2>National Measure Types</h2>
+
+<table class='table table-bordered table-striped table-condensed table-footnotes'>
+  <thead>
+    <tr>
+      <th class='span1'>Measure Type ID</th>
+      <th class='span6'>Description</th>
+      <th class='span3'>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @measure_types.each do |measure_type| %>
+      <tr id='<%= dom_id(measure_type) %>'>
+        <td>
+          <%= measure_type.id %>
+        </td>
+        <td>
+          <%= truncate strip_tags(measure_type.description), length: 100 %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_measure_type_path(measure_type), class: 'btn btn-small' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
