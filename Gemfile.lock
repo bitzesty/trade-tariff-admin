@@ -131,7 +131,7 @@ GEM
     libv8 (3.16.14.3)
     link_header (0.0.7)
     logstash-event (1.1.5)
-    logstasher (0.4.1)
+    logstasher (0.4.8)
       logstash-event (~> 1.1.0)
     lrucache (0.1.4)
       PriorityQueue (~> 0.1.2)
@@ -291,7 +291,7 @@ DEPENDENCIES
   jquery-rails (= 3.0.4)
   kaminari (= 0.14.1)
   less-rails-bootstrap (= 2.3.3)
-  logstasher (= 0.4.1)
+  logstasher (= 0.4.8)
   mysql2 (= 0.3.13)
   plek (>= 1.0.0)
   pry-rails
