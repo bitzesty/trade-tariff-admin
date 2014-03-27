@@ -24,9 +24,9 @@ gem "unicorn", "~> 4.6.3"
 
 gem "jquery-rails", "3.0.4"
 gem "bootstrap-datepicker-rails", "~> 1.1.1.11"
-gem 'logstasher', '0.4.8'
-gem "aws-ses", require: "aws/ses" # Needed by exception_notification
-gem "exception_notification", "4.0.0"
+gem "logstasher", '0.4.8'
+gem "airbrake", "3.1.15"
+
 
 group :development, :test do
   gem "pry-rails"
