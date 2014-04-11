@@ -8,16 +8,20 @@
   <table class='table table-bordered table-striped table-condensed rollbacks'>
     <thead>
       <tr>
-        <th class='span2'>Job ID</th>
+        <th class='span1'>ID</th>
+        <th class="span2">User</th>
+        <th class="span3">Reason</th>
         <th class='span2'>Rollback to (date)</th>
-        <th class='span2'>Redownload?</th>
-        <th class='span2'>Scheduled at</th>
+        <th class='span1'>Redownload?</th>
+        <th class='span2'>Date</th>
       </tr>
     </thead>
     <tbody>
       <% @rollbacks.each do |rollback| %>
         <tr id='<%= dom_id(rollback) %>'>
-          <td><%= rollback.jid %></td>
+          <td><%= rollback.id %></td>
+          <td><%= rollback.user %></td>
+          <td><%= rollback.reason %></td>
           <td><%= rollback.date %></td>
           <td><%= rollback.redownload %></td>
           <td><%= rollback.enqueued_at %></td>

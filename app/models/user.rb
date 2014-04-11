@@ -46,4 +46,8 @@ class User < Sequel::Model
   def update_attribute(attribute, value)
     update({ attribute => value })
   end
+
+  def to_s
+    name
+  end
 end

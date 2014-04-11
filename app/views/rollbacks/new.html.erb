@@ -5,6 +5,7 @@
 <%= simple_form_for @rollback do |f| %>
   <div class='row'>
     <div class='span12'>
+      <%= f.input :reason, as: :text, input_html: { class: "span6" } %>
       <%= f.input :date, as: :string, label: 'Rollback to (date)',  input_html: { class: 'span6', 'data-behaviour' => 'datepicker' } %>
       <%= f.input :redownload, as: :boolean, label: 'Redownload', hint: 'Deletes and redownload update files since specified date',  input_html: { class: 'span6' } %>
     </div>
