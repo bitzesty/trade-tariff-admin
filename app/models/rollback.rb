@@ -1,11 +1,19 @@
 class Rollback
   include Her::Model
 
-  attributes :jid, :enqueued_at, :redownload, :date
+  attributes :id, :enqueued_at, :redownload, :date, :user_id, :reason
 
   collection_path '/rollbacks'
 
   include_root_in_json true
+
+  def user=(user)
+    self.user_id = user.id
+  end
+
+  def user
+    @user ||= User.find(id: user_id)
+  end
 
   def initialize_errors
     response_errors.each do |attribute, error_messages|
