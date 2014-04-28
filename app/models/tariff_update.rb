@@ -1,7 +1,7 @@
 class TariffUpdate
   include Her::Model
 
-  attributes :update_type, :state, :created_at, :updated_at
+  attributes :update_type, :state, :created_at, :updated_at, :applied_at, :filesize
 
   collection_path '/updates'
 
