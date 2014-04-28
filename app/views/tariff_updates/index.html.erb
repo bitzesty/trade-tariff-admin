@@ -7,6 +7,8 @@
       <th class='span2'>File name</th>
       <th class='span2'>State</th>
       <th class='span2'>Created at</th>
+      <th class='span2'>Applied at</th>
+      <th class='span2'>File size</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +18,8 @@
         <td><%= tariff_update.filename %></td>
         <td><%= tariff_update.state %></td>
         <td><%= tariff_update.created_at %></td>
+        <td><%= tariff_update.applied_at %></td>
+        <td><%= number_to_human_size(tariff_update.filesize) %></td>
       </tr>
     <% end %>
   </tbody>
