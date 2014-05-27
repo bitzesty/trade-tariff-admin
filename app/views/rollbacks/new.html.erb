@@ -7,7 +7,7 @@
     <div class='span12'>
       <%= f.input :reason, as: :text, input_html: { class: "span6" } %>
       <%= f.input :date, as: :string, label: 'Rollback to (date)',  input_html: { class: 'span6', 'data-behaviour' => 'datepicker' } %>
-      <%= f.input :redownload, as: :boolean, label: 'Redownload', hint: 'Deletes and redownload update files since specified date',  input_html: { class: 'span6' } %>
+      <%= f.input :keep, as: :boolean, label: 'Keep', hint: 'Keeps update files and records since specified date and just mark them pending',  input_html: { class: 'span6' } %>
     </div>
   </div>
 
