@@ -12,7 +12,7 @@
         <th class="span2">User</th>
         <th class="span3">Reason</th>
         <th class='span2'>Rollback to (date)</th>
-        <th class='span1'>Redownload?</th>
+        <th class='span1'>Keep?</th>
         <th class='span2'>Date</th>
       </tr>
     </thead>
@@ -23,7 +23,7 @@
           <td><%= rollback.user %></td>
           <td><%= rollback.reason %></td>
           <td><%= rollback.date %></td>
-          <td><%= rollback.redownload %></td>
+          <td><%= rollback.keep %></td>
           <td><%= rollback.enqueued_at %></td>
         </tr>
       <% end %>

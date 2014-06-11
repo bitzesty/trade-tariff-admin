@@ -1,7 +1,7 @@
 class Rollback
   include Her::Model
 
-  attributes :id, :enqueued_at, :redownload, :date, :user_id, :reason
+  attributes :id, :enqueued_at, :keep, :date, :user_id, :reason
 
   collection_path '/rollbacks'
 
