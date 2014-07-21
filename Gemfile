@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-source "https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/"
 
 gem "rails", "4.0.3"
 
@@ -15,7 +14,7 @@ gem "govspeak", "1.2.3"
 
 gem "less-rails-bootstrap", "2.3.3"
 
-gem "gds-sso", "3.1.0"
+gem "gds-sso", "9.3.0"
 gem "gds-api-adapters", "> 4.1.3"
 gem "plek", ">= 1.0.0"
 gem "addressable", "2.3.5"
