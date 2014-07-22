@@ -9,6 +9,7 @@
       <th class='span2'>Created at</th>
       <th class='span2'>Applied at</th>
       <th class='span2'>File size</th>
+      <th class='span2'>Exception</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,17 @@
         <td><%= tariff_update.created_at %></td>
         <td><%= tariff_update.applied_at %></td>
         <td><%= number_to_human_size(tariff_update.filesize) %></td>
+        <td>
+          <strong><%= tariff_update.exception_class %></strong>
+          <% if tariff_update.exception_queries %>
+            <div>queries:</div>
+            <pre><%= tariff_update.exception_queries %></pre>
+          <% end %>
+          <% if tariff_update.exception_backtrace %>
+            <div>backtrace:</div>
+            <pre><%= tariff_update.exception_backtrace %></pre>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
