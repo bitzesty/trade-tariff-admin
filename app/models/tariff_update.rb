@@ -36,4 +36,8 @@ class TariffUpdate
   def to_s
     "Applied #{update_type} at #{updated_at} (#{filename})"
   end
+
+  def id
+    created_at.to_s.parameterize
+  end
 end
