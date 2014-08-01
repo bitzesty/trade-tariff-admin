@@ -1,7 +1,7 @@
 class TariffUpdate
   include Her::Model
 
-  attributes :update_type, :state, :created_at, :updated_at, :applied_at, :filesize, :exception_backtrace, :exception_class, :exception_queries
+  attributes :update_type, :state, :created_at, :updated_at, :applied_at, :filesize, :exception_backtrace, :exception_class, :exception_queries, :conformance_errors
 
   collection_path '/updates'
 
