@@ -1,0 +1,19 @@
+
+<div><%= link_to tariff_update.exception_class, "#", data: { toggle: "modal", target: "#exception-modal-#{tariff_update.id}" } %></div>
+
+<%= content_tag :div, id: "exception-modal-#{tariff_update.id}", class: "modal hide fade" do %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3><%= tariff_update.exception_class %></h3>
+  </div>
+  <div class="modal-body">
+    <% if tariff_update.exception_queries %>
+      <div>queries:</div>
+      <pre><%= tariff_update.exception_queries %></pre>
+    <% end %>
+    <% if tariff_update.exception_backtrace %>
+      <div>backtrace:</div>
+      <pre><%= tariff_update.exception_backtrace %></pre>
+    <% end %>
+  </div>
+<% end %>
