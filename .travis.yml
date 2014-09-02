@@ -11,11 +11,7 @@ script:
  - RAILS_ENV=test bundle exec rake db:migrate
  - RAILS_ENV=test bundle exec rake spec
 rvm:
-  - 2.0.0
-  - 1.9.3
-matrix:
-  allow_failures:
-    - rvm: 2.0.0
+  - 2.1.2
 branches:
   except:
     - release
