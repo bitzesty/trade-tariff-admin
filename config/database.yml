@@ -1,4 +1,4 @@
-development:
+development: &default
   adapter: mysql2
   encoding: utf8
   reconnect: true
@@ -6,12 +6,13 @@ development:
   single_threaded: true
   username: tariff_admin
   password: tariff_admin
+  <% if ENV['TRADETARIFFADMIN_ADMINDB_1_PORT_3306_TCP_ADDR'].present? %>
+  host: <%= ENV['TRADETARIFFADMIN_ADMINDB_1_PORT_3306_TCP_ADDR'] %>
+  <% end %>
+  <% if ENV['TRADETARIFFADMIN_ADMINDB_1_PORT_3306_TCP_PORT'].present? %>
+  port: <%= ENV['TRADETARIFFADMIN_ADMINDB_1_PORT_3306_TCP_PORT'] %>
+  <% end %>
 
 test:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: true
+  <<: *default
   database: tariff_admin_test
-  single_threaded: true
-  username: tariff_admin
-  password: tariff_admin

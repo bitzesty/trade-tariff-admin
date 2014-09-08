@@ -1,0 +1,21 @@
+admindb:
+  image: "orchardup/mysql"
+  ports:
+    - "3306"
+  environment:
+    MYSQL_DATABASE: "tariff_admin_development"
+    MYSQL_USER: "tariff_admin"
+    MYSQL_PASSWORD: "tariff_admin"
+admin:
+  build: .
+  command: "bundle exec unicorn -p 3046"
+  volumes:
+    - ".:/trade-tariff-admin"
+  ports:
+    - "3046:3046"
+  links:
+    - "admindb"
+  hostname: "tariff-admin.dev.gov.uk"
+  domainname: "tariff-admin.dev.gov.uk"
+  environment:
+    RAILS_ENV: "development"
