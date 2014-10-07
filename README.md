@@ -62,11 +62,11 @@ To run the spec use the following command:
    fig start
    ```
 
-#### Run db migrations / rake tasks
+#### Run db migrations / seeds
 
    ```
    fig run admin bundle exec rake db:migrate
-   fig run admin bundle exec rake db:dummy
+   fig run admin bundle exec rake db:seed
    ```
 
 #### Rails console
