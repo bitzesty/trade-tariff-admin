@@ -10,7 +10,7 @@ admin:
   build: .
   command: "/sbin/my_init -- bundle exec unicorn -p 3046"
   volumes:
-    - ".:/trade-tariff-admin"
+    - ".:/admin"
   ports:
     - "3046:3046"
   links:

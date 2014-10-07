@@ -24,3 +24,8 @@ WORKDIR /trade-tariff-admin
 # let's copy and bundle admin
 ADD . /trade-tariff-admin
 RUN bundle install
+
+# script that will update backend's IP
+RUN mkdir -p /etc/my_init.d
+ADD backend_ip.sh /etc/my_init.d/backend_ip.sh
+RUN chmod +x /etc/my_init.d/backend_ip.sh
