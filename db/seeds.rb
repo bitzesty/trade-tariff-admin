@@ -3,5 +3,5 @@ User.new { |u|
   u.uid = 'winston'
   u.version = 1
   u.email = 'winston@alphagov.co.uk'
-  u.permissions = ['signin']
+  u.permissions = ['signin', 'GDS Editor', 'GDS Editor']
 }.save
