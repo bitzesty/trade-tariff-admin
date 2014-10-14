@@ -24,7 +24,7 @@ gem "unicorn", "~> 4.6.3"
 gem "jquery-rails", "3.0.4"
 gem "bootstrap-datepicker-rails", "~> 1.1.1.11"
 gem "logstasher", '0.4.8'
-gem "airbrake", "3.1.16"
+gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
 
 group :development, :test do
   gem "pry-rails"
