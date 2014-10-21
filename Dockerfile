@@ -12,7 +12,13 @@ RUN rbenv rehash
 # make sure we have libmysqlclient-dev
 RUN apt-get install -qqy libmysqlclient-dev
 
-# Clean up APT when done.
+# update sources
+RUN apt-get -qqy update
+
+# install mysql-client (will be used by `db:create` task)
+RUN apt-get install -qqy mysql-client
+
+# clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # set $HOME
