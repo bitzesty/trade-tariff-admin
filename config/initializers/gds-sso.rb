@@ -1,3 +1,5 @@
+require_relative '../../lib/gds-sso/config'
+
 GDS::SSO.config do |config|
   config.user_model   = "User"
   config.oauth_id     = ENV['TARIFF_ADMIN_OAUTH_ID'] || "abcdefghjasndjkasndtariffadmin"
