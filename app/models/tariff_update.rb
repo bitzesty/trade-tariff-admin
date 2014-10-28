@@ -33,6 +33,10 @@ class TariffUpdate
     Time.parse(super)
   end
 
+  def applied_at
+    Time.parse(super) if super.present?
+  end
+
   def to_s
     "Applied #{update_type} at #{updated_at} (#{filename})"
   end

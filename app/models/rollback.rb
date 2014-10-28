@@ -7,6 +7,10 @@ class Rollback
 
   include_root_in_json true
 
+  def enqueued_at
+    Time.parse(super) if super.present?
+  end
+
   def user=(user)
     self.user_id = user.id
   end

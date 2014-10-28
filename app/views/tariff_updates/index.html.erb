@@ -25,8 +25,8 @@
             <%= render "conformance_errors", tariff_update: tariff_update %>
           <% end %>
         </td>
-        <td><%= tariff_update.created_at %></td>
-        <td><%= tariff_update.applied_at %></td>
+        <td><%= l tariff_update.created_at, format: :tariff %></td>
+        <td><%= l(tariff_update.applied_at, format: :tariff) if tariff_update.applied_at %></td>
         <td><%= number_to_human_size(tariff_update.filesize) %></td>
       </tr>
     <% end %>
