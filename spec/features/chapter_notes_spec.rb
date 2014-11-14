@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Chapter Note management" do
   let!(:user)   { create :user, :gds_editor }

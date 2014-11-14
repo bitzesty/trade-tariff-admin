@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Measure Type management" do
   let!(:user)   { create :user, :gds_editor }

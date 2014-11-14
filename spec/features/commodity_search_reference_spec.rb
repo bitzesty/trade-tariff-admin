@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'search_reference'
 
 describe "Commodity Search Reference management" do
