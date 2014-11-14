@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "4.0.9"
+gem "rails", "~>4.1.0"
 
 gem "mysql2", "0.3.13"
 gem "sequel", "4.0.0"
@@ -9,7 +9,7 @@ gem "her", "0.6.8"
 gem "pundit", "0.2.1"
 
 gem "kaminari", "0.14.1"
-gem "simple_form", "3.0.0"
+gem "simple_form", "3.0.2"
 gem "govspeak", "1.2.3"
 
 gem "less-rails-bootstrap", "2.3.3"
@@ -38,7 +38,7 @@ group :test do
   gem "simplecov", "~> 0.6.4"
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
-  gem "capybara", "~> 2.1.0"
+  gem "capybara", "~> 2.4.0"
   gem "webmock"
 end
 
