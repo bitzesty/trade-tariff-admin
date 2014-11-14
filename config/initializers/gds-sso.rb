@@ -1,4 +1,12 @@
-require_relative '../../lib/gds-sso/config'
+module GDS
+  module SSO
+    module Config
+      def self.use_mock_strategies?
+        ['development', 'test', 'docker'].include?(Rails.env) && ENV['GDS_SSO_STRATEGY'] != 'real'
+      end
+    end
+  end
+end
 
 GDS::SSO.config do |config|
   config.user_model   = "User"
