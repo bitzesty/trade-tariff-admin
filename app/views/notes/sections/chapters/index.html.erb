@@ -23,9 +23,9 @@
         </td>
         <td>
           <% if chapter.has_chapter_note? %>
-            <%= link_to "Edit", edit_notes_chapter_chapter_note_path(chapter), class: 'btn btn-small btn-primary' %>
+            <%= link_to "Edit", edit_notes_chapter_chapter_note_path(chapter), class: 'btn btn-small btn-warning' %>
           <% else %>
-            <%= link_to "Add", new_notes_chapter_chapter_note_path(chapter), class: 'btn btn-small' %>
+            <%= link_to "Add", new_notes_chapter_chapter_note_path(chapter), class: 'btn btn-small btn-success' %>
           <% end %>
         </td>
       </tr>

@@ -23,9 +23,9 @@
         </td>
         <td>
         <% if section.has_section_note? %>
-            <%= link_to "Edit", edit_notes_section_section_note_path(section), class: 'btn btn-small btn-primary' %>
+            <%= link_to "Edit", edit_notes_section_section_note_path(section), class: 'btn btn-small btn-warning' %>
           <% else %>
-            <%= link_to "Add", new_notes_section_section_note_path(section), class: 'btn btn-small' %>
+            <%= link_to "Add", new_notes_section_section_note_path(section), class: 'btn btn-small btn-success' %>
           <% end %>
         </td>
       </tr>

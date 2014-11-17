@@ -7,7 +7,7 @@
     <tr>
       <th class='span9'>Title</th>
       <th class='span3'>
-        <%= link_to 'New Search Synonym', new_synonyms_section_search_reference_path(section), class: 'btn btn-small' %>
+        <%= link_to 'New Search Synonym', new_synonyms_section_search_reference_path(section), class: 'btn btn-small btn-success' %>
       </th>
     </tr>
   </thead>
@@ -16,8 +16,8 @@
       <tr id='<%= dom_id(search_reference) %>'>
         <td><%= search_reference.title %></td>
         <td>
-          <%= link_to "Edit", edit_synonyms_section_search_reference_path(section, search_reference), class: 'btn btn-small' %>
-          <%= link_to "Remove", synonyms_section_search_reference_path(section, search_reference), method: :delete, data: { confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-warning' %>
+          <%= link_to "Edit", edit_synonyms_section_search_reference_path(section, search_reference), class: 'btn btn-small btn-warning' %>
+          <%= link_to "Remove", synonyms_section_search_reference_path(section, search_reference), method: :delete, data: { confirm: 'Are you sure?', disable: 'Working'}, class: 'btn btn-small btn-danger' %>
         </td>
       </tr>
     <% end %>
