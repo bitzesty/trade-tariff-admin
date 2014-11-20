@@ -17,7 +17,7 @@
         <td><%= commodity.description.titleize %></td>
         <td>
           <% if commodity.leaf %>
-            <%= link_to 'Edit', synonyms_commodity_search_references_path(commodity), class: 'btn btn-small btn-primary' %>
+            <%= link_to 'Edit', synonyms_commodity_search_references_path(commodity), class: 'btn btn-small btn-warning' %>
           <% else %>
             <em>Intermediate code</em>
           <% end %>

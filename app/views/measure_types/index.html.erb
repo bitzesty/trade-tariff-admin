@@ -19,7 +19,7 @@
           <%= truncate strip_tags(measure_type.description), length: 100 %>
         </td>
         <td>
-          <%= link_to "Edit", edit_measure_type_path(measure_type), class: 'btn btn-small' %>
+          <%= link_to "Edit", edit_measure_type_path(measure_type), class: 'btn btn-small btn-warning' %>
         </td>
       </tr>
     <% end %>
