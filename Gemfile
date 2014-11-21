@@ -1,15 +1,15 @@
 source "https://rubygems.org"
 
-gem "rails", "4.0.9"
+gem "rails", "4.1.7"
 
 gem "mysql2", "0.3.13"
 gem "sequel", "4.0.0"
 gem "sequel-rails", "0.5.1"
 gem "her", "0.6.8"
-gem "pundit", "0.2.1"
+gem "pundit", "0.3.0"
 
 gem "kaminari", "0.14.1"
-gem "simple_form", "3.0.0"
+gem "simple_form", "3.0.2"
 gem "govspeak", "1.2.3"
 
 gem "less-rails-bootstrap", "2.3.3"
@@ -33,12 +33,13 @@ end
 group :test do
   gem "brakeman", "~> 1.7.0"
   gem "ci_reporter"
+  gem "ci_reporter_rspec"
   gem "factory_girl_rails"
   gem "shoulda-matchers"
   gem "simplecov", "~> 0.6.4"
   gem "simplecov-rcov", "~> 0.2.3"
   gem "rspec-rails"
-  gem "capybara", "~> 2.1.0"
+  gem "capybara", "~> 2.4.0"
   gem "webmock"
 end
 

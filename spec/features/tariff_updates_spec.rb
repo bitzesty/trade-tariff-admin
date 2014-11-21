@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Tariff Update listing" do
   let!(:user)   { create :user, :gds_editor }
