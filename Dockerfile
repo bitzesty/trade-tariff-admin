@@ -13,11 +13,11 @@ RUN echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc
 RUN gem install bundler
 RUN rbenv rehash
 
-# make sure we have libmysqlclient-dev
-RUN apt-get install -qqy libmysqlclient-dev
-
 # update sources
 RUN apt-get -qqy update
+
+# make sure we have libmysqlclient-dev
+RUN apt-get install -qqy libmysqlclient-dev
 
 # install mysql-client (will be used by `db:create` task)
 RUN apt-get install -qqy mysql-client
