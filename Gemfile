@@ -32,7 +32,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "brakeman", "~> 1.7.0"
+  gem "brakeman", "~> 3.0.0", require: false
   gem "ci_reporter"
   gem "ci_reporter_rspec"
   gem "factory_girl_rails"
