@@ -28,6 +28,7 @@ gem "airbrake", "3.1.16"
 
 group :development, :test do
   gem "pry-rails"
+  gem "bundler-audit"
 end
 
 group :test do
