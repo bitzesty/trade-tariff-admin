@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "4.1.7"
+gem "rails", "4.1.8"
 
 gem "mysql2", "0.3.13"
 gem "sequel", "4.0.0"
@@ -28,10 +28,11 @@ gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
 
 group :development, :test do
   gem "pry-rails"
+  gem "bundler-audit"
 end
 
 group :test do
-  gem "brakeman", "~> 1.7.0"
+  gem "brakeman", "~> 3.0.0", require: false
   gem "ci_reporter"
   gem "ci_reporter_rspec"
   gem "factory_girl_rails"

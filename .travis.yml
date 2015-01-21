@@ -7,6 +7,7 @@ before_install:
    - sudo apt-get install -qq wbritish
    - cp config/database.travis.yml config/database.yml
 script:
+ - RAILS_ENV=test bundle exec rake bundler:audit
  - RAILS_ENV=test bundle exec rake db:create
  - RAILS_ENV=test bundle exec rake db:migrate
  - RAILS_ENV=test bundle exec rake spec

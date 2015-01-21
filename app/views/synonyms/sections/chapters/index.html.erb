@@ -18,7 +18,7 @@
         <td><%= link_to chapter.headings_range, synonyms_chapter_headings_path(chapter) %></td>
         <td><%= chapter.description.titleize %></td>
         <td>
-          <%= link_to "Edit", synonyms_chapter_search_references_path(chapter), class: 'btn btn-small btn-primary' %>
+          <%= link_to "Edit", synonyms_chapter_search_references_path(chapter), class: 'btn btn-small btn-warning' %>
         </td>
       </tr>
     <% end %>
