@@ -29,6 +29,10 @@ class TariffUpdate
     super unless missing?
   end
 
+  def file_date
+    filename.try :slice, 0, 10
+  end
+
   def created_at
     Time.parse(super)
   end

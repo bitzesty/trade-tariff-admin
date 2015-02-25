@@ -5,6 +5,9 @@ class RollbacksController < ApplicationController
 
   def new
     @rollback = Rollback.new
+    if params[:rollback].present?
+      @rollback.attributes = rollback_params
+    end
   end
 
   def create

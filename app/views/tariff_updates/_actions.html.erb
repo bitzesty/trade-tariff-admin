@@ -1,0 +1,9 @@
+<%
+  date = if tariff_update.state == "Applied" || tariff_update.state == "Failed"
+    tariff_update.file_date
+  elsif tariff_update.state == "Missing"
+    tariff_update.created_at.to_date
+  end
+%>
+
+<%= link_to "Rollback to #{date}", new_rollback_path(rollback: {date: date}) %>
