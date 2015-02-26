@@ -1,11 +1,15 @@
+require "concerns/her_paginatable"
+
 class Rollback
   include Her::Model
+  extend HerPaginatable
 
   attributes :id, :enqueued_at, :keep, :date, :user_id, :reason
 
   collection_path '/rollbacks'
 
   include_root_in_json true
+  parse_root_in_json true, format: :active_model_serializers
 
   def enqueued_at
     Time.parse(super) if super.present?

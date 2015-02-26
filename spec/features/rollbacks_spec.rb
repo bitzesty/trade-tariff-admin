@@ -9,7 +9,7 @@ describe "Rollbacks management" do
     specify do
       stub_api_for(Rollback) { |stub|
         stub.get("/rollbacks") { |env|
-          api_success_response([])
+          api_success_response(rollbacks: [], pagination: pagination_params)
         }
       }
 
@@ -21,7 +21,10 @@ describe "Rollbacks management" do
         }
 
         stub.get("/rollbacks") { |env|
-          api_success_response([rollback.attributes])
+          api_success_response(
+            rollbacks: [rollback.attributes],
+            pagination: pagination_params
+          )
         }
       }
 

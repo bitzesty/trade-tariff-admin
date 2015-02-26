@@ -9,6 +9,7 @@
       <th class='span2'>Created at</th>
       <th class='span2'>Applied at</th>
       <th class='span2'>File size</th>
+      <th class='span2'>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -28,7 +29,12 @@
         <td><%= l tariff_update.created_at, format: :tariff %></td>
         <td><%= l(tariff_update.applied_at, format: :tariff) if tariff_update.applied_at %></td>
         <td><%= number_to_human_size(tariff_update.filesize) %></td>
+        <td><%= render "actions", tariff_update: tariff_update %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<div class="text-center">
+  <%= paginate @tariff_updates %>
+</div>
