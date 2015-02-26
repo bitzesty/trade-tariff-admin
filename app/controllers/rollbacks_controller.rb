@@ -1,6 +1,6 @@
 class RollbacksController < ApplicationController
   def index
-    @rollbacks = Rollback.all.fetch
+    @rollbacks = Rollback.all(page: page).fetch
   end
 
   def new
@@ -27,5 +27,9 @@ class RollbacksController < ApplicationController
 
   def rollback_params
     params.require(:rollback).permit(:date, :keep, :reason)
+  end
+
+  def page
+    Integer(params[:page] || 1)
   end
 end
