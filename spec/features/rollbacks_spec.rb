@@ -5,11 +5,20 @@ describe "Rollbacks management" do
 
   describe "Rollback creation" do
     let(:rollback)      { build :rollback }
+    let(:headers) {
+      {
+        :"X-Pagination" => {
+          page: 1,
+          per_page: 20,
+          total_count: 0
+        }.to_json
+      }
+    }
 
     specify do
       stub_api_for(Rollback) { |stub|
         stub.get("/rollbacks") { |env|
-          api_success_response([])
+          api_success_response([], headers)
         }
       }
 
@@ -21,7 +30,7 @@ describe "Rollbacks management" do
         }
 
         stub.get("/rollbacks") { |env|
-          api_success_response([rollback.attributes])
+          api_success_response([rollback.attributes], headers)
         }
       }
 
