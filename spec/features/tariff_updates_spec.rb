@@ -7,7 +7,10 @@ describe "Tariff Update listing" do
   before {
     stub_api_for(TariffUpdate) { |stub|
       stub.get("/updates") { |env|
-        api_success_response([tariff_update])
+        api_success_response(
+          updates: [tariff_update],
+          pagination: pagination_params
+        )
       }
     }
   }

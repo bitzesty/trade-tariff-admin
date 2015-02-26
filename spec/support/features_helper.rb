@@ -18,4 +18,12 @@ module FeaturesHelper
   def dom_id_selector(model)
     "##{dom_id_for(model)}"
   end
+
+  def pagination_params
+    {
+      page: 1,
+      per_page: 20,
+      total_count: 0
+    }
+  end
 end
