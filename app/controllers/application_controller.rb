@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     # Layout and view comes from GDS::SSO::ControllerMethods
     render "authorisations/unauthorised", layout: "unauthorised", status: :forbidden, locals: { message: e.message }
   end unless Rails.env.test?
+  
+  def current_page
+    Integer(params[:page] || 1)
+  end
 end
