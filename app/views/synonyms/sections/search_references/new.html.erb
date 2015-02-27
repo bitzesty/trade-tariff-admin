@@ -4,8 +4,8 @@
 
 <%= simple_form_for [:synonyms, section, @search_reference], html: { class: 'search-reference-form' } do |f| %>
   <div class='row'>
-    <div class='span12'>
-      <%= f.input :title, label: 'Synonym',  input_html: { class: 'span6' } %>
+    <div class='col-sm-6'>
+      <%= f.input :title, label: 'Synonym',  input_html: { class: 'form-control' } %>
     </div>
   </div>
 
