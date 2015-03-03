@@ -1,8 +1,8 @@
 <div class='row'>
-  <div class='span6'>
-    <%= f.input :content, as: :text, input_html: { class: 'span6', rows: 12} %>
+  <div class='col-sm-6'>
+    <%= f.input :content, as: :text, input_html: { class: 'form-control', rows: 12} %>
   </div>
-  <div class='span6'>
+  <div class='col-sm-6'>
     <%= f.label :preview, required: false %>
     <div class='well' data-preview='govspeak' data-preview-for='#chapter_note_content'>
       <%= @chapter_note.preview %>
