@@ -20,8 +20,8 @@
   <ul class="nav">
     <li class="dropdown">
       <span class="dropdown-toggle" data-toggle="dropdown">
-        Signed in as <%= link_to current_user.name, Plek.current.find('signon') %>
-        <b class="caret"></b>
+        <%= current_user.name %>
+        <span class="caret"></span>
       </span>
       <ul class="dropdown-menu">
         <li><%= link_to 'Sign out', gds_sign_out_path %></li>

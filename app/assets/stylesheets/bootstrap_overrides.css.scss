@@ -1,0 +1,17 @@
+body { padding-top: 0; }
+
+.control-group {
+  .help-block {
+    font-style: italic;
+  }
+
+  &.date {
+    select {
+      width: auto;
+    }
+  }
+}
+
+.form-actions {
+  margin-top: 1em;
+}
