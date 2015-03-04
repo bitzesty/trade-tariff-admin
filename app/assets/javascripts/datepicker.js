@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('[data-behaviour~=datepicker]').datepicker({
-    format: 'dd/mm/yyyy'
+    format: 'yyyy/mm/dd'
   }).each(function (i, input){
     if (input.value === "") {
       // we set current date only if we don't have
