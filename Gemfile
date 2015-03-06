@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "rails", "4.1.8"
 
-gem "mysql2", "0.3.13"
+gem "mysql2", "~> 0.3"
 gem "sequel", "4.0.0"
 gem "sequel-rails", "0.5.1"
 gem "her", "0.6.8"
@@ -15,7 +15,7 @@ gem "govspeak", "1.2.3"
 gem "govuk_admin_template", "~> 2.1"
 
 gem "gds-sso", "9.3.0"
-gem "gds-api-adapters", "> 4.1.3"
+gem "gds-api-adapters", github: "alphagov/gds-api-adapters"
 gem "plek", ">= 1.0.0"
 gem "addressable", "2.3.5"
 
