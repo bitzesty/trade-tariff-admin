@@ -15,7 +15,7 @@ gem "govspeak", "1.2.3"
 gem "govuk_admin_template", "~> 2.1"
 
 gem "gds-sso", "9.3.0"
-gem "gds-api-adapters", github: "alphagov/gds-api-adapters"
+gem "gds-api-adapters", "~> 18.0"
 gem "plek", ">= 1.0.0"
 gem "addressable", "2.3.5"
 
