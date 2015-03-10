@@ -1,55 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>TradeTariffAdmin</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<% content_for :page_title do %>TradeTariffAdmin<% end %>
+<% content_for :app_title do %>TradeTariffAdmin<% end %>
+<% content_for :app_home_path, root_path %>
+
+<% content_for :head do %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<% end %>
 
-  <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <%= link_to 'GOV.UK Trade Tariff Admin', root_path, class: "brand" %>
-        <nav role="navigation" class="nav-collapse">
-          <ul class="nav">
-            <%= nav_link 'Section & chapter notes', root_path, /\/notes|trade-tariff-admin$/ %>
-            <%= nav_link 'Search Synonyms', synonyms_sections_path, /\/synonyms/ %>
-            <%= nav_link 'Measure Types', measure_types_path, /\/measure_types/ %>
-            <%= nav_link 'Footnotes', footnotes_path, /\/footnotes/ %>
-            <%= nav_link 'Tariff Updates', tariff_updates_path, /\/tariff_updates/ %>
-            <%= nav_link 'Rollbacks', rollbacks_path, /\/rollbacks/ %>
-          </ul>
-          <ul class="nav pull-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'Sign out', gds_sign_out_path %></li>
-              </ul>
-            </li>
-          </ul>
-          <p class="navbar-text pull-right">
-            Signed in as <%= link_to current_user.name, Plek.current.find('signon') %>
-          </p>
-        </nav><!--/.nav-collapse -->
-      </div>
-    </div>
-  </header>
+<% content_for :navbar_items do %>
+  <%= nav_link "Section & chapter notes", root_path, /\/notes|trade-tariff-admin$/ %>
+  <%= nav_link "Search Synonyms", synonyms_sections_path, /\/synonyms/ %>
+  <%= nav_link "Measure Types", measure_types_path, /\/measure_types/ %>
+  <%= nav_link "Footnotes", footnotes_path, /\/footnotes/ %>
+  <%= nav_link "Tariff Updates", tariff_updates_path, /\/tariff_updates/ %>
+  <%= nav_link "Rollbacks", rollbacks_path, /\/rollbacks/ %>
+<% end %>
 
-  <section class="container-fluid" role="main">
-    <%= render 'flashes' %>
+<% content_for :navbar_right do %>
+  <ul class="nav">
+    <li class="dropdown">
+      <span class="dropdown-toggle" data-toggle="dropdown">
+        <%= current_user.name %>
+        <span class="caret"></span>
+      </span>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Sign out', gds_sign_out_path %></li>
+      </ul>
+    </li>
+  </ul>
+<% end %>
 
-    <%= yield %>
-  </section>
-
-</body>
-</html>
+<%= render "flashes" %>
+<%= render template: "layouts/govuk_admin_template" %>

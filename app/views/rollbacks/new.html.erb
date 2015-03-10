@@ -4,10 +4,16 @@
 
 <%= simple_form_for @rollback do |f| %>
   <div class='row'>
-    <div class='span12'>
-      <%= f.input :reason, as: :text, input_html: { class: "span6" } %>
-      <%= f.input :date, as: :string, label: 'Rollback to (date)',  input_html: { class: 'span6', 'data-behaviour' => 'datepicker' } %>
-      <%= f.input :keep, as: :boolean, label: 'Keep', hint: 'Keeps update files and records since specified date and just mark them pending',  input_html: { class: 'span6' } %>
+    <div class='col-sm-6'>
+      <%= f.input :reason, as: :text, input_html: { class: "form-control" } %>
+      <%= f.input :date, as: :string, label: 'Rollback to (date)',  input_html: { class: 'form-control', 'data-behaviour' => 'datepicker' } %>
+      <div class="checkbox">
+        <%= f.label :keep do %>
+          <%= f.check_box :keep %>
+          Keep
+        <% end %>
+        <span class="help-block">Keeps update files and records since specified date and just mark them pending</span>
+      </div>
     </div>
   </div>
 

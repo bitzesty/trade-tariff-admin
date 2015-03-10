@@ -29,6 +29,10 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="text-center">
+    <%= paginate @rollbacks %>
+  </div>
 <% else %>
   <div class='alert alert-info'>
     <strong>No database rollback jobs are enqueued at this time.</strong>

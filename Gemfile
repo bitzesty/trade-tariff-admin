@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "rails", "4.1.8"
 
-gem "mysql2", "0.3.13"
+gem "mysql2", "~> 0.3"
 gem "sequel", "4.0.0"
 gem "sequel-rails", "0.5.1"
 gem "her", "0.6.8"
@@ -12,16 +12,16 @@ gem "kaminari", "0.14.1"
 gem "simple_form", "3.0.2"
 gem "govspeak", "1.2.3"
 
-gem "less-rails-bootstrap", "2.3.3"
+gem "govuk_admin_template", "~> 2.1"
 
 gem "gds-sso", "9.3.0"
-gem "gds-api-adapters", "> 4.1.3"
+gem "gds-api-adapters", "~> 18.0"
 gem "plek", ">= 1.0.0"
 gem "addressable", "2.3.5"
 
 gem "unicorn", "~> 4.6.3"
 
-gem "jquery-rails", "3.0.4"
+gem "jquery-rails", "~> 3.1.1"
 gem "bootstrap-datepicker-rails", "~> 1.1.1.11"
 gem "logstasher", '0.4.8'
 gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
@@ -45,8 +45,8 @@ group :test do
 end
 
 group :assets do
-  gem "sass-rails", "4.0.0"
-  gem "coffee-rails", "4.0.0"
+  gem "sass-rails", "~> 4.0.0"
+  gem "coffee-rails", "~> 4.0.0"
   gem "uglifier", "2.1.2"
   gem "therubyracer", "0.12.0"
 end

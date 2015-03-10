@@ -1,10 +1,13 @@
 class RollbacksController < ApplicationController
   def index
-    @rollbacks = Rollback.all.fetch
+    @rollbacks = Rollback.all(page: current_page).fetch
   end
 
   def new
     @rollback = Rollback.new
+    if params[:rollback].present?
+      @rollback.attributes = rollback_params
+    end
   end
 
   def create

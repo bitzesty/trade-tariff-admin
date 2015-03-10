@@ -9,8 +9,8 @@
 
 <%= simple_form_for @section_note, url: notes_section_section_note_url(@section)  do |f| %>
   <div class='row'>
-    <div class='span12'>
-      <%= f.input 'section_title', disabled: true, input_html: { class: 'span6', value: @section.title } %>
+    <div class="col-sm-6">
+      <%= f.input 'section_title', disabled: true, input_html: { class: 'form-control', value: @section.title } %>
     </div>
   </div>
 
