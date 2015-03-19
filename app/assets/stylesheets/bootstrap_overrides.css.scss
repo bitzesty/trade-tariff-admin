@@ -15,3 +15,10 @@ body { padding-top: 0; }
 .form-actions {
   margin-top: 1em;
 }
+
+.modal-open {
+  // prevent bg scrolling
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
