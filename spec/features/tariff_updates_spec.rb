@@ -9,7 +9,7 @@ describe "Tariff Update listing" do
       stub.get("/updates") { |env|
         api_success_response(
           updates: [tariff_update],
-          pagination: pagination_params
+          pagination: pagination_params(total_count: 1)
         )
       }
     }

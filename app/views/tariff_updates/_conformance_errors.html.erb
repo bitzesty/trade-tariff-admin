@@ -4,33 +4,37 @@
   <% end %>
 </div>
 
-<%= content_tag :div, id: "conformance-errors-modal-#{tariff_update.id}", class: "modal hide fade" do %>
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-    <h3>
-      <%= pluralize tariff_update.conformance_errors.count, "Conformance error" %>
-    </h3>
-  </div>
-  <div class="modal-body">
-    <table>
-      <thead>
-        <tr>
-          <th>Model</th>
-          <th>Primary key</th>
-          <th>Details</th>
-          <th>Errors</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% tariff_update.conformance_errors.each do |conformance_error| %>
+<%= content_tag :div,
+                id: "conformance-errors-modal-#{tariff_update.id}",
+                class: "modal fade" do %>
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+      <h3>
+        <%= pluralize tariff_update.conformance_errors.count, "Conformance error" %>
+      </h3>
+    </div>
+    <div class="modal-body">
+      <table>
+        <thead>
           <tr>
-            <td><%= conformance_error["model_name"] %></td>
-            <td><%= conformance_error["model_primary_key"].inspect %></td>
-            <td><%= conformance_error["model_values"].inspect %></td>
-            <td><%= conformance_error["model_conformance_errors"].inspect %></td>
+            <th>Model</th>
+            <th>Primary key</th>
+            <th>Details</th>
+            <th>Errors</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% tariff_update.conformance_errors.each do |conformance_error| %>
+            <tr>
+              <td><%= conformance_error["model_name"] %></td>
+              <td><%= conformance_error["model_primary_key"].inspect %></td>
+              <td><%= conformance_error["model_values"].inspect %></td>
+              <td><%= conformance_error["model_conformance_errors"].inspect %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 <% end %>
