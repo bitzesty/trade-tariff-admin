@@ -2,9 +2,10 @@
 
 # TradeTariffAdmin
 
-The admin web application for use with the UK Trade Tariff API.
+The web interface for the administration of the UK Trade Tariff, to be used with:
 
 * [Trade Tariff Backend](https://github.com/alphagov/trade-tariff-backend)
+* [Trade Tariff Frontend](https://github.com/alphagov/trade-tariff-frontend)
 
 Please ensure the API is running and properly configured in the
 environment files.
