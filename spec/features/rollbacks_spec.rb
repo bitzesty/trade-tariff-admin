@@ -23,7 +23,7 @@ describe "Rollbacks management" do
         stub.get("/rollbacks") { |env|
           api_success_response(
             rollbacks: [rollback.attributes],
-            pagination: pagination_params
+            pagination: pagination_params(total_count: 1)
           )
         }
       }
