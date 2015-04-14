@@ -104,7 +104,7 @@ GEM
       plek
       rack-cache
       rest-client (~> 1.7.3)
-    gds-sso (9.3.0)
+    gds-sso (10.0.0)
       multi_json (~> 1.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -340,7 +340,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1)
   factory_girl_rails
   gds-api-adapters (~> 18.0)
-  gds-sso (= 9.3.0)
+  gds-sso (~> 10.0)
   govspeak (~> 3.3)
   govuk_admin_template (~> 2.1)
   her (= 0.6.8)
@@ -348,7 +348,7 @@ DEPENDENCIES
   kaminari (~> 0.16)
   logstasher (~> 0.6)
   mysql2 (~> 0.3)
-  plek (>= 1.0.0)
+  plek (~> 1.10)
   pry-rails
   pundit (= 0.3.0)
   rails (= 4.2.0)

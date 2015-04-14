@@ -31,6 +31,10 @@ class User < Sequel::Model
     find(uid: uid)
   end
 
+  def self.create!(attrs)
+    create(attrs)
+  end
+
   def gds_editor?
     has_permission?(Permissions::GDS_EDITOR)
   end
@@ -45,6 +49,10 @@ class User < Sequel::Model
 
   def update_attribute(attribute, value)
     update({ attribute => value })
+  end
+
+  def update_attributes(attributes)
+    update(attributes)
   end
 
   def to_s
