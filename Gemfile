@@ -3,8 +3,8 @@ source "https://rubygems.org"
 gem "rails", "4.2.0"
 
 gem "mysql2", "~> 0.3"
-gem "sequel", "4.0.0"
-gem "sequel-rails", "0.5.1"
+gem "sequel", "~> 4.21"
+gem "sequel-rails", "~> 0.9"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
 

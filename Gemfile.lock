@@ -272,10 +272,12 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    sequel (4.0.0)
-    sequel-rails (0.5.1)
+    sequel (4.21.0)
+    sequel-rails (0.9.11)
+      actionpack (>= 3.2.0)
+      activemodel
       railties (>= 3.2.0)
-      sequel (>= 3.28, < 4.1.0)
+      sequel (>= 3.28, < 5.0)
     sexp_processor (4.5.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -355,8 +357,8 @@ DEPENDENCIES
   responders (~> 2.0)
   rspec-rails
   sass-rails (~> 5.0)
-  sequel (= 4.0.0)
-  sequel-rails (= 0.5.1)
+  sequel (~> 4.21)
+  sequel-rails (~> 0.9)
   shoulda-matchers
   simple_form (~> 3.1)
   simplecov
