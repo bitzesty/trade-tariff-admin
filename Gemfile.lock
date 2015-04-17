@@ -87,6 +87,8 @@ GEM
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.4.0)
     factory_girl (4.5.0)
@@ -97,13 +99,13 @@ GEM
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
-    gds-api-adapters (18.0.0)
+    gds-api-adapters (18.3.1)
       link_header
       lrucache (~> 0.1.1)
       null_logger
       plek
       rack-cache
-      rest-client (~> 1.7.3)
+      rest-client (~> 1.8.0)
     gds-sso (10.0.0)
       multi_json (~> 1.0)
       oauth2 (~> 1.0)
@@ -135,6 +137,8 @@ GEM
     highline (1.6.21)
     hike (1.2.3)
     htmlentities (4.3.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -233,7 +237,8 @@ GEM
     request_store (1.1.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rest-client (1.7.3)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     rspec (3.2.0)
@@ -313,6 +318,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -341,7 +349,7 @@ DEPENDENCIES
   ci_reporter_rspec
   coffee-rails (~> 4.1)
   factory_girl_rails
-  gds-api-adapters (~> 18.0)
+  gds-api-adapters (~> 18.3)
   gds-sso (~> 10.0)
   govspeak (~> 3.3)
   govuk_admin_template (~> 2.1)
