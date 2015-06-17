@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "4.2.0"
+gem "rails", "4.2.2"
 
 gem "mysql2", "~> 0.3"
 gem "sequel", "~> 4.21"
@@ -12,7 +12,7 @@ gem "kaminari", "~> 0.16"
 gem "simple_form", "~> 3.1"
 gem "govspeak", "~> 3.3"
 
-gem "govuk_admin_template", "~> 2.1"
+gem "govuk_admin_template", "~> 2.3.1"
 
 gem "gds-sso", "~> 11.0"
 gem "gds-api-adapters", "~> 18.3"
@@ -21,7 +21,7 @@ gem "addressable", "~> 2.3"
 
 gem "unicorn", "~> 4.8"
 
-gem "jquery-rails", "~> 3.1.1"
+gem "jquery-rails", "~> 3.1.3"
 gem "bootstrap-datepicker-rails", "~> 1.3"
 gem "logstasher", "~> 0.6"
 gem "airbrake", "~> 4.1"
