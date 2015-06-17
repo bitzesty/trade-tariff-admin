@@ -18,3 +18,8 @@ branches:
     - release
 notifications:
   email:  false
+
+# Only build pushes to the master branch (and PRs)
+branches:
+  only:
+    - master
