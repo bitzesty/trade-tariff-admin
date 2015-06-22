@@ -21,7 +21,6 @@ gem "addressable", "~> 2.3"
 
 gem "unicorn", "~> 4.8"
 
-gem "jquery-rails", "~> 3.1.3"
 gem "bootstrap-datepicker-rails", "~> 1.3"
 gem "logstasher", "~> 0.6"
 gem "airbrake", "~> 4.1"
