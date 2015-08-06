@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "4.2.2"
+gem "rails", "4.2.3"
 
 gem "mysql2", "~> 0.3"
 gem "sequel", "~> 4.21"
@@ -10,25 +10,26 @@ gem "pundit", "0.3.0"
 
 gem "kaminari", "~> 0.16"
 gem "simple_form", "~> 3.1"
-gem "govspeak", "~> 3.3"
+gem "govspeak", "~> 3.4"
 
-gem "govuk_admin_template", "~> 2.3.1"
+gem "govuk_admin_template", "~> 2.5"
 
 gem "gds-sso", "~> 11.0"
-gem "plek", "~> 1.10"
+gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
-gem "unicorn", "~> 4.8"
+gem "unicorn", "~> 4.9"
 
-gem "bootstrap-datepicker-rails", "~> 1.3"
+gem "jquery-rails", "~> 3.1.1"
+gem "bootstrap-datepicker-rails", "~> 1.4"
 gem "logstasher", "~> 0.6"
-gem "airbrake", "~> 4.1"
-gem "responders", "~> 2.0"
+gem "airbrake", "~> 4.3"
+gem "responders", "~> 2.1"
 
 group :development, :test do
   gem "pry-rails"
   gem "bundler-audit"
-  gem "brakeman", "~> 3.0.0", require: false
+  gem "brakeman", "~> 3.0", require: false
 end
 
 group :test do
