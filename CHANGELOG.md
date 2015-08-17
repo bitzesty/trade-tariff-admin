@@ -1,4 +1,10 @@
 # Change Log
+## [release_237...release_246](https://github.com/alphagov/trade-tariff-admin/compare/release_237...release_246)
+### Changed
+
+- Upgrading to Rails 4.2.3
+- Fix Rspec deprications and make deprications raise errors in specs
+- Security updates 
 
 ## [release_214...release_237](https://github.com/alphagov/trade-tariff-admin/compare/release_214...release_237)
 ### Changed
