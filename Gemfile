@@ -12,7 +12,7 @@ gem "kaminari", "~> 0.16"
 gem "simple_form", "~> 3.1"
 gem "govspeak", "~> 3.4"
 
-gem "govuk_admin_template", "~> 2.5"
+gem 'govuk_admin_template', '3.0.0'
 
 gem "gds-sso", "~> 11.0"
 gem "plek", "~> 1.11"
