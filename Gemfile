@@ -43,6 +43,7 @@ group :test do
   gem "capybara", "~> 2.4"
   gem "webmock"
   gem "database_cleaner"
+  gem "rspec_junit_formatter"
 end
 
 group :production do
