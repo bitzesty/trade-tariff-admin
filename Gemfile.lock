@@ -240,6 +240,9 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
+    rspec_junit_formatter (0.2.3)
+      builder (< 4)
+      rspec-core (>= 2, < 4, != 2.12.0)
     ruby2ruby (2.1.4)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
@@ -331,6 +334,7 @@ DEPENDENCIES
   rails_12factor
   responders (~> 2.1)
   rspec-rails
+  rspec_junit_formatter
   sass-rails (~> 5.0)
   shoulda-matchers
   simple_form (~> 3.1)
