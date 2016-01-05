@@ -1,3 +1,6 @@
+require "sidekiq/web"
+require "gds_editor_constraint"
+
 Rails.application.routes.draw do
   namespace :notes, module: :notes do
     resources :sections, only: [:index, :show] do
@@ -52,5 +55,6 @@ Rails.application.routes.draw do
   post "govspeak" => "govspeak#govspeak", as: :govspeak
   get  "healthcheck" => "healthcheck#check", as: :healthcheck
   get  "/" => "pages#index", as: :index
+  mount Sidekiq::Web => "/sidekiq", constraints: GdsEditorConstraint.new
   root to: "pages#index"
 end
