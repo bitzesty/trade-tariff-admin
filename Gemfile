@@ -28,7 +28,6 @@ gem "responders", "~> 2.1"
 
 group :development, :test do
   gem "pry-rails"
-  gem "bundler-audit"
   gem "brakeman", "~> 3.0", require: false
 end
 
