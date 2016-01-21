@@ -1,0 +1,29 @@
+---
+engines:
+  rubocop:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  brakeman:
+    enabled: true
+ratings:
+  paths:
+  - app/**
+  - lib/**
+  - "*.rb"
+exclude_paths:
+- app/assets/images/*
+- config/**/*
+- db/**/*
+- bin/**/*
+- spec/**/*
+- vendor/**/*
+- .*
+- Gemfile*
+- Rakefile
+- startup.sh
+- CHANGELOG.md
+- CONTRIBUTING.md
+- LICENSE.md
+- README.md
+- jenkins.sh
