@@ -6,8 +6,6 @@ gem "coffee-rails", "~> 4.1"
 gem "uglifier", "~> 2.7"
 
 gem "mysql2", "~> 0.3"
-gem "sequel", "~> 4.21"
-gem "sequel-rails", "~> 0.9"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
 
@@ -44,6 +42,7 @@ group :test do
   gem "rspec-rails"
   gem "capybara", "~> 2.4"
   gem "webmock"
+  gem "database_cleaner"
 end
 
 group :production do

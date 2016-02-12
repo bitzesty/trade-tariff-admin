@@ -28,11 +28,13 @@ RSpec.configure do |config|
   config.include FeaturesHelper, :type => :feature
 
   config.before(:suite) do
-    Sequel::Model.db.tables.delete_if{|t| t == :schema_migrations }
-                           .each{|table| Sequel::Model.db.from(table).truncate}
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.around(:each) do |example|
-    Sequel::Model.db.transaction(rollback: :always){example.run}
+    DatabaseCleaner.cleaning do
+      example.run
+    end
   end
 end

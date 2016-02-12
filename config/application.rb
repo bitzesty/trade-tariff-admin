@@ -1,8 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "sprockets/railtie"
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -26,16 +24,7 @@ module TradeTariffAdmin
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Generators
-    config.generators do |g|
-      g.orm                 nil
-      g.template_engine     :erb
-      g.test_framework      :rspec, fixture: false
-      g.fixture_replacement :factory_girl, dir: 'spec/factories'
-    end
-
-    config.action_dispatch.rescue_responses.merge!(
-      'Sequel::Plugins::RailsExtensions::ModelNotFound' => :not_found
-    )
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
