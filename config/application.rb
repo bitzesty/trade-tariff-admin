@@ -1,8 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "sprockets/railtie"
+require "rails/all"
 
 if defined?(Bundler)
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -58,7 +56,7 @@ module TradeTariffAdmin
 
     # Generators
     config.generators do |g|
-      g.orm                 nil
+      g.orm                 :active_record
       g.template_engine     :erb
       g.test_framework      :rspec, fixture: false
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
@@ -74,9 +72,5 @@ module TradeTariffAdmin
     # config.action_dispatch.rack_cache = nil
 
     config.assets.js_compressor = :uglifier
-
-    config.action_dispatch.rescue_responses.merge!(
-      'Sequel::Plugins::RailsExtensions::ModelNotFound' => :not_found
-    )
   end
 end

@@ -82,6 +82,7 @@ GEM
     concurrent-ruby (1.0.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    database_cleaner (1.4.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
@@ -249,12 +250,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    sequel (4.21.0)
-    sequel-rails (0.9.11)
-      actionpack (>= 3.2.0)
-      activemodel
-      railties (>= 3.2.0)
-      sequel (>= 3.28, < 5.0)
     sexp_processor (4.6.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -314,6 +309,7 @@ DEPENDENCIES
   ci_reporter
   ci_reporter_rspec
   coffee-rails (~> 4.1)
+  database_cleaner
   factory_girl_rails
   gds-sso (~> 11.0)
   govspeak (~> 3.4)
@@ -330,8 +326,6 @@ DEPENDENCIES
   responders (~> 2.1)
   rspec-rails
   sass-rails (~> 5.0)
-  sequel (~> 4.21)
-  sequel-rails (~> 0.9)
   shoulda-matchers
   simple_form (~> 3.1)
   simplecov
