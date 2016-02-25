@@ -1,6 +1,9 @@
 source "https://rubygems.org"
 
 gem "rails", "4.2.5.1"
+gem "sass-rails", "~> 5.0"
+gem "coffee-rails", "~> 4.1"
+gem "uglifier", "~> 2.7"
 
 gem "mysql2", "~> 0.3"
 gem "sequel", "~> 4.21"
@@ -26,8 +29,6 @@ gem "logstasher", "~> 0.6"
 gem "airbrake", "~> 4.3"
 gem "responders", "~> 2.1"
 
-gem "rails_12factor", group: :production
-
 group :development, :test do
   gem "pry-rails"
   gem "brakeman", "~> 3.0", require: false
@@ -45,9 +46,7 @@ group :test do
   gem "webmock"
 end
 
-group :assets do
-  gem "sass-rails", "~> 5.0"
-  gem "coffee-rails", "~> 4.1"
-  gem "uglifier", "~> 2.7"
+group :production do
   gem "therubyracer", "~> 0.12"
+  gem "rails_12factor"
 end
