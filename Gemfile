@@ -26,6 +26,8 @@ gem "logstasher", "~> 0.6"
 gem "airbrake", "~> 4.3"
 gem "responders", "~> 2.1"
 
+gem "rails_12factor", group: :production
+
 group :development, :test do
   gem "pry-rails"
   gem "brakeman", "~> 3.0", require: false
