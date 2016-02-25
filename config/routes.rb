@@ -1,4 +1,4 @@
-TradeTariffAdmin::Application.routes.draw do
+Rails.application.routes.draw do
   namespace :notes, module: :notes do
     resources :sections, only: [:index, :show] do
       scope module: 'sections' do
