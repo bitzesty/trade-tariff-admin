@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/alphagov/trade-tariff-admin.png?branch=master)](https://travis-ci.org/alphagov/trade-tariff-admin)
+[![Circle CI](https://circleci.com/gh/bitzesty/trade-tariff-admin.svg?style=svg)](https://circleci.com/gh/bitzesty/trade-tariff-admin)
 
 # TradeTariffAdmin
 
