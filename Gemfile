@@ -27,6 +27,9 @@ gem "logstasher", "~> 0.6"
 gem "airbrake", "~> 4.3"
 gem "responders", "~> 2.1"
 
+gem "sidekiq", "~> 4.1.1"
+gem "sinatra", "~> 1.4.7", require: nil
+
 group :development, :test do
   gem "pry-rails"
   gem "brakeman", "~> 3.0", require: false
