@@ -5,7 +5,7 @@ gem "sass-rails", "~> 5.0"
 gem "coffee-rails", "~> 4.1"
 gem "uglifier", "~> 2.7"
 
-gem "mysql2", "~> 0.3"
+gem "pg"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
 
@@ -19,7 +19,7 @@ gem "gds-sso", "~> 11.0"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
-gem "unicorn", "~> 4.9"
+gem "puma"
 
 gem "jquery-rails", "~> 3.1.1"
 gem "bootstrap-datepicker-rails", "~> 1.4"
