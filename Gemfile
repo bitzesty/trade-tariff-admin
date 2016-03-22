@@ -19,7 +19,7 @@ gem "gds-sso", "~> 11.0"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
-gem "unicorn", "~> 4.9"
+gem "puma"
 
 gem "jquery-rails", "~> 3.1.1"
 gem "bootstrap-datepicker-rails", "~> 1.4"
