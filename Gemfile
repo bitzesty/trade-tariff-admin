@@ -24,7 +24,6 @@ gem "puma"
 gem "jquery-rails", "~> 3.1.1"
 gem "bootstrap-datepicker-rails", "~> 1.4"
 gem "logstasher", "~> 0.6"
-gem "airbrake", "~> 4.3"
 gem "responders", "~> 2.1"
 
 gem "sidekiq", "~> 4.1.1"
@@ -52,4 +51,5 @@ end
 group :production do
   gem "therubyracer", "~> 0.12"
   gem "rails_12factor"
+  gem "sentry-raven"
 end

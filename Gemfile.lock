@@ -37,9 +37,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    airbrake (4.3.0)
-      builder
-      multi_json
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -260,6 +257,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    sentry-raven (0.15.6)
+      faraday (>= 0.7.6)
     sexp_processor (4.6.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -316,7 +315,6 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.3)
-  airbrake (~> 4.3)
   bootstrap-datepicker-rails (~> 1.4)
   brakeman (~> 3.0)
   capybara (~> 2.4)
@@ -343,6 +341,7 @@ DEPENDENCIES
   rspec-rails
   rspec_junit_formatter
   sass-rails (~> 5.0)
+  sentry-raven
   shoulda-matchers
   sidekiq (~> 4.1.1)
   simple_form (~> 3.1)
