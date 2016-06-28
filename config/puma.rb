@@ -9,7 +9,13 @@ port        ENV['PORT']     || 3000
 environment ENV['RACK_ENV'] || 'development'
 
 on_worker_boot do
-  # Worker specific setup for Rails 4.1+
-  # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
-  ActiveRecord::Base.establish_connection
+  # Ensure we don't keep connections
+  if defined?(Sequel)
+    ::Sequel::Model.db.disconnect
+    ::Sequel::DATABASES.each{ |db| db.disconnect }
+  end
+end
+
+after_worker_boot do
+  SequelRails.setup Rails.env if defined?(SequelRails)
 end
