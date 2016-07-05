@@ -1,4 +1,5 @@
 require "sidekiq/web"
+require "sidekiq-scheduler/web"
 require "gds_editor_constraint"
 
 Rails.application.routes.draw do
