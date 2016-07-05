@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "2.3.1"
 
 gem "rails", "4.2.5.2"
 gem "sass-rails", "~> 5.0"
@@ -19,7 +20,7 @@ gem "gds-sso", "~> 11.0"
 gem "plek", "~> 1.11"
 gem "addressable", "~> 2.3"
 
-gem "puma"
+gem "puma", "~> 3.4"
 
 gem "jquery-rails", "~> 3.1.1"
 gem "bootstrap-datepicker-rails", "~> 1.4"
