@@ -173,7 +173,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (2.13.4)
+    puma (3.4.0)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
     rack (1.6.4)
@@ -333,7 +333,7 @@ DEPENDENCIES
   pg
   plek (~> 1.11)
   pry-rails
-  puma
+  puma (~> 3.4)
   pundit (= 0.3.0)
   rails (= 4.2.5.2)
   rails_12factor
@@ -352,5 +352,8 @@ DEPENDENCIES
   uglifier (~> 2.7)
   webmock
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.11.2
+   1.12.5
