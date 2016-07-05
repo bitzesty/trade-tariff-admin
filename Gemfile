@@ -28,6 +28,7 @@ gem "logstasher", "~> 0.6"
 gem "responders", "~> 2.1"
 
 gem "sidekiq", "~> 4.1.1"
+gem "sidekiq-scheduler", "~> 2.0"
 gem "sinatra", "~> 1.4.7", require: nil
 
 group :development, :test do
