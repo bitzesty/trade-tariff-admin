@@ -247,6 +247,7 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
+    rufus-scheduler (3.1.10)
     safe_yaml (1.0.4)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
@@ -266,6 +267,12 @@ GEM
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
+    sidekiq-scheduler (2.0.6)
+      multi_json (~> 1)
+      redis (~> 3)
+      rufus-scheduler (~> 3.1.8)
+      sidekiq (>= 3)
+      tilt (>= 1.4.0)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -344,6 +351,7 @@ DEPENDENCIES
   sentry-raven
   shoulda-matchers
   sidekiq (~> 4.1.1)
+  sidekiq-scheduler (~> 2.0)
   simple_form (~> 3.1)
   simplecov
   simplecov-rcov
