@@ -54,4 +54,5 @@ group :production do
   gem "therubyracer", "~> 0.12"
   gem "rails_12factor"
   gem "sentry-raven"
+  gem "newrelic_rpm"
 end
