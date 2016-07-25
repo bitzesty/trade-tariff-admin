@@ -47,16 +47,15 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
-
-  # Prepend all log lines with the following tags.
-  # config.log_tags = [ :subdomain, :uuid ]
-
-  # Use a different logger for distributed setups.
-  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
+  config.log_level = :info
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  config.lograge.custom_options = lambda do |event|
+    { domain: ENV["GOVUK_APP_DOMAIN"] }
+  end
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store, nil, { namespace: ENV["GOVUK_APP_DOMAIN"], expires_in: 1.day, compress: true, username: ENV["MEMCACHE_USER"], password: ENV["MEMCACHE_PASSWORD"] }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -78,9 +77,4 @@ Rails.application.configure do
 
   # Host for Trade Tariff API endpoint
   config.api_host = Plek.new.find("tariff-api")
-
-  # Enable JSON-style logging
-  config.logstasher.enabled = true
-  config.logstasher.logger = Logger.new("#{Rails.root}/log/#{Rails.env}.json.log")
-  config.logstasher.supress_app_log = true
 end

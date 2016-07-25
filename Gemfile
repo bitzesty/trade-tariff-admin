@@ -24,8 +24,10 @@ gem "puma", "~> 3.4"
 
 gem "jquery-rails", "~> 3.1.1"
 gem "bootstrap-datepicker-rails", "~> 1.4"
-gem "logstasher", "~> 0.6"
 gem "responders", "~> 2.1"
+
+gem "logstash-event"
+gem "lograge"
 
 gem "sidekiq", "~> 4.1.1"
 gem "sidekiq-scheduler", "~> 2.0"

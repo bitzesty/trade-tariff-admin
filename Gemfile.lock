@@ -133,10 +133,11 @@ GEM
       activesupport (>= 3.0.0)
     kramdown (1.5.0)
     libv8 (3.16.14.11)
+    lograge (0.3.6)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
     logstash-event (1.2.02)
-    logstasher (0.6.5)
-      logstash-event (~> 1.2.0)
-      request_store
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -216,7 +217,6 @@ GEM
     rake (10.5.0)
     redis (3.2.2)
     ref (2.0.0)
-    request_store (1.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rspec (3.2.0)
@@ -337,7 +337,8 @@ DEPENDENCIES
   her (= 0.6.8)
   jquery-rails (~> 3.1.1)
   kaminari (~> 0.16)
-  logstasher (~> 0.6)
+  lograge
+  logstash-event
   newrelic_rpm
   pg
   plek (~> 1.11)
