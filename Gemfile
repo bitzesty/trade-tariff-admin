@@ -28,6 +28,7 @@ gem "responders", "~> 2.1"
 
 gem "logstash-event"
 gem "lograge"
+gem "dalli"
 
 gem "sidekiq", "~> 4.1.1"
 gem "sidekiq-scheduler", "~> 2.0"
