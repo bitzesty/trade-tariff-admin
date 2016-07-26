@@ -7,7 +7,7 @@ describe "Chapter Search Reference management" do
 
   describe "Search Reference creation" do
     let(:title)        { 'new title' }
-    let(:chapter_search_reference) { attributes_for :chapter_search_reference, title: title }
+    let(:chapter_search_reference) { build :chapter_search_reference, title: title, referenced: chapter }
     let(:section)      { build :section }
     let(:chapter)      { build :chapter, :with_section, title: 'new chapter', section: section.attributes }
 
@@ -35,7 +35,6 @@ describe "Chapter Search Reference management" do
           api_success_response([chapter_search_reference], { 'x-meta' => { pagination: { total: 1 } }.to_json })
         }
       }
-
       create_search_reference_for chapter, title: title
 
       verify search_reference_created_for(chapter, title: title)
