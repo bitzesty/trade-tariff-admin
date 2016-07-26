@@ -330,7 +330,8 @@ DEPENDENCIES
   ci_reporter
   ci_reporter_rspec
   coffee-rails (~> 4.1)
-  dalli
+  connection_pool (~> 2.2)
+  dalli (~> 2.7)
   database_cleaner
   factory_girl_rails
   gds-sso (~> 12)
