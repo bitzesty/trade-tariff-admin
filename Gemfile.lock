@@ -40,6 +40,7 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
+    bootscale (0.5.2)
     bootstrap-datepicker-rails (1.4.0)
       railties (>= 3.0)
     bootstrap-sass (3.3.5.1)
@@ -324,6 +325,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.3)
+  bootscale (~> 0.5)
   bootstrap-datepicker-rails (~> 1.4)
   brakeman (~> 3.0)
   capybara (~> 2.4)
