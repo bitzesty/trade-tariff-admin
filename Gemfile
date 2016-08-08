@@ -34,6 +34,7 @@ gem "connection_pool", "~> 2.2"
 gem "sidekiq", "~> 4.1.1"
 gem "sidekiq-scheduler", "~> 2.0"
 gem "sinatra", "~> 1.4.7", require: nil
+gem "bootscale", "~> 0.5", require: false
 
 group :development, :test do
   gem "pry-rails"
