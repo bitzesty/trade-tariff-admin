@@ -47,7 +47,7 @@ describe User do
       it {
         expect {
           User.create!(attrs)
-        }.to raise_error(Sequel::Error)
+        }.to raise_error(ActiveRecord::RecordNotUnique)
       }
     end
   end

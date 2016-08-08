@@ -15,7 +15,7 @@ describe "Section Search Reference management" do
 
   describe "Search Reference creation" do
     let(:title)        { 'new title' }
-    let(:section_search_reference) { attributes_for :section_search_reference, title: title }
+    let(:section_search_reference) { attributes_for :section_search_reference, title: title, referenced: section }
     let(:section)      { build :section, title: 'new section' }
 
     specify do
