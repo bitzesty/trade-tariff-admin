@@ -1,1 +1,13 @@
-.gitignore
+/.bundle
+/db/*.sqlite3
+/log/*.log
+/tmp
+.rbenv*
+.rvm*
+coverage
+db/schema.rb
+/spec/reports
+*manifest.yml
+cf-ssh.yml
+
+.git
