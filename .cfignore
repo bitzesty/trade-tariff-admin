@@ -1,13 +1,26 @@
+# Ignore bundler config.
 /.bundle
-/db/*.sqlite3
-/log/*.log
-/tmp
-.rbenv*
-.rvm*
-coverage
-db/schema.rb
-/spec/reports
+
+# Ignore bundler circle ci cache.
+vendor/bundle/*
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp/*
+.byebug_history
+
+# Environment files
+.env
+
+# Cloud Foundry manifest files
 *manifest.yml
 cf-ssh.yml
 
+# Other files
+config/trade_tariff_backend_secrets.yml
+*.DS_Store
+/coverage/*
+
+# Ignore git
 .git
