@@ -15,3 +15,7 @@ environment files.
 
     ./startup.sh
     foreman start
+
+## Deployment to GOV PaaS
+
+Deployments are handled via CI
