@@ -1,17 +1,17 @@
-development:
+default: &default
   adapter: postgresql
   encoding: utf8
-  reconnect: true
+  pool: 5
+
+development:
+  <<: *default
   database: tariff_admin_development
-  single_threaded: true
-  username: tariff_admin
-  password: tariff_admin
 
 test:
-  adapter: postgresql
-  encoding: utf8
-  reconnect: true
+  <<: *default
   database: tariff_admin_test
-  single_threaded: true
-  username: tariff_admin
-  password: tariff_admin
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= ENV['DB_POOL'] || ENV['MAX_THREADS'] || 5 %>
