@@ -134,7 +134,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kramdown (1.5.0)
-    libv8 (3.16.14.11)
+    libv8 (3.16.14.17)
     lograge (0.3.6)
       actionpack (>= 3)
       activesupport (>= 3)
@@ -303,8 +303,8 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     terminal-table (1.5.2)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
@@ -373,7 +373,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.12.5
+   1.14.3
