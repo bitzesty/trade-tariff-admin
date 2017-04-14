@@ -6,7 +6,7 @@ gem "sass-rails", "~> 5.0"
 gem "coffee-rails", "~> 4.1"
 gem "uglifier", "~> 2.7"
 
-gem 'rake'
+gem 'rake', '~> 12.0.0'
 
 gem "pg"
 gem "her", "0.6.8"
