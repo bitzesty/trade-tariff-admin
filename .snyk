@@ -6,4 +6,7 @@ ignore:
     - '* > capybara@2.4.4':
         reason: None given
         expires: '2017-06-09T16:51:15.999Z'
+    - '* > govspeak@3.4.0':
+        reason: None given
+        expires: '2017-06-09T17:22:27.818Z'
 patch: {}
