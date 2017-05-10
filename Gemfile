@@ -40,7 +40,7 @@ gem "bootscale", "~> 0.5", require: false
 
 group :development, :test do
   gem "pry-rails"
-  gem "brakeman", "~> 3.0", require: false
+  gem "brakeman", "~> 3.3", ">= 3.3.0", require: false
 end
 
 group :test do
