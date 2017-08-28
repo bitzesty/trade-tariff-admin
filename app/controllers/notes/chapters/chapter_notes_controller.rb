@@ -1,7 +1,7 @@
 module Notes
   module Chapters
     class ChapterNotesController < ApplicationController
-      before_filter :authorize_user
+      before_action :authorize_user
 
       def new
         @chapter_note = ChapterNote.new
