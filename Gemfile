@@ -54,7 +54,7 @@ group :test do
   gem 'rspec-rails', '~> 3.5.2'
   gem "capybara", "~> 2.8"
   gem "webmock", "~> 3.0.1"
-  gem "database_cleaner", "~> 1.5.3"
+  gem "database_cleaner", "~> 1.6"
   gem "rspec_junit_formatter"
 end
 
