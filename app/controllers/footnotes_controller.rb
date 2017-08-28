@@ -13,7 +13,7 @@ class FootnotesController < ApplicationController
 
   def update
     @footnote = Footnote.find(params[:id])
-    @footnote.assign_attributes(footnote_params)
+    @footnote.assign_attributes(footnote_params.to_h)
 
     if @footnote.valid?
       @footnote.save

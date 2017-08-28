@@ -13,7 +13,7 @@ class MeasureTypesController < ApplicationController
 
   def update
     @measure_type = MeasureType.find(params[:id])
-    @measure_type.assign_attributes(measure_type_params)
+    @measure_type.assign_attributes(measure_type_params.to_h)
 
     if @measure_type.valid?
       @measure_type.save
