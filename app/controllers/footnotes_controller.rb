@@ -24,9 +24,6 @@ class FootnotesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   private
 
   def footnote

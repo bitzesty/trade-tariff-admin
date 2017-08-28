@@ -24,9 +24,6 @@ class MeasureTypesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   private
 
   def measure_type
