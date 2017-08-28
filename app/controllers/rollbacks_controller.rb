@@ -11,7 +11,7 @@ class RollbacksController < ApplicationController
   end
 
   def create
-    @rollback = Rollback.new(rollback_params)
+    @rollback = Rollback.new(rollback_params.to_h)
     @rollback.user = current_user
     
     if @rollback.save

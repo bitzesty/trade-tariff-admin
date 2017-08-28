@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  prepend_before_filter :authenticate_user!
-  before_filter :require_signin_permission!
+  prepend_before_action :authenticate_user!
+  before_action :require_signin_permission!
 
   rescue_from Pundit::NotAuthorizedError do |e|
     # Layout and view comes from GDS::SSO::ControllerMethods
