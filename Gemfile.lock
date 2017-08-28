@@ -125,9 +125,18 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.0.4)
     jwt (1.5.6)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
     kramdown (1.5.0)
     libv8 (3.16.14.17)
     lograge (0.3.6)
@@ -346,7 +355,7 @@ DEPENDENCIES
   govuk_admin_template (= 5.0.0)
   her (= 0.6.8)
   jquery-rails (~> 4.1.0)
-  kaminari (~> 0.16)
+  kaminari (~> 1.0)
   lograge
   logstash-event
   newrelic_rpm
