@@ -14,7 +14,7 @@ module Synonyms
     end
 
     def create
-      @search_reference = search_reference_parent.search_references.build(search_reference_params)
+      @search_reference = search_reference_parent.search_references.build(search_reference_params.to_h)
       @search_reference.referenced_id = search_reference_parent.id
 
       if @search_reference.valid?
@@ -30,7 +30,7 @@ module Synonyms
     end
 
     def update
-      search_reference.assign_attributes(search_reference_params)
+      search_reference.assign_attributes(search_reference_params.to_h)
 
       if search_reference.valid?
         search_reference.save
