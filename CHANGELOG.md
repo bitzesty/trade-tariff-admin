@@ -1,5 +1,30 @@
 # Change Log
 
+
+## [August 28, 2017]
+
+### Added
+- Notify GDS when deploy is done
+- Snyk
+
+### Changed
+- Run bootscaler regenerate when loadpath changes
+- `Rails` upgraded to 5.1.3, `coffee-rails`  to 4.2.2
+- Updated .cfignore
+- Updated `ruby` to 2.3.3
+- Upgrade `sentry-raven` to 2.4.0
+- Upgrade gems for :test group
+- Upgrade `kaminari` to 1.0
+- Upgrade `sinatra` to 2.0
+- Upgrade `jquery-rails` to 4.1
+- Upgrade `coffee-rails` to 4.2.2
+- Upgrade `simple_form` to 3.5
+- Upgrade `gds-sso` to 13.2
+
+### Removed
+
+[August 28, 2017]: https://github.com/bitzesty/trade-tariff-admin/compare/8d5804b...51865f5
+
 ## [August 03, 2016]
 
 ### Added
