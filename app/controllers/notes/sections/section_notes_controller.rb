@@ -1,7 +1,7 @@
 module Notes
   module Sections
     class SectionNotesController < ApplicationController
-      before_filter :authorize_user
+      before_action :authorize_user
 
       def new
         @section_note = SectionNote.new
