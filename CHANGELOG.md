@@ -9,7 +9,8 @@
 
 ### Changed
 - Run bootscaler regenerate when loadpath changes
-- `Rails` upgraded to 5.1.3, `coffee-rails`  to 4.2.2
+- `Rails` upgraded to 5.1.3, `coffee-rails` to 4.2.2
+- Update `ruby` version to `2.4.1`.
 - Updated .cfignore
 - Updated `ruby` to 2.3.3
 - Upgrade `sentry-raven` to 2.4.0
@@ -56,7 +57,7 @@
 
 ### Changed
 - Update `rails` version to `4.2.5.2`.
--	Update `ruby` version to `2.3.1`.
+- Update `ruby` version to `2.3.1`.
 - Update `sentry-raven` version to `1.2.0`.
 - Switch from `Unicorn` to `Puma`.
 - Switch from `Airbrake` to `Sentry`.
