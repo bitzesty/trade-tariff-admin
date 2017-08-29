@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "2.3.3"
 
-gem "rails", "5.0.0"
+gem "rails", "5.1.3"
 gem "sass-rails", "5.0.6"
 
 gem "coffee-rails", "~> 4.2.2"
@@ -13,7 +13,7 @@ gem "pg"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
 
-gem "kaminari", "~> 0.16"
+gem "kaminari", "~> 1.0"
 gem "simple_form", "~> 3.5"
 gem "govspeak", "~> 3.4"
 
@@ -54,7 +54,7 @@ group :test do
   gem 'rspec-rails', '~> 3.5.2'
   gem "capybara", "~> 2.8"
   gem "webmock", "~> 3.0.1"
-  gem "database_cleaner", "~> 1.5.3"
+  gem "database_cleaner", "~> 1.6"
   gem "rspec_junit_formatter"
 end
 
