@@ -40,6 +40,8 @@ gem "sidekiq-scheduler", "~> 2.0"
 gem "sinatra", "~> 2.0", require: nil
 gem "bootscale", "~> 0.5", require: false
 
+gem "nokogiri", "~> 1.8.1"
+
 group :development, :test do
   gem "pry-rails"
   gem "brakeman", "~> 3.3", ">= 3.3.0", require: false
