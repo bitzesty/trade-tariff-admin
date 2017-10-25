@@ -1,7 +1,7 @@
 require "sidekiq"
 
 # PaaS Redis is not ready for prod
-if TradeTariffBackend.production?
+if TradeTariffAdmin.production?
   redis_url = ENV["REDIS_URL"]
   # db > 1 does not work for old redis service, but when we will switch to PaaS redis it should work
   redis_db = 0
