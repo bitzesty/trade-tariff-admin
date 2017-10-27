@@ -1,14 +1,14 @@
 machine:
   ruby:
-    version: 2.3.3
+    version: 2.4.1
 dependencies:
   pre:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
-    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.2/autopilot-linux
+    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
     - chmod +x autopilot
-    - yes | cf install-plugin autopilot
+    - yes | cf install-plugin -f autopilot
 deployment:
   dev:
     branch: master

@@ -11,3 +11,4 @@ db/schema.rb
 cf-ssh.yml
 .ruby-gemset
 .idea/*
+REVISION
