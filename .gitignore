@@ -12,3 +12,4 @@ cf-ssh.yml
 .ruby-gemset
 .idea/*
 REVISION
+.env
