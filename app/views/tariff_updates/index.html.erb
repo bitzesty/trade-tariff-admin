@@ -16,7 +16,7 @@
     <% @tariff_updates.each do |tariff_update| %>
       <tr id='<%= dom_id(tariff_update) %>'>
         <td><%= tariff_update.update_type %></td>
-        <td><%= link_to tariff_update.filename, tariff_update.file_presigned_url, target: "_blank" %></td>
+        <td><%= link_to_if tariff_update.filename.present?, tariff_update.filename, tariff_update.file_presigned_url, target: "_blank" %></td>
         <td>
           <%= tariff_update.state %>
           <% if tariff_update.exception_class.present? %>
