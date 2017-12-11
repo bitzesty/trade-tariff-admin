@@ -6,6 +6,6 @@ module HerPaginatable
     Kaminari.paginate_array(
       collection,
       total_count: pagination[:total_count]
-    ).page(pagination[:page]).per(pagination[:per])
+    ).page(pagination[:page]).per(pagination[:per_page])
   end
 end
