@@ -25,6 +25,16 @@
           <% if tariff_update.conformance_errors.present? %>
             <%= render "conformance_errors", tariff_update: tariff_update %>
           <% end %>
+          <% if tariff_update.log_presigned_urls["created"].present? %>
+            <div>
+              <%= link_to "Created records", tariff_update.log_presigned_urls["created"], target: "_blank" %>
+            </div>
+          <% end %>
+          <% if tariff_update.log_presigned_urls["failed"].present? %>
+            <div>
+                <%= link_to "Failed records", tariff_update.log_presigned_urls["failed"], target: "_blank" %>
+            </div>
+          <% end %>
         </td>
         <td><%= l tariff_update.created_at, format: :tariff %></td>
         <td><%= l(tariff_update.applied_at, format: :tariff) if tariff_update.applied_at %></td>
