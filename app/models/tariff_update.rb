@@ -2,7 +2,9 @@ class TariffUpdate
   include Her::Model
   extend HerPaginatable
 
-  attributes :update_type, :state, :created_at, :updated_at, :applied_at, :filesize, :exception_backtrace, :exception_class, :exception_queries, :conformance_errors
+  attributes :update_type, :state, :created_at, :updated_at, :applied_at, :filesize,
+             :exception_backtrace, :exception_class, :exception_queries, :conformance_errors,
+             :file_presigned_url, :log_presigned_urls
 
   collection_path '/updates'
   parse_root_in_json :update, format: :active_model_serializers
@@ -21,6 +23,10 @@ class TariffUpdate
     when /Taric/ then 'TARIC'
     when /Chief/ then 'CHIEF'
     end
+  end
+
+  def log_presigned_urls
+    attributes[:log_presigned_urls] || {}
   end
 
   def missing?

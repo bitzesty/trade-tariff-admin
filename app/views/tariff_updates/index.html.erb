@@ -16,7 +16,7 @@
     <% @tariff_updates.each do |tariff_update| %>
       <tr id='<%= dom_id(tariff_update) %>'>
         <td><%= tariff_update.update_type %></td>
-        <td><%= tariff_update.filename %></td>
+        <td><%= link_to_if tariff_update.filename.present?, tariff_update.filename, tariff_update.file_presigned_url, target: "_blank" %></td>
         <td>
           <%= tariff_update.state %>
           <% if tariff_update.exception_class.present? %>
@@ -24,6 +24,16 @@
           <% end %>
           <% if tariff_update.conformance_errors.present? %>
             <%= render "conformance_errors", tariff_update: tariff_update %>
+          <% end %>
+          <% if tariff_update.log_presigned_urls["created"].present? %>
+            <div>
+              <%= link_to "Created records", tariff_update.log_presigned_urls["created"], target: "_blank" %>
+            </div>
+          <% end %>
+          <% if tariff_update.log_presigned_urls["failed"].present? %>
+            <div>
+                <%= link_to "Failed records", tariff_update.log_presigned_urls["failed"], target: "_blank" %>
+            </div>
           <% end %>
         </td>
         <td><%= l tariff_update.created_at, format: :tariff %></td>
