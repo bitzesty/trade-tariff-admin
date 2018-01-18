@@ -1,5 +1,9 @@
 # Change Log
 
+## [January 18, 2018]
+
+### Changed
+- Update `ruby` version to `2.4.3`.
 
 ## [August 28, 2017]
 
