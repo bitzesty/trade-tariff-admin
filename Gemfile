@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.4.1"
+ruby "2.4.3"
 
 gem "rails", "5.1.3"
 gem "sass-rails", "5.0.6"
@@ -43,6 +43,7 @@ gem "bootscale", "~> 0.5", require: false
 gem "nokogiri", "~> 1.8.1"
 
 group :development, :test do
+  gem "dotenv-rails"
   gem "pry-rails"
   gem "brakeman", "~> 3.3", ">= 3.3.0", require: false
 end
