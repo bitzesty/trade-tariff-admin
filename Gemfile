@@ -54,7 +54,7 @@ group :test do
   gem "factory_girl_rails", "~> 4.8.0"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "simplecov", "~> 0.14.1"
-  gem "simplecov-rcov", git: 'git@github.com:jarl-borg/simplecov-rcov.git' # monkey patch for ruby 2.5.0
+  gem "simplecov-rcov", git: 'git@github.com:bitzesty/simplecov-rcov.git' # monkey patch for ruby 2.5.0
   gem 'rspec-rails', '~> 3.5.2'
   gem "capybara", "~> 2.8"
   gem "webmock", "~> 3.0.1"
