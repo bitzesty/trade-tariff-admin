@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby '~> 2.5.0'
 
-gem "rails", "5.1.3"
+gem "rails", "5.1.5"
 gem "sass-rails", "5.0.6"
 
 gem "coffee-rails", "~> 4.2.2"
@@ -16,7 +16,7 @@ gem "pundit", "0.3.0"
 
 gem "kaminari", "~> 1.0"
 gem "simple_form", "~> 3.5"
-gem "govspeak", "~> 3.4"
+gem "govspeak", "~> 5.6.0"
 
 gem 'govuk_admin_template', '5.0.0'
 
