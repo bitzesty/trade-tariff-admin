@@ -179,7 +179,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mustermann (1.0.1)
+    mustermann (1.0.2)
     newrelic_rpm (4.6.0.338)
     nio4r (2.3.0)
     nokogiri (1.8.2)
@@ -214,7 +214,7 @@ GEM
     pundit (0.3.0)
       activesupport (>= 3.0.0)
     rack (2.0.4)
-    rack-protection (2.0.0)
+    rack-protection (2.0.2)
       rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -319,10 +319,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    sinatra (2.0.0)
+    sinatra (2.0.2)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.0)
+      rack-protection (= 2.0.2)
       tilt (~> 2.0)
     slop (3.6.0)
     sprockets (3.7.1)
@@ -403,7 +403,7 @@ DEPENDENCIES
   simple_form (~> 3.5)
   simplecov (~> 0.14.1)
   simplecov-rcov!
-  sinatra (~> 2.0)
+  sinatra (~> 2.0.2)
   therubyracer (~> 0.12)
   uglifier (~> 2.7)
   webmock (~> 3.0.1)
@@ -412,4 +412,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
