@@ -213,7 +213,7 @@ GEM
     puma (3.11.2)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-protection (2.0.2)
       rack
     rack-test (1.0.0)
@@ -325,7 +325,7 @@ GEM
       rack-protection (= 2.0.2)
       tilt (~> 2.0)
     slop (3.6.0)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -404,6 +404,7 @@ DEPENDENCIES
   simplecov (~> 0.14.1)
   simplecov-rcov!
   sinatra (~> 2.0.2)
+  sprockets (~> 3.7.2)
   therubyracer (~> 0.12)
   uglifier (~> 2.7)
   webmock (~> 3.0.1)
