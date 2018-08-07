@@ -3,3 +3,14 @@ table {
     max-width: 400px;
   }
 }
+
+.presence-errors-modal {
+  table {
+    border-spacing: 5px;
+    border-collapse: separate;
+
+    td.details {
+      max-width: 800px;
+    }
+  }
+}
