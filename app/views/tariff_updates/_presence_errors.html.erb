@@ -1,0 +1,36 @@
+<div>
+  <%= link_to "#", data: { toggle: "modal", target: "#presence-errors-modal-#{tariff_update.id}" } do %>
+    <%= pluralize tariff_update.presence_errors.count, "Presence error" %>
+  <% end %>
+</div>
+
+<%= content_tag :div,
+                id: "presence-errors-modal-#{tariff_update.id}",
+                class: "modal fade presence-errors-modal" do %>
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+      <h3>
+        <%= pluralize tariff_update.presence_errors.count, "Presence error" %>
+      </h3>
+    </div>
+    <div class="modal-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tariff_update.presence_errors.each do |presence_error| %>
+            <tr>
+              <td><%= presence_error["model_name"] %></td>
+              <td class="details"><%= presence_error["details"] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

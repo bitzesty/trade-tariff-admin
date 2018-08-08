@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-ruby "2.4.3"
+ruby '~> 2.5.0'
 
-gem "rails", "5.1.3"
+gem "rails", "5.1.5"
 gem "sass-rails", "5.0.6"
 
 gem "coffee-rails", "~> 4.2.2"
@@ -16,7 +16,7 @@ gem "pundit", "0.3.0"
 
 gem "kaminari", "~> 1.0"
 gem "simple_form", "~> 3.5"
-gem "govspeak", "~> 3.4"
+gem "govspeak", "~> 5.6.0"
 
 gem 'govuk_admin_template', '5.0.0'
 
@@ -37,7 +37,7 @@ gem "connection_pool", "~> 2.2"
 
 gem "sidekiq", "~> 4.1.1"
 gem "sidekiq-scheduler", "~> 2.0"
-gem "sinatra", "~> 2.0", require: nil
+gem "sinatra", "~> 2.0.2", require: nil
 gem "bootscale", "~> 0.5", require: false
 
 gem "nokogiri", "~> 1.8.1"
@@ -54,7 +54,7 @@ group :test do
   gem "factory_girl_rails", "~> 4.8.0"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "simplecov", "~> 0.14.1"
-  gem "simplecov-rcov"
+  gem "simplecov-rcov", git: 'git@github.com:bitzesty/simplecov-rcov.git' # monkey patch for ruby 2.5.0
   gem 'rspec-rails', '~> 3.5.2'
   gem "capybara", "~> 2.8"
   gem "webmock", "~> 3.0.1"
