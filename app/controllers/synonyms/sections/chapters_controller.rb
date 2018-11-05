@@ -8,6 +8,7 @@ module Synonyms
       private
 
       def section
+        # section_id is a position
         @section ||= Section.find(params[:section_id])
       end
       helper_method :section

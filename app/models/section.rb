@@ -34,7 +34,9 @@ class Section
   end
 
   def to_param
-    id.to_s
+    # beckend app uses position to fetch section
+    # id.to_s
+    position.to_s
   end
 
   def to_s
