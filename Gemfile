@@ -33,8 +33,6 @@ gem "responders", "~> 2.4"
 
 gem "logstash-event"
 gem "lograge"
-gem "dalli", "~> 2.7"
-gem "connection_pool", "~> 2.2"
 
 gem "sidekiq", "~> 4.1.1"
 gem "sidekiq-scheduler", "~> 2.0"
