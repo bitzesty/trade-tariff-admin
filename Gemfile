@@ -13,6 +13,7 @@ gem 'rake', '~> 12.0.0'
 gem "pg"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
+gem "redis-rails"
 
 gem "kaminari", "~> 1.0"
 gem "simple_form", "~> 3.5"

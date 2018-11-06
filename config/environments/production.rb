@@ -54,14 +54,12 @@ Rails.application.configure do
     { domain: ENV["GOVUK_APP_DOMAIN"] }
   end
 
-  # Use a different cache store in production.
-  config.cache_store = :dalli_store, nil, {
-    compress: true,
+  # Rails cache store
+  config.cache_store = :redis_store, {
     expires_in: 1.day,
-    username: ENV["MEMCACHE_USER"],
-    password: ENV["MEMCACHE_PASSWORD"],
-    namespace: ENV["GOVUK_APP_DOMAIN"],
-    pool_size: Integer(ENV["MAX_THREADS"] || 5)
+    namespace:  ENV["GOVUK_APP_DOMAIN"],
+    pool_size:  Integer(ENV["MAX_THREADS"] || 5),
+    redis:      RedisResolver.get_redis_config,
   }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
