@@ -58,13 +58,14 @@ code_quality:
         --volume /var/run/docker.sock:/var/run/docker.sock
         "registry.gitlab.com/gitlab-org/security-products/codequality:$SP_VERSION" /code
   artifacts:
-      paths: [gl-code-quality-report.json]
+    paths:
+      - gl-code-quality-report.json
 
 deploy_dev:
   stage: deploy
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
-    - sudo dpkg -i cf-cli_amd64.deb
+    - dpkg -i cf-cli_amd64.deb
     - cf -v
     - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
     - chmod +x autopilot
@@ -77,7 +78,7 @@ deploy_staging:
   stage: deploy
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
-    - sudo dpkg -i cf-cli_amd64.deb
+    - dpkg -i cf-cli_amd64.deb
     - cf -v
     - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
     - chmod +x autopilot
@@ -90,7 +91,7 @@ deploy_production:
   stage: deploy
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
-    - sudo dpkg -i cf-cli_amd64.deb
+    - dpkg -i cf-cli_amd64.deb
     - cf -v
     - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
     - chmod +x autopilot
@@ -98,4 +99,4 @@ deploy_production:
     - CF_SPACE=production CF_APP=tariff-admin-production CF_APP_WORKER=tariff-admin-worker-production ./bin/deploy
   when: manual
   only:
-  - production
+    - production
