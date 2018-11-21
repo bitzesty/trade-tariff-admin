@@ -13,6 +13,7 @@ gem 'rake', '~> 12.0.0'
 gem "pg"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
+gem "redis-rails"
 
 gem "kaminari", "~> 1.0"
 gem "simple_form", "~> 3.5"
@@ -32,8 +33,6 @@ gem "responders", "~> 2.4"
 
 gem "logstash-event"
 gem "lograge"
-gem "dalli", "~> 2.7"
-gem "connection_pool", "~> 2.2"
 
 gem "sidekiq", "~> 4.1.1"
 gem "sidekiq-scheduler", "~> 2.0"
@@ -54,7 +53,7 @@ group :test do
   gem "factory_girl_rails", "~> 4.8.0"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "simplecov", "~> 0.14.1"
-  gem "simplecov-rcov", git: 'git@github.com:bitzesty/simplecov-rcov.git' # monkey patch for ruby 2.5.0
+  gem "simplecov-rcov", git: 'git@gitlab.bitzesty.com:open-source/simplecov-rcov.git' # monkey patch for ruby 2.5.0
   gem 'rspec-rails', '~> 3.5.2'
   gem "capybara", "~> 2.8"
   gem "webmock", "~> 3.0.1"
