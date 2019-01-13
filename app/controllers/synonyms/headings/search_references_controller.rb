@@ -1,7 +1,7 @@
 module Synonyms
   module Headings
     class SearchReferencesController < Synonyms::SearchReferencesController
-      private
+    private
 
       def search_reference_parent
         @heading ||= Heading.find(params[:heading_id])

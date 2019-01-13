@@ -6,33 +6,33 @@ describe "Chapter Search Reference management" do
   let(:section) { build :section }
 
   describe "Search Reference creation" do
-    let(:title)        { 'new title' }
+    let(:title) { 'new title' }
     let(:chapter_search_reference) { build :chapter_search_reference, title: title, referenced: chapter }
     let(:section)      { build :section }
     let(:chapter)      { build :chapter, :with_section, title: 'new chapter', section: section.attributes }
 
     specify do
       stub_api_for(Chapter) { |stub|
-        stub.get("/chapters/#{chapter.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}") { |_env|
           api_success_response(chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |env|
-          api_success_response([], { 'x-meta' => { pagination: { total: 1 } }.to_json })
+        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+          api_success_response([], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
       refute search_reference_created_for(chapter, title: title)
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.post("/chapters/#{chapter.to_param}/search_references") { |env|
+        stub.post("/chapters/#{chapter.to_param}/search_references") { |_env|
           api_created_response
         }
 
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |env|
-          api_success_response([chapter_search_reference], { 'x-meta' => { pagination: { total: 1 } }.to_json })
+        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+          api_success_response([chapter_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
       create_search_reference_for chapter, title: title
@@ -47,28 +47,28 @@ describe "Chapter Search Reference management" do
 
     specify do
       stub_api_for(Chapter) { |stub|
-        stub.get("/chapters/#{chapter.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}") { |_env|
           api_success_response(chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |env|
-          api_success_response([chapter_search_reference.attributes], { 'x-meta' => { pagination: { total: 1 } }.to_json })
+        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+          api_success_response([chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
       verify search_reference_created_for(chapter, title: chapter_search_reference[:title])
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_success_response(chapter_search_reference)
         }
-        stub.delete("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |env|
+        stub.delete("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |env|
-          api_success_response([], { 'x-meta' => { pagination: { total: 1 } }.to_json })
+        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+          api_success_response([], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -82,39 +82,39 @@ describe "Chapter Search Reference management" do
     let(:section)                  { build :section }
     let(:chapter)                  { build :chapter, :with_section, section: section.attributes }
     let(:chapter_search_reference) { build :chapter_search_reference, referenced: chapter.attributes }
-    let(:new_title)  { "new title" }
+    let(:new_title) { "new title" }
 
     specify do
       stub_api_for(Chapter) { |stub|
-        stub.get("/chapters/#{chapter.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}") { |_env|
           api_success_response(chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |env|
-          api_success_response([chapter_search_reference], { 'x-meta' => { pagination: { total: 1 } }.to_json })
+        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+          api_success_response([chapter_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
       verify search_reference_created_for(chapter, title: chapter_search_reference[:title])
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_success_response(chapter_search_reference)
         }
-        stub.put("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |env|
+        stub.put("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |env|
-          api_success_response([chapter_search_reference], { 'x-meta' => { pagination: { total: 1 } }.to_json })
+        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+          api_success_response([chapter_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
       update_chapter_search_reference_for(chapter, chapter_search_reference, title: new_title)
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_success_response(chapter_search_reference.attributes.merge(title: new_title))
         }
       }

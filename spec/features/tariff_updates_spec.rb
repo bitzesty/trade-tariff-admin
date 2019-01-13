@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe "Tariff Update listing" do
-  let!(:user)   { create :user, :gds_editor }
+  let!(:user) { create :user, :gds_editor }
   let(:tariff_update) { attributes_for(:tariff_update, :chief, :missing, :with_exception) }
 
   before {
     stub_api_for(TariffUpdate) { |stub|
-      stub.get("/updates") { |env|
+      stub.get("/updates") { |_env|
         api_success_response(
           updates: [tariff_update],
           pagination: pagination_params(total_count: 1)

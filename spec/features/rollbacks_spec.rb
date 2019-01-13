@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 describe "Rollbacks management" do
-  let!(:user)   { create :user, :gds_editor }
+  let!(:user) { create :user, :gds_editor }
 
   describe "Rollback creation" do
-    let(:rollback)      { build :rollback }
+    let(:rollback) { build :rollback }
 
     specify do
       stub_api_for(Rollback) { |stub|
-        stub.get("/rollbacks") { |env|
+        stub.get("/rollbacks") { |_env|
           api_success_response(rollbacks: [], pagination: pagination_params)
         }
       }
@@ -16,11 +16,11 @@ describe "Rollbacks management" do
       refute rollback_created(rollback)
 
       stub_api_for(Rollback) { |stub|
-        stub.post("/rollbacks") { |env|
+        stub.post("/rollbacks") { |_env|
           api_created_response
         }
 
-        stub.get("/rollbacks") { |env|
+        stub.get("/rollbacks") { |_env|
           api_success_response(
             rollbacks: [rollback.attributes],
             pagination: pagination_params(total_count: 1)

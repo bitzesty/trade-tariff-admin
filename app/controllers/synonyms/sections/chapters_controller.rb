@@ -5,7 +5,7 @@ module Synonyms
         @chapters = section.chapters
       end
 
-      private
+    private
 
       def section
         # section_id is a position
