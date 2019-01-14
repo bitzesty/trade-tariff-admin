@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  sequence(:section_id)      { |n| n }
+  sequence(:section_id) { |n| n }
 
   factory :section do
     id              { generate(:section_id) }

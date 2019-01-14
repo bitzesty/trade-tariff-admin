@@ -5,7 +5,7 @@ module Synonyms
         @headings = chapter.headings
       end
 
-      private
+    private
 
       def chapter
         @chapter ||= Chapter.find(params[:chapter_id])

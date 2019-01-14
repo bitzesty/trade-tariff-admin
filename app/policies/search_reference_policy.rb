@@ -3,4 +3,3 @@ class SearchReferencePolicy < Struct.new(:user, :search_reference)
     user.gds_editor? || user.hmrc_editor?
   end
 end
-

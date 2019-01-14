@@ -27,7 +27,7 @@ class Commodity
     leaf
   end
 
-  def request_path(opts = {})
+  def request_path(_opts = {})
     self.class.build_request_path("/commodities/#{to_param}", attributes.dup)
   end
 end

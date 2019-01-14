@@ -5,15 +5,13 @@ class RollbacksController < ApplicationController
 
   def new
     @rollback = Rollback.new
-    if params[:rollback].present?
-      @rollback.attributes = rollback_params
-    end
+    @rollback.attributes = rollback_params if params[:rollback].present?
   end
 
   def create
     @rollback = Rollback.new(rollback_params)
     @rollback.user = current_user
-    
+
     if @rollback.save
       redirect_to rollbacks_path, notice: "Rollback was scheduled"
     else
@@ -22,7 +20,7 @@ class RollbacksController < ApplicationController
     end
   end
 
-  private
+private
 
   def rollback_params
     params.require(:rollback).permit(:date, :keep, :reason).to_h

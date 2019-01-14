@@ -1,7 +1,7 @@
 module Synonyms
   module Chapters
     class SearchReferencesController < Synonyms::SearchReferencesController
-      private
+    private
 
       def search_reference_parent
         @chapter ||= Chapter.find(params[:chapter_id])

@@ -47,6 +47,10 @@ group :development, :test do
   gem "brakeman", "~> 3.3", ">= 3.3.0", require: false
 end
 
+group :development do
+  gem "govuk-lint"
+end
+
 group :test do
   gem "ci_reporter"
   gem "ci_reporter_rspec"
