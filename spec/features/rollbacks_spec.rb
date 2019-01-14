@@ -34,7 +34,7 @@ describe "Rollbacks management" do
     end
   end
 
-  private
+private
 
   def rollback_created(rollback)
     ensure_on rollbacks_path

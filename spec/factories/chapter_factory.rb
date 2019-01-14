@@ -2,7 +2,7 @@ FactoryGirl.define do
   sequence(:chapter_description) { |n| "description #{n}" }
 
   factory :chapter do
-    goods_nomenclature_item_id { 10.times.map { Random.rand(9) + 1 }.join }
+    goods_nomenclature_item_id { 10.times.map { Random.rand(1..9) }.join }
     description { generate(:chapter_description) }
 
     trait :with_note do

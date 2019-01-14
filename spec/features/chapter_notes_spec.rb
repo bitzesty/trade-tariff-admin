@@ -143,7 +143,7 @@ describe "Chapter Note management" do
     end
   end
 
-  private
+private
 
   def create_note_for(chapter, fields_and_values = {})
     ensure_on new_notes_chapter_chapter_note_path(chapter)

@@ -122,7 +122,7 @@ describe "Commodity Search Reference management" do
     end
   end
 
-  private
+private
 
   def create_search_reference_for(commodity, fields_and_values = {})
     ensure_on new_synonyms_commodity_search_reference_path(commodity)

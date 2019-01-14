@@ -101,7 +101,7 @@ describe "Section Note management" do
     end
   end
 
-  private
+private
 
   def create_note_for(section, fields_and_values = {})
     ensure_on new_notes_section_section_note_path(section)

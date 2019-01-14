@@ -27,3 +27,4 @@ exclude_paths:
 - LICENSE.md
 - README.md
 - jenkins.sh
+- config.ru

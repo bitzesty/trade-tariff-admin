@@ -20,8 +20,7 @@ class SectionNote
     self.class.build_request_path("/sections/:section_id/section_note", attributes.dup)
   end
 
-  def section_title
-  end
+  def section_title; end
 
   def preview
     Govspeak::Document.new(content).to_sanitized_html.html_safe
