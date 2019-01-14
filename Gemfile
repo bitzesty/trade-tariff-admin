@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-ruby '~> 2.5.0'
+ruby '~> 2.5.3'
 
-gem "rails", "5.1.5"
+gem "rails", "5.1.6.1"
 gem "sass-rails", "5.0.6"
 
 gem "coffee-rails", "~> 4.2.2"
@@ -10,7 +10,7 @@ gem "uglifier", "~> 2.7"
 
 gem 'rake', '~> 12.0.0'
 
-gem "pg"
+gem "pg", "~> 1.1.3"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
 gem "redis-rails"
