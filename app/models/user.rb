@@ -1,12 +1,12 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include GDS::SSO::User
 
   serialize :permissions
 
   module Permissions
-    SIGNIN = 'signin'
-    HMRC_EDITOR = 'HMRC Editor'
-    GDS_EDITOR = 'GDS Editor'
+    SIGNIN = 'signin'.freeze
+    HMRC_EDITOR = 'HMRC Editor'.freeze
+    GDS_EDITOR = 'GDS Editor'.freeze
   end
 
   def gds_editor?

@@ -122,7 +122,7 @@ describe "Heading Search Reference management" do
     end
   end
 
-  private
+private
 
   def create_search_reference_for(heading, fields_and_values = {})
     ensure_on new_synonyms_heading_search_reference_path(heading)

@@ -34,7 +34,7 @@ describe "Measure Type management" do
     end
   end
 
-  private
+private
 
   def update_measure_type_for(measure_type, fields_and_values = {})
     ensure_on edit_measure_type_path(measure_type)

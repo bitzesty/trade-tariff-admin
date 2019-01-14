@@ -1,15 +1,13 @@
 class MeasureTypesController < ApplicationController
   respond_to :json
 
-  def show
-  end
+  def show; end
 
   def index
     @measure_types = MeasureType.all
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @measure_type = MeasureType.find(params[:id])

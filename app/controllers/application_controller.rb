@@ -7,10 +7,12 @@ class ApplicationController < ActionController::Base
   prepend_before_action :authenticate_user!
   before_action :require_signin_permission!
 
-  rescue_from Pundit::NotAuthorizedError do |e|
-    # Layout and view comes from GDS::SSO::ControllerMethods
-    render "authorisations/unauthorised", layout: "unauthorised", status: :forbidden, locals: { message: e.message }
-  end unless Rails.env.test?
+  unless Rails.env.test?
+    rescue_from Pundit::NotAuthorizedError do |e|
+      # Layout and view comes from GDS::SSO::ControllerMethods
+      render "authorisations/unauthorised", layout: "unauthorised", status: :forbidden, locals: { message: e.message }
+    end
+  end
 
   def current_page
     Integer(params[:page] || 1)

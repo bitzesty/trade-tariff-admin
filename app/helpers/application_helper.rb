@@ -4,7 +4,7 @@ module ApplicationHelper
 
     if (activator.is_a?(String) && request.path.start_with?(activator)) ||
         (activator.is_a?(Regexp) && request.path =~ activator)
-      opts.merge!(class: 'active')
+      opts[:class] = 'active'
     end
 
     content_tag :li, opts do

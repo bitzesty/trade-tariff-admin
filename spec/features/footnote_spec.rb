@@ -34,7 +34,7 @@ describe "Footnote management" do
     end
   end
 
-  private
+private
 
   def update_footnote_for(footnote, fields_and_values = {})
     ensure_on edit_footnote_path(footnote)

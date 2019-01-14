@@ -130,7 +130,7 @@ describe "Section Search Reference management" do
     end
   end
 
-  private
+private
 
   def create_search_reference_for(section, fields_and_values = {})
     ensure_on new_synonyms_section_search_reference_path(section)
