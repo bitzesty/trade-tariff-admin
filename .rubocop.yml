@@ -5,6 +5,12 @@ require: rubocop-rspec
 Metrics/LineLength:
   Max: 180
 
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 ############
 ## General https://raw.githubusercontent.com/alphagov/styleguides/master/ruby-styleguide/rubocop/gds-ruby-styleguide.yml
 ############
