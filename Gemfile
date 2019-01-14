@@ -48,7 +48,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "govuk-lint"
+  gem "govuk-lint", "~> 3.10.0"
 end
 
 group :test do
