@@ -1,15 +1,13 @@
 class FootnotesController < ApplicationController
   respond_to :json
 
-  def show
-  end
+  def show; end
 
   def index
     @footnotes = Footnote.all
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @footnote = Footnote.find(params[:id])
@@ -24,7 +22,7 @@ class FootnotesController < ApplicationController
     end
   end
 
-  private
+private
 
   def footnote
     @footnote ||= Footnote.find(params[:id])

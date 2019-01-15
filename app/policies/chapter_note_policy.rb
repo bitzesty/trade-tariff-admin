@@ -3,4 +3,3 @@ class ChapterNotePolicy < Struct.new(:user, :chapter_note)
     user.gds_editor? || user.hmrc_editor?
   end
 end
-

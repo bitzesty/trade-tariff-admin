@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Measure Type management" do
-  let!(:user)   { create :user, :gds_editor }
+  let!(:user) { create :user, :gds_editor }
 
   describe "Measure Type editing" do
     let(:measure_type)     { build :measure_type }
@@ -9,13 +9,13 @@ describe "Measure Type management" do
 
     specify do
       stub_api_for(MeasureType) { |stub|
-        stub.get("/measure_types") { |env|
+        stub.get("/measure_types") { |_env|
           api_success_response([measure_type.attributes])
         }
-        stub.get("/measure_types/#{measure_type.id}") { |env|
+        stub.get("/measure_types/#{measure_type.id}") { |_env|
           api_success_response(measure_type.attributes)
         }
-        stub.put("/measure_types/#{measure_type.id}") { |env|
+        stub.put("/measure_types/#{measure_type.id}") { |_env|
           api_no_content_response
         }
       }
@@ -25,7 +25,7 @@ describe "Measure Type management" do
       update_measure_type_for measure_type, description: new_description
 
       stub_api_for(MeasureType) { |stub|
-        stub.get("/measure_types/#{measure_type.id}") { |env|
+        stub.get("/measure_types/#{measure_type.id}") { |_env|
           api_success_response(measure_type.attributes.merge(description: new_description))
         }
       }
@@ -34,7 +34,7 @@ describe "Measure Type management" do
     end
   end
 
-  private
+private
 
   def update_measure_type_for(measure_type, fields_and_values = {})
     ensure_on edit_measure_type_path(measure_type)

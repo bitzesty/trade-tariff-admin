@@ -5,8 +5,8 @@ module Synonyms
     def index
       @search_references = search_reference_parent.search_references.where(page: page, per_page: per_page)
       @search_references = Kaminari.paginate_array(@search_references, total_count: @search_references.metadata[:pagination][:total])
-                                   .page(page)
-                                   .per(per_page)
+        .page(page)
+        .per(per_page)
     end
 
     def new
@@ -47,7 +47,7 @@ module Synonyms
       redirect_to [scope, search_reference_parent, :search_references], notice: 'Search synonym was successfully removed.'
     end
 
-    private
+  private
 
     def search_reference
       @search_reference ||= search_reference_parent.search_references.find(params[:id])

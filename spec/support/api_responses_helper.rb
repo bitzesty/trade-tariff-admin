@@ -10,7 +10,7 @@ module ApiResponsesHelper
   end
 
   def api_success_response(response = {}, headers = {})
-     [200, headers, response.to_json]
+    [200, headers, response.to_json]
   end
 
   def api_created_response(body = {}, headers = {})
