@@ -50,7 +50,7 @@ class Chapter
     goods_nomenclature_item_id
   end
 
-  def request_path(opts = {})
+  def request_path(_opts = {})
     self.class.build_request_path("/chapters/#{to_param}", attributes.dup)
   end
 end

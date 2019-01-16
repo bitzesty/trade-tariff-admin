@@ -28,7 +28,7 @@ class Heading
     "Heading (#{heading_id})"
   end
 
-  def request_path(opts = {})
+  def request_path(_opts = {})
     self.class.build_request_path("/headings/#{to_param}", attributes.dup)
   end
 end

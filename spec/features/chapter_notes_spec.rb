@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe "Chapter Note management" do
-  let!(:user)   { create :user, :gds_editor }
+  let!(:user) { create :user, :gds_editor }
 
   before {
     # chapter note specs do not concern sections
     stub_api_for(Section) { |stub|
-      stub.get("/sections") { |env|
+      stub.get("/sections") { |_env|
         api_success_response([])
       }
     }
@@ -19,20 +19,20 @@ describe "Chapter Note management" do
 
     specify do
       stub_api_for(Chapter) { |stub|
-        stub.get("/sections/#{section.id}/chapters") { |env|
+        stub.get("/sections/#{section.id}/chapters") { |_env|
           api_success_response([chapter.attributes])
         }
-        stub.get("/chapters/#{chapter.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}") { |_env|
           api_success_response(chapter.attributes)
         }
       }
 
       stub_api_for(ChapterNote) { |stub|
-        stub.post("/chapters/#{chapter.to_param}/chapter_note") { |env| api_created_response }
+        stub.post("/chapters/#{chapter.to_param}/chapter_note") { |_env| api_created_response }
       }
 
       stub_api_for(Section) { |stub|
-        stub.get("/sections/#{section.id}") { |env|
+        stub.get("/sections/#{section.id}") { |_env|
           api_success_response(section.attributes)
         }
       }
@@ -40,10 +40,10 @@ describe "Chapter Note management" do
       refute note_created_for(chapter)
 
       stub_api_for(Chapter) { |stub|
-        stub.get("/sections/#{section.id}/chapters") { |env|
+        stub.get("/sections/#{section.id}/chapters") { |_env|
           api_success_response([chapter.attributes.merge(chapter_note_id: 1)])
         }
-        stub.get("/chapters/#{chapter.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}") { |_env|
           api_success_response(chapter.attributes)
         }
       }
@@ -62,26 +62,26 @@ describe "Chapter Note management" do
 
     specify do
       stub_api_for(Chapter) { |stub|
-        stub.get("/sections/#{section.id}/chapters") { |env|
+        stub.get("/sections/#{section.id}/chapters") { |_env|
           api_success_response([chapter.attributes])
         }
-        stub.get("/chapters/#{chapter.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}") { |_env|
           api_success_response(chapter.attributes)
         }
       }
 
       stub_api_for(Section) { |stub|
-        stub.get("/sections/#{section.id}") { |env|
+        stub.get("/sections/#{section.id}") { |_env|
           api_success_response(section.attributes)
         }
       }
 
       stub_api_for(ChapterNote) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/chapter_note") { |env|
+        stub.get("/chapters/#{chapter.to_param}/chapter_note") { |_env|
           api_success_response(chapter_note.attributes)
         }
 
-        stub.put("/chapters/#{chapter.to_param}/chapter_note") { |env|
+        stub.put("/chapters/#{chapter.to_param}/chapter_note") { |_env|
           api_no_content_response
         }
       }
@@ -91,7 +91,7 @@ describe "Chapter Note management" do
       update_note_for chapter, content: new_content
 
       stub_api_for(ChapterNote) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/chapter_note") { |env|
+        stub.get("/chapters/#{chapter.to_param}/chapter_note") { |_env|
           api_success_response(chapter_note.attributes.merge(content: new_content))
         }
       }
@@ -107,32 +107,32 @@ describe "Chapter Note management" do
 
     specify do
       stub_api_for(Section) { |stub|
-        stub.get("/sections/#{section.id}") { |env|
+        stub.get("/sections/#{section.id}") { |_env|
           api_success_response(section.attributes)
         }
       }
 
       stub_api_for(Chapter) { |stub|
-        stub.get("/sections/#{section.id}/chapters") { |env|
+        stub.get("/sections/#{section.id}/chapters") { |_env|
           api_success_response([chapter.attributes])
         }
-        stub.get("/chapters/#{chapter.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}") { |_env|
           api_success_response(chapter.attributes)
         }
       }
 
       stub_api_for(ChapterNote) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/chapter_note") { |env| api_success_response(chapter_note.attributes) }
-        stub.delete("/chapters/#{chapter.to_param}/chapter_note") { |env| api_no_content_response }
+        stub.get("/chapters/#{chapter.to_param}/chapter_note") { |_env| api_success_response(chapter_note.attributes) }
+        stub.delete("/chapters/#{chapter.to_param}/chapter_note") { |_env| api_no_content_response }
       }
 
       verify note_created_for(chapter)
 
       stub_api_for(Chapter) { |stub|
-        stub.get("/sections/#{section.id}/chapters") { |env|
+        stub.get("/sections/#{section.id}/chapters") { |_env|
           api_success_response([chapter.attributes.except(:chapter_note_id)])
         }
-        stub.get("/chapters/#{chapter.to_param}") { |env|
+        stub.get("/chapters/#{chapter.to_param}") { |_env|
           api_success_response(chapter.attributes.except(:chapter_note_id))
         }
       }
@@ -143,7 +143,7 @@ describe "Chapter Note management" do
     end
   end
 
-  private
+private
 
   def create_note_for(chapter, fields_and_values = {})
     ensure_on new_notes_chapter_chapter_note_path(chapter)

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Footnote management" do
-  let!(:user)   { create :user, :gds_editor }
+  let!(:user) { create :user, :gds_editor }
 
   describe "Footnote editing" do
     let(:footnote)         { build :footnote }
@@ -9,13 +9,13 @@ describe "Footnote management" do
 
     specify do
       stub_api_for(Footnote) { |stub|
-        stub.get("/footnotes") { |env|
+        stub.get("/footnotes") { |_env|
           api_success_response([footnote.attributes])
         }
-        stub.get("/footnotes/#{footnote.to_param}") { |env|
+        stub.get("/footnotes/#{footnote.to_param}") { |_env|
           api_success_response(footnote.attributes)
         }
-        stub.put("/footnotes/#{footnote.to_param}") { |env|
+        stub.put("/footnotes/#{footnote.to_param}") { |_env|
           api_no_content_response
         }
       }
@@ -25,7 +25,7 @@ describe "Footnote management" do
       update_footnote_for footnote, description: new_description
 
       stub_api_for(Footnote) { |stub|
-        stub.get("/footnotes/#{footnote.to_param}") { |env|
+        stub.get("/footnotes/#{footnote.to_param}") { |_env|
           api_success_response(footnote.attributes.merge(description: new_description))
         }
       }
@@ -34,7 +34,7 @@ describe "Footnote management" do
     end
   end
 
-  private
+private
 
   def update_footnote_for(footnote, fields_and_values = {})
     ensure_on edit_footnote_path(footnote)

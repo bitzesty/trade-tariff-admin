@@ -11,7 +11,7 @@ module Her
 
       def on_complete(env)
         if env[:response_headers].key?('x-meta')
-          env[:body].deep_merge!({metadata: meta_data(env[:response_headers]['x-meta'])})
+          env[:body].deep_merge!(metadata: meta_data(env[:response_headers]['x-meta']))
         else
           env[:body]
         end

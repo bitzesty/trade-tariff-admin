@@ -41,7 +41,7 @@ module Notes
         redirect_to index_url, notice: 'Section note was successfully removed.'
       end
 
-      private
+    private
 
       def section
         @section ||= Section.find(params[:section_id])

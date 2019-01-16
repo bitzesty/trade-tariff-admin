@@ -5,7 +5,7 @@ module Notes
         @chapters = section.chapters
       end
 
-      private
+    private
 
       def section
         @section ||= Section.find(params[:section_id])

@@ -19,7 +19,7 @@ module FeaturesHelper
     "##{dom_id_for(model)}"
   end
 
-  def pagination_params(options={})
+  def pagination_params(options = {})
     {
       page: 1,
       per_page: 20,
