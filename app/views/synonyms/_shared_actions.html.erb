@@ -1,0 +1,11 @@
+<div class="float-right">
+  <%= link_to synonyms_import_path, class: 'btn btn-small btn-default' do %>
+    <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+    Import synonyms CSV
+  <% end %>
+
+  <%= link_to synonyms_export_path, class: 'btn btn-small btn-default', method: :post do %>
+    <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+    Export all synonyms as CSV
+  <% end %>
+</div>

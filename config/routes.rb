@@ -20,30 +20,41 @@ Rails.application.routes.draw do
   end
 
   namespace :synonyms, module: :synonyms do
+    resource :import, only: [:show, :create]
+    resource :export, only: [:create]
+
     resources :sections, only: [:index, :show] do
       scope module: 'sections' do
-        resources :search_references
         resources :chapters, only: [:index]
+        resources :search_references do
+          post :export, on: :collection
+        end
       end
     end
 
     resources :chapters, only: [:index, :show] do
       scope module: 'chapters' do
-        resources :search_references
         resources :headings, only: [:index]
+        resources :search_references do
+          post :export, on: :collection
+        end
       end
     end
 
     resources :headings do
       scope module: 'headings' do
-        resources :search_references
         resources :commodities, only: [:index]
+        resources :search_references do
+          post :export, on: :collection
+        end
       end
     end
 
     resources :commodities do
       scope module: 'commodities' do
-        resources :search_references
+        resources :search_references do
+          post :export, on: :collection
+        end
       end
     end
   end

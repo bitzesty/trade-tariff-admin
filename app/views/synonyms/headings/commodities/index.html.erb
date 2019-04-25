@@ -1,3 +1,5 @@
+<%= render "synonyms/shared_actions" %>
+
 <%= link_to 'Headings', synonyms_chapter_headings_path(chapter_id: heading.chapter_id) %>
 
 <h3>Commodities search synonyms of heading <%= heading.to_param %>:<%= heading.description.titleize %></h3>
@@ -17,7 +19,13 @@
         <td><%= commodity.description.titleize %></td>
         <td>
           <% if commodity.leaf %>
+            <div>
+              <%= pluralize commodity.search_references_count, "synonym" %>
+            </div>
             <%= link_to 'Edit', synonyms_commodity_search_references_path(commodity), class: 'btn btn-small btn-warning' %>
+            <% if commodity.search_references_count > 0 %>
+              <%= link_to 'Export', export_synonyms_commodity_search_references_path(commodity), class: 'btn btn-small btn-info', method: :post %>
+            <% end %>
           <% else %>
             <em>Intermediate code</em>
           <% end %>
