@@ -47,6 +47,15 @@ module Synonyms
       redirect_to [scope, search_reference_parent, :search_references], notice: 'Search synonym was successfully removed.'
     end
 
+    def export
+      export_service = SearchReference::ExportService.new(
+        search_reference_parent.search_references
+      )
+      filename = "#{search_reference_parent.reference_title}-synonyms-#{Time.now.to_i}.csv"
+      send_data export_service.to_csv,
+                filename: filename
+    end
+
   private
 
     def search_reference
