@@ -20,7 +20,7 @@ class RollbacksController < ApplicationController
     end
   end
 
-private
+  private
 
   def rollback_params
     params.require(:rollback).permit(:date, :keep, :reason).to_h

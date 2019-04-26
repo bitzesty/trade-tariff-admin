@@ -4,7 +4,8 @@ module ApiResponsesHelper
 
     api.setup url: Rails.application.config.api_host do |c|
       c.use Her::Middleware::HeaderMetadataParse # lib/her/middleware/header_metadata_parse.rb
-      c.use Her::Middleware::FirstLevelParseJSON
+      c.use Her::Middleware::AcceptApiV2 # lib/her/middleware/accept_api_v2.rb
+      c.use Her::Middleware::JsonApiParser
       c.adapter(:test) { |s| yield(s) }
     end
   end
