@@ -18,11 +18,11 @@ module Notes
       end
 
       def edit
-        @section_note = section.section_note.fetch
+        @section_note = section.section_note.reload
       end
 
       def update
-        @section_note = section.section_note.fetch
+        @section_note = section.section_note.reload
         @section_note.assign_attributes(section_note_update_params.to_h)
 
         if @section_note.valid?
@@ -35,13 +35,13 @@ module Notes
       end
 
       def destroy
-        @section_note = section.section_note.fetch
+        @section_note = section.section_note.reload
         @section_note.destroy
 
         redirect_to index_url, notice: 'Section note was successfully removed.'
       end
 
-    private
+      private
 
       def section
         @section ||= Section.find(params[:section_id])

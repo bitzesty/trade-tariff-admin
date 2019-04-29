@@ -18,11 +18,11 @@ module Notes
       end
 
       def edit
-        @chapter_note = chapter.chapter_note.fetch
+        @chapter_note = chapter.chapter_note.reload
       end
 
       def update
-        @chapter_note = chapter.chapter_note.fetch
+        @chapter_note = chapter.chapter_note.reload
         @chapter_note.assign_attributes(chapter_note_update_params.to_h)
 
         if @chapter_note.valid?
@@ -35,7 +35,7 @@ module Notes
       end
 
       def destroy
-        @chapter_note = chapter.chapter_note.fetch
+        @chapter_note = chapter.chapter_note.reload
         @chapter_note.destroy
 
         redirect_to notes_section_chapters_url(section_id: chapter.section[:id]), notice: 'Chapter note was successfully removed.'

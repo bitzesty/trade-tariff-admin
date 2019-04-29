@@ -9,18 +9,20 @@ describe "Chapter Search Reference management" do
     let(:title) { 'new title' }
     let(:chapter_search_reference) { build :chapter_search_reference, title: title, referenced: chapter }
     let(:section)      { build :section }
-    let(:chapter)      { build :chapter, :with_section, title: 'new chapter', section: section.attributes }
+    let(:chapter)      { build :chapter, :with_section, title: 'new chapter', section: { id: section.id, attributes: section.attributes } }
 
     specify do
+      puts chapter.to_json
+      puts chapter.attributes
       stub_api_for(Chapter) { |stub|
         stub.get("/chapters/#{chapter.to_param}") { |_env|
-          api_success_response(chapter.attributes)
+          jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
         stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
-          api_success_response([], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -32,7 +34,7 @@ describe "Chapter Search Reference management" do
         }
 
         stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
-          api_success_response([chapter_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
       create_search_reference_for chapter, title: title
@@ -42,19 +44,19 @@ describe "Chapter Search Reference management" do
   end
 
   describe "Search Reference deletion" do
-    let(:chapter)                  { build :chapter, :with_section, section: section.attributes }
+    let(:chapter)                  { build :chapter, :with_section, section: { type: 'section', attributes: section.attributes } }
     let(:chapter_search_reference) { build :chapter_search_reference, referenced: chapter.attributes }
 
     specify do
       stub_api_for(Chapter) { |stub|
         stub.get("/chapters/#{chapter.to_param}") { |_env|
-          api_success_response(chapter.attributes)
+          jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
         stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
-          api_success_response([chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference',[chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -62,13 +64,13 @@ describe "Chapter Search Reference management" do
 
       stub_api_for(Chapter::SearchReference) { |stub|
         stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
-          api_success_response(chapter_search_reference)
+          jsonapi_success_response('search_reference', chapter_search_reference.attributes)
         }
         stub.delete("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_no_content_response
         }
         stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
-          api_success_response([], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -80,20 +82,20 @@ describe "Chapter Search Reference management" do
 
   describe "Search reference editing" do
     let(:section)                  { build :section }
-    let(:chapter)                  { build :chapter, :with_section, section: section.attributes }
+    let(:chapter)                  { build :chapter, :with_section, section: { type: 'section', attributes: section.attributes } }
     let(:chapter_search_reference) { build :chapter_search_reference, referenced: chapter.attributes }
     let(:new_title) { "new title" }
 
     specify do
       stub_api_for(Chapter) { |stub|
         stub.get("/chapters/#{chapter.to_param}") { |_env|
-          api_success_response(chapter.attributes)
+          jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
         stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
-          api_success_response([chapter_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -101,13 +103,13 @@ describe "Chapter Search Reference management" do
 
       stub_api_for(Chapter::SearchReference) { |stub|
         stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
-          api_success_response(chapter_search_reference)
+          jsonapi_success_response('search_reference', chapter_search_reference.attributes)
         }
-        stub.put("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
+        stub.patch("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_no_content_response
         }
         stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
-          api_success_response([chapter_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -115,7 +117,7 @@ describe "Chapter Search Reference management" do
 
       stub_api_for(Chapter::SearchReference) { |stub|
         stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
-          api_success_response(chapter_search_reference.attributes.merge(title: new_title))
+          jsonapi_success_response('search_reference', chapter_search_reference.attributes.merge(title: new_title))
         }
       }
 
@@ -123,7 +125,7 @@ describe "Chapter Search Reference management" do
     end
   end
 
-private
+  private
 
   def create_search_reference_for(chapter, fields_and_values = {})
     ensure_on new_synonyms_chapter_search_reference_path(chapter)

@@ -7,7 +7,7 @@ describe "Chapter Note management" do
     # chapter note specs do not concern sections
     stub_api_for(Section) { |stub|
       stub.get("/sections") { |_env|
-        api_success_response([])
+        jsonapi_success_response('section', [])
       }
     }
   }
@@ -15,15 +15,15 @@ describe "Chapter Note management" do
   describe "Chapter Note creation" do
     let(:section)      { build :section }
     let(:chapter_note) { build :chapter_note }
-    let(:chapter)      { build :chapter, :with_section, title: 'new chapter', section: section.attributes }
+    let(:chapter)      { build :chapter, :with_section, title: 'new chapter', section: { type: 'section', id: section.id, attributes: section.attributes } }
 
     specify do
       stub_api_for(Chapter) { |stub|
         stub.get("/sections/#{section.id}/chapters") { |_env|
-          api_success_response([chapter.attributes])
+          jsonapi_success_response('chapter', [chapter.attributes])
         }
         stub.get("/chapters/#{chapter.to_param}") { |_env|
-          api_success_response(chapter.attributes)
+          jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
@@ -33,7 +33,7 @@ describe "Chapter Note management" do
 
       stub_api_for(Section) { |stub|
         stub.get("/sections/#{section.id}") { |_env|
-          api_success_response(section.attributes)
+          jsonapi_success_response('section', section.attributes)
         }
       }
 
@@ -41,10 +41,10 @@ describe "Chapter Note management" do
 
       stub_api_for(Chapter) { |stub|
         stub.get("/sections/#{section.id}/chapters") { |_env|
-          api_success_response([chapter.attributes.merge(chapter_note_id: 1)])
+          jsonapi_success_response('chapter', [chapter.attributes.merge(chapter_note_id: 1)])
         }
         stub.get("/chapters/#{chapter.to_param}") { |_env|
-          api_success_response(chapter.attributes)
+          jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
@@ -56,32 +56,32 @@ describe "Chapter Note management" do
 
   describe "chapter Note editing" do
     let(:section)      { build :section }
-    let(:chapter)      { build :chapter, :with_note, :with_section, section: section.attributes }
+    let(:chapter)      { build :chapter, :with_note, :with_section, section: { type: 'section', id: section.id,  attributes: section.attributes } }
     let(:chapter_note) { build :chapter_note, :persisted, chapter_id: chapter.to_param }
     let(:new_content)  { "new content" }
 
     specify do
       stub_api_for(Chapter) { |stub|
         stub.get("/sections/#{section.id}/chapters") { |_env|
-          api_success_response([chapter.attributes])
+          jsonapi_success_response('chapter', [chapter.attributes])
         }
         stub.get("/chapters/#{chapter.to_param}") { |_env|
-          api_success_response(chapter.attributes)
+          jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
       stub_api_for(Section) { |stub|
         stub.get("/sections/#{section.id}") { |_env|
-          api_success_response(section.attributes)
+          jsonapi_success_response('section', section.attributes)
         }
       }
 
       stub_api_for(ChapterNote) { |stub|
         stub.get("/chapters/#{chapter.to_param}/chapter_note") { |_env|
-          api_success_response(chapter_note.attributes)
+          jsonapi_success_response('chapter_note', chapter_note.attributes)
         }
 
-        stub.put("/chapters/#{chapter.to_param}/chapter_note") { |_env|
+        stub.patch("/chapters/#{chapter.to_param}/chapter_note") { |_env|
           api_no_content_response
         }
       }
@@ -92,7 +92,7 @@ describe "Chapter Note management" do
 
       stub_api_for(ChapterNote) { |stub|
         stub.get("/chapters/#{chapter.to_param}/chapter_note") { |_env|
-          api_success_response(chapter_note.attributes.merge(content: new_content))
+          jsonapi_success_response('chapter_note', chapter_note.attributes.merge(content: new_content))
         }
       }
 
@@ -102,27 +102,27 @@ describe "Chapter Note management" do
 
   describe "Chapter Note deletion" do
     let(:section)      { build :section }
-    let(:chapter)      { build :chapter, :with_note, :with_section, section: section.attributes }
+    let(:chapter)      { build :chapter, :with_note, :with_section, section: { type: 'section', id: section.id, attributes: section.attributes } }
     let(:chapter_note) { build :chapter_note, :persisted, chapter_id: chapter.to_param }
 
     specify do
       stub_api_for(Section) { |stub|
         stub.get("/sections/#{section.id}") { |_env|
-          api_success_response(section.attributes)
+          jsonapi_success_response('section', section.attributes)
         }
       }
 
       stub_api_for(Chapter) { |stub|
         stub.get("/sections/#{section.id}/chapters") { |_env|
-          api_success_response([chapter.attributes])
+          jsonapi_success_response('chapter', [chapter.attributes])
         }
         stub.get("/chapters/#{chapter.to_param}") { |_env|
-          api_success_response(chapter.attributes)
+          jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
       stub_api_for(ChapterNote) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/chapter_note") { |_env| api_success_response(chapter_note.attributes) }
+        stub.get("/chapters/#{chapter.to_param}/chapter_note") { |_env| jsonapi_success_response('chapter_note', chapter_note.attributes) }
         stub.delete("/chapters/#{chapter.to_param}/chapter_note") { |_env| api_no_content_response }
       }
 
@@ -130,10 +130,10 @@ describe "Chapter Note management" do
 
       stub_api_for(Chapter) { |stub|
         stub.get("/sections/#{section.id}/chapters") { |_env|
-          api_success_response([chapter.attributes.except(:chapter_note_id)])
+          jsonapi_success_response('chapter', [chapter.attributes.except(:chapter_note_id)])
         }
         stub.get("/chapters/#{chapter.to_param}") { |_env|
-          api_success_response(chapter.attributes.except(:chapter_note_id))
+          jsonapi_success_response('chapter', chapter.attributes.except(:chapter_note_id))
         }
       }
 

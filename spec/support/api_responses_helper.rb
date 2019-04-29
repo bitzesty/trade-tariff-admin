@@ -14,6 +14,17 @@ module ApiResponsesHelper
     [200, headers, response.to_json]
   end
 
+  def jsonapi_success_response(type, response = {}, headers = {})
+    response = if response.is_a? Hash
+      { data: { type: type, attributes: response } }
+    elsif response.is_a? Array
+      { data: response.map{ |r| { type: type, attributes: r } } }
+    else
+      response
+    end
+    [200, headers, response.to_json]
+  end
+
   def api_created_response(body = {}, headers = {})
     api_response(201, headers, body)
   end

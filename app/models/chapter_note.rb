@@ -17,7 +17,7 @@ class ChapterNote
 
   # NOTE singular resource
   def request_path
-    self.class.build_request_path("/chapters/:chapter_id/chapter_note", attributes.dup.merge('chapter_id' => chapter.fetch.to_param))
+    self.class.build_request_path("/chapters/:chapter_id/chapter_note", attributes.dup.merge('chapter_id' => chapter.reload.to_param))
   end
 
   def preview
