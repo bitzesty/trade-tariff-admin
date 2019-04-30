@@ -12,8 +12,6 @@ describe "Chapter Search Reference management" do
     let(:chapter)      { build :chapter, :with_section, title: 'new chapter', section: { id: section.id, attributes: section.attributes } }
 
     specify do
-      puts chapter.to_json
-      puts chapter.attributes
       stub_api_for(Chapter) { |stub|
         stub.get("/chapters/#{chapter.to_param}") { |_env|
           jsonapi_success_response('chapter', chapter.attributes)
