@@ -21,16 +21,17 @@ gem "kaminari", "~> 1.0"
 gem "simple_form", "~> 3.5"
 gem "govspeak", "~> 5.6.0"
 
-gem 'govuk_admin_template', '5.0.0'
+gem 'govuk_admin_template', '6.7.0'
 
 gem "gds-sso", "~> 13.2"
-gem "plek", "~> 1.11"
+gem "plek", "~> 2.1.0"
 gem "addressable", "~> 2.3"
 
 gem "puma", "~> 3.4"
 
-gem "jquery-rails", "~> 4.1.0"
+gem "jquery-rails", "~> 4.3.1"
 gem "bootstrap-datepicker-rails", "~> 1.4"
+gem "bootstrap-sass", ">= 3.4.1"
 gem "responders", "~> 2.4"
 
 gem "logstash-event"
