@@ -9,7 +9,7 @@ describe "Rollbacks management" do
     specify do
       stub_api_for(Rollback) { |stub|
         stub.get("/rollbacks") { |_env|
-          api_success_response(rollbacks: [], pagination: pagination_params)
+          api_success_response(data: [], meta: { pagination: pagination_params })
         }
       }
 
@@ -22,8 +22,8 @@ describe "Rollbacks management" do
 
         stub.get("/rollbacks") { |_env|
           api_success_response(
-            rollbacks: [rollback.attributes],
-            pagination: pagination_params(total_count: 1)
+            data: [{type: 'rollback', attributes: rollback.attributes}],
+            meta: { pagination: pagination_params(total_count: 1) }
           )
         }
       }
@@ -34,7 +34,7 @@ describe "Rollbacks management" do
     end
   end
 
-private
+  private
 
   def rollback_created(rollback)
     ensure_on rollbacks_path

@@ -11,7 +11,9 @@ gem "uglifier", "~> 2.7"
 gem 'rake', '~> 12.0.0'
 
 gem "pg", "~> 1.1.3"
-gem "her", "0.6.8"
+gem "her", "1.1.0"
+gem "faraday_middleware"
+gem "oj"
 gem "pundit", "0.3.0"
 gem "redis-rails"
 

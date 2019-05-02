@@ -4,12 +4,24 @@ module ApiResponsesHelper
 
     api.setup url: Rails.application.config.api_host do |c|
       c.use Her::Middleware::HeaderMetadataParse # lib/her/middleware/header_metadata_parse.rb
-      c.use Her::Middleware::FirstLevelParseJSON
+      c.use Her::Middleware::AcceptApiV2 # lib/her/middleware/accept_api_v2.rb
+      c.use Her::Middleware::JsonApiParser
       c.adapter(:test) { |s| yield(s) }
     end
   end
 
   def api_success_response(response = {}, headers = {})
+    [200, headers, response.to_json]
+  end
+
+  def jsonapi_success_response(type, response = {}, headers = {})
+    response = if response.is_a? Hash
+      { data: { type: type, attributes: response } }
+    elsif response.is_a? Array
+      { data: response.map{ |r| { type: type, attributes: r } } }
+    else
+      response
+    end
     [200, headers, response.to_json]
   end
 
