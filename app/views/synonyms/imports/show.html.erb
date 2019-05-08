@@ -1,0 +1,36 @@
+<h2>Import search synonyms</h2>
+
+<%= simple_form_for :synonyms_import, url: synonyms_import_path do |f| %>
+  <p>Sample CSV file:</p>
+
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>referenced_class</th>
+        <th>referenced_id</th>
+        <th>title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>Section</td>
+        <td>16</td>
+        <td>machine tools</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <p>Upload CSV with synonyms. Synonyms are overriden if ID is provided</p>
+
+  <div>
+    <%= f.input :file, as: :file %>
+  </div>
+
+  <div class='form-actions'>
+    <%= f.submit 'Import synonyms from CSV', class: 'btn btn-primary' %>
+  </div>
+<% end %>

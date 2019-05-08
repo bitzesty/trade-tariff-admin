@@ -1,7 +1,7 @@
 require 'chapter/search_reference'
 
 class Chapter
-  include Her::Model
+  include Her::JsonApi::Model
 
   attributes :chapter_note_id, :headings_from, :headings_to, :section_id
 

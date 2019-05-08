@@ -8,7 +8,7 @@ describe "Section Search Reference management" do
     # section note specs do not concern sections
     stub_api_for(Section) { |stub|
       stub.get("/sections") { |_env|
-        api_success_response([])
+        jsonapi_success_response('section', [])
       }
     }
   }
@@ -21,13 +21,13 @@ describe "Section Search Reference management" do
     specify do
       stub_api_for(Section) { |stub|
         stub.get("/sections/#{section.to_param}") { |_env|
-          api_success_response(section.attributes)
+          jsonapi_success_response('section', section.attributes)
         }
       }
 
       stub_api_for(Section::SearchReference) { |stub|
         stub.get("/sections/#{section.to_param}/search_references") { |_env|
-          api_success_response([], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -39,7 +39,7 @@ describe "Section Search Reference management" do
         }
 
         stub.get("/sections/#{section.to_param}/search_references") { |_env|
-          api_success_response([section_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [section_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -56,13 +56,13 @@ describe "Section Search Reference management" do
     specify do
       stub_api_for(Section) { |stub|
         stub.get("/sections/#{section.to_param}") { |_env|
-          api_success_response(section.attributes)
+          jsonapi_success_response('section', section.attributes)
         }
       }
 
       stub_api_for(Section::SearchReference) { |stub|
         stub.get("/sections/#{section.to_param}/search_references") { |_env|
-          api_success_response([section_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [section_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -70,13 +70,13 @@ describe "Section Search Reference management" do
 
       stub_api_for(Section::SearchReference) { |stub|
         stub.get("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
-          api_success_response(section_search_reference)
+          jsonapi_success_response('search_reference', section_search_reference.attributes)
         }
         stub.delete("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
           api_no_content_response
         }
         stub.get("/sections/#{section.to_param}/search_references") { |_env|
-          api_success_response([], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -94,13 +94,13 @@ describe "Section Search Reference management" do
     specify do
       stub_api_for(Section) { |stub|
         stub.get("/sections/#{section.to_param}") { |_env|
-          api_success_response(section.attributes)
+          jsonapi_success_response('section', section.attributes)
         }
       }
 
       stub_api_for(Section::SearchReference) { |stub|
         stub.get("/sections/#{section.to_param}/search_references") { |_env|
-          api_success_response([section_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_references', [section_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -108,13 +108,13 @@ describe "Section Search Reference management" do
 
       stub_api_for(Section::SearchReference) { |stub|
         stub.get("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
-          api_success_response(section_search_reference)
+          jsonapi_success_response('search_reference', section_search_reference.attributes)
         }
-        stub.put("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
+        stub.patch("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
           api_no_content_response
         }
         stub.get("/sections/#{section.to_param}/search_references") { |_env|
-          api_success_response([section_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [section_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -122,7 +122,7 @@ describe "Section Search Reference management" do
 
       stub_api_for(Section::SearchReference) { |stub|
         stub.get("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
-          api_success_response(section_search_reference.attributes.merge(title: new_title))
+          jsonapi_success_response('search_reference', section_search_reference.attributes.merge(title: new_title))
         }
       }
 
@@ -130,7 +130,7 @@ describe "Section Search Reference management" do
     end
   end
 
-private
+  private
 
   def create_search_reference_for(section, fields_and_values = {})
     ensure_on new_synonyms_section_search_reference_path(section)

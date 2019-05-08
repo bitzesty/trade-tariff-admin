@@ -1,7 +1,7 @@
 require 'commodity/search_reference'
 
 class Commodity
-  include Her::Model
+  include Her::JsonApi::Model
 
   attributes :leaf
 

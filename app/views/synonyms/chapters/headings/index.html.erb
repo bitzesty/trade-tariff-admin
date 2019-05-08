@@ -1,3 +1,5 @@
+<%= render "synonyms/shared_actions" %>
+
 <%= link_to 'Chapters', synonyms_section_chapters_path(section_id: chapter.section_id) %>
 
 <h3>Headings search synonyms of chapter <%= chapter.description.titleize %></h3>
@@ -20,7 +22,13 @@
         </td>
         <td><%= heading.description.titleize %></td>
         <td>
+          <div>
+            <%= pluralize heading.search_references_count, "synonym" %>
+          </div>
           <%= link_to 'Edit', synonyms_heading_search_references_path(heading), class: 'btn btn-small btn-warning' %>
+          <% if heading.search_references_count > 0 %>
+            <%= link_to 'Export', export_synonyms_heading_search_references_path(heading), class: 'btn btn-small btn-info', method: :post %>
+          <% end %>
         </td>
       </tr>
     <% end %>

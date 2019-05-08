@@ -7,19 +7,19 @@ describe "Commodity Search Reference management" do
 
   describe "Search Reference creation" do
     let(:title)        { 'new title' }
-    let(:commodity)    { build :commodity, title: 'new commodity', heading: heading }
+    let(:commodity)    { build :commodity, title: 'new commodity', heading: { type: 'heading', id: heading.id, attributes: heading.attributes } }
     let(:commodity_search_reference) { build :commodity_search_reference, title: title, referenced: commodity.attributes }
 
     specify do
       stub_api_for(Commodity) { |stub|
         stub.get("/commodities/#{commodity.to_param}") { |_env|
-          api_success_response(commodity.attributes)
+          jsonapi_success_response('commodity', commodity.attributes)
         }
       }
 
       stub_api_for(Commodity::SearchReference) { |stub|
         stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
-          api_success_response([], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -31,7 +31,7 @@ describe "Commodity Search Reference management" do
         }
 
         stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
-          api_success_response([commodity_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -42,19 +42,19 @@ describe "Commodity Search Reference management" do
   end
 
   describe "Search Reference deletion" do
-    let(:commodity)                  { build :commodity, :with_heading, heading: heading.attributes }
+    let(:commodity)                  { build :commodity, :with_heading, heading: { type: 'heading', id: heading.id, attributes: heading.attributes } }
     let(:commodity_search_reference) { build :commodity_search_reference, referenced: commodity.attributes }
 
     specify do
       stub_api_for(Commodity) { |stub|
         stub.get("/commodities/#{commodity.to_param}") { |_env|
-          api_success_response(commodity.attributes)
+          jsonapi_success_response('commodity', commodity.attributes)
         }
       }
 
       stub_api_for(Commodity::SearchReference) { |stub|
         stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
-          api_success_response([commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -62,13 +62,13 @@ describe "Commodity Search Reference management" do
 
       stub_api_for(Commodity::SearchReference) { |stub|
         stub.get("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
-          api_success_response(commodity_search_reference)
+          jsonapi_success_response('search_reference', commodity_search_reference.attributes)
         }
         stub.delete("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
           api_no_content_response
         }
         stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
-          api_success_response([], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -79,20 +79,20 @@ describe "Commodity Search Reference management" do
   end
 
   describe "Search reference editing" do
-    let(:commodity)                  { build :commodity, :with_heading, heading: heading }
+    let(:commodity)                  { build :commodity, :with_heading, heading: { type: 'heading', id: heading.id, attributes: heading.attributes } }
     let(:commodity_search_reference) { build :commodity_search_reference, referenced: commodity.attributes }
     let(:new_title) { "new title" }
 
     specify do
       stub_api_for(Commodity) { |stub|
         stub.get("/commodities/#{commodity.to_param}") { |_env|
-          api_success_response(commodity.attributes)
+          jsonapi_success_response('commodity', commodity.attributes)
         }
       }
 
       stub_api_for(Commodity::SearchReference) { |stub|
         stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
-          api_success_response([commodity_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -100,13 +100,13 @@ describe "Commodity Search Reference management" do
 
       stub_api_for(Commodity::SearchReference) { |stub|
         stub.get("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
-          api_success_response(commodity_search_reference)
+          jsonapi_success_response('search_reference', commodity_search_reference.attributes)
         }
-        stub.put("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
+        stub.patch("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
           api_no_content_response
         }
         stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
-          api_success_response([commodity_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
+          jsonapi_success_response('search_reference', [commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
 
@@ -114,7 +114,7 @@ describe "Commodity Search Reference management" do
 
       stub_api_for(Commodity::SearchReference) { |stub|
         stub.get("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
-          api_success_response(commodity_search_reference.attributes.merge(title: new_title))
+          jsonapi_success_response('search_reference', commodity_search_reference.attributes.merge(title: new_title))
         }
       }
 
@@ -122,7 +122,7 @@ describe "Commodity Search Reference management" do
     end
   end
 
-private
+  private
 
   def create_search_reference_for(commodity, fields_and_values = {})
     ensure_on new_synonyms_commodity_search_reference_path(commodity)
