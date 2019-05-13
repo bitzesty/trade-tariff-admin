@@ -1,7 +1,7 @@
 require 'heading/search_reference'
 
 class Heading
-  include Her::Model
+  include Her::JsonApi::Model
 
   has_many :search_references, class_name: 'Heading::SearchReference'
   has_many :commodities

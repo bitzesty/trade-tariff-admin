@@ -8,8 +8,8 @@ describe "Tariff Update listing" do
     stub_api_for(TariffUpdate) { |stub|
       stub.get("/updates") { |_env|
         api_success_response(
-          updates: [tariff_update],
-          pagination: pagination_params(total_count: 1)
+          data: [{type: 'tariff_update', attributes: tariff_update}],
+          meta: { pagination: pagination_params(total_count: 1) }
         )
       }
     }

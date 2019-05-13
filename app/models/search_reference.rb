@@ -1,5 +1,6 @@
 class SearchReference
-  include Her::Model
+  include Her::JsonApi::Model
+  extend HerPaginatable
 
   include_root_in_json true
 

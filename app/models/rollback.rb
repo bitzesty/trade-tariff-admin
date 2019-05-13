@@ -1,7 +1,7 @@
 require "concerns/her_paginatable"
 
 class Rollback
-  include Her::Model
+  include Her::JsonApi::Model
   extend HerPaginatable
 
   attributes :id, :enqueued_at, :keep, :date, :user_id, :reason

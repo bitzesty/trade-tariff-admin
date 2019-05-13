@@ -49,14 +49,14 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.4.0)
-    autoprefixer-rails (7.1.3)
+    autoprefixer-rails (9.5.1)
       execjs
     bootscale (0.5.2)
     bootstrap-datepicker-rails (1.4.0)
       railties (>= 3.0)
-    bootstrap-sass (3.3.5.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.3.0)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     brakeman (3.6.1)
     builder (3.2.3)
     capybara (2.15.1)
@@ -104,6 +104,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.13.1)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.10.0)
     gds-sso (13.2.0)
       multi_json (~> 1.0)
@@ -129,23 +131,23 @@ GEM
       rubocop (~> 0.58)
       rubocop-rspec (~> 1.28)
       scss_lint
-    govuk_admin_template (5.0.0)
-      bootstrap-sass (= 3.3.5.1)
-      jquery-rails (~> 4.1.1)
+    govuk_admin_template (6.7.0)
+      bootstrap-sass (= 3.4.1)
+      jquery-rails (~> 4.3.1)
+      plek (>= 2.1.0)
       rails (>= 3.2.0)
     hashdiff (0.3.2)
     hashie (3.5.6)
-    her (0.6.8)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      faraday (~> 0.8)
+    her (1.1.0)
+      activemodel (>= 4.2.1)
+      faraday (>= 0.8, < 1.0)
       multi_json (~> 1.7)
     highline (1.7.10)
     htmlentities (4.3.4)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.2)
-    jquery-rails (4.1.1)
+    jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
@@ -181,7 +183,7 @@ GEM
     minitest (5.11.3)
     money (6.11.0)
       i18n (>= 0.6.4, < 1.1)
-    multi_json (1.12.1)
+    multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mustermann (1.0.2)
@@ -197,6 +199,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
+    oj (3.7.12)
     omniauth (1.6.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
@@ -210,7 +213,7 @@ GEM
     parser (2.5.3.0)
       ast (~> 2.4.0)
     pg (1.1.4)
-    plek (1.11.0)
+    plek (2.1.1)
     powerpack (0.1.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -222,7 +225,7 @@ GEM
     puma (3.11.2)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
-    rack (2.0.6)
+    rack (2.0.7)
     rack-protection (2.0.2)
       rack
     rack-test (1.1.0)
@@ -323,7 +326,7 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
       nokogumbo (~> 1.4)
-    sass (3.7.3)
+    sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -334,6 +337,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.0.1)
+      ffi (~> 1.9)
+      rake
     scss_lint (0.57.1)
       rake (>= 0.9, < 13)
       sass (~> 3.5, >= 3.5.5)
@@ -405,6 +411,7 @@ DEPENDENCIES
   addressable (~> 2.3)
   bootscale (~> 0.5)
   bootstrap-datepicker-rails (~> 1.4)
+  bootstrap-sass (>= 3.4.1)
   brakeman (~> 3.3, >= 3.3.0)
   capybara (~> 2.8)
   ci_reporter
@@ -413,19 +420,21 @@ DEPENDENCIES
   database_cleaner (~> 1.6)
   dotenv-rails
   factory_girl_rails (~> 4.8.0)
+  faraday_middleware
   gds-sso (~> 13.2)
   govspeak (~> 5.6.0)
   govuk-lint (~> 3.10.0)
-  govuk_admin_template (= 5.0.0)
-  her (= 0.6.8)
-  jquery-rails (~> 4.1.0)
+  govuk_admin_template (= 6.7.0)
+  her (= 1.1.0)
+  jquery-rails (~> 4.3.1)
   kaminari (~> 1.0)
   lograge
   logstash-event
   newrelic_rpm
   nokogiri (~> 1.8.1)
+  oj
   pg (~> 1.1.3)
-  plek (~> 1.11)
+  plek (~> 2.1.0)
   pry-rails
   puma (~> 3.4)
   pundit (= 0.3.0)
@@ -450,7 +459,7 @@ DEPENDENCIES
   webmock (~> 3.0.1)
 
 RUBY VERSION
-   ruby 2.6.0p0
+   ruby 2.6.2p47
 
 BUNDLED WITH
    1.17.2

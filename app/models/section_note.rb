@@ -1,5 +1,5 @@
 class SectionNote
-  include Her::Model
+  include Her::JsonApi::Model
   extend ActiveModel::Naming
 
   attributes :content
