@@ -9,14 +9,15 @@ module Her
 
         Array.wrap(primary_data).each do |resource|
           next if resource.blank?
+
           resource_relationships = resource.delete(:relationships) { {} }
           resource[:attributes].merge!(populate_relationships(resource_relationships, included))
         end
 
         {
-          :data => primary_data || {},
-          :errors => json[:errors] || [],
-          :metadata => json[:meta] || {},
+          data: primary_data || {},
+          errors: json[:errors] || [],
+          metadata: json[:meta] || {},
         }
       end
 
@@ -24,9 +25,9 @@ module Her
         env[:body] = case env[:status]
                      when 204
                        {
-                         :data => {},
-                         :errors => [],
-                         :metadata => {},
+                         data: {},
+                         errors: [],
+                         metadata: {},
                        }
                      else
                        parse(env[:body])
@@ -37,6 +38,7 @@ module Her
 
       def populate_relationships(relationships, included)
         return {} if included.empty?
+
         {}.tap do |built|
           relationships.each do |rel_name, linkage|
             linkage_data = linkage.fetch(:data, {})
