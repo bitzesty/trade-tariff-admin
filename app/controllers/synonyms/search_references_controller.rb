@@ -4,6 +4,7 @@ module Synonyms
 
     def index
       @search_references = search_reference_parent.search_references.all(page: page, per_page: per_page)
+      @search_references = Kaminari.paginate_array(@search_references, total_count: @search_references.metadata[:pagination][:total]).page(page).per(per_page)
     end
 
     def new
