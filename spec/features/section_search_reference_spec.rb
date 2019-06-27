@@ -7,7 +7,7 @@ describe "Section Search Reference management" do
   before {
     # section note specs do not concern sections
     stub_api_for(Section) { |stub|
-      stub.get("/sections") { |_env|
+      stub.get("/admin/sections") { |_env|
         jsonapi_success_response('section', [])
       }
     }
@@ -20,13 +20,13 @@ describe "Section Search Reference management" do
 
     specify do
       stub_api_for(Section) { |stub|
-        stub.get("/sections/#{section.to_param}") { |_env|
+        stub.get("/admin/sections/#{section.to_param}") { |_env|
           jsonapi_success_response('section', section.attributes)
         }
       }
 
       stub_api_for(Section::SearchReference) { |stub|
-        stub.get("/sections/#{section.to_param}/search_references") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -34,11 +34,11 @@ describe "Section Search Reference management" do
       refute search_reference_created_for(section, title: title)
 
       stub_api_for(Section::SearchReference) { |stub|
-        stub.post("/sections/#{section.to_param}/search_references") { |_env|
+        stub.post("/admin/sections/#{section.to_param}/search_references") { |_env|
           api_created_response
         }
 
-        stub.get("/sections/#{section.to_param}/search_references") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [section_search_reference], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -55,13 +55,13 @@ describe "Section Search Reference management" do
 
     specify do
       stub_api_for(Section) { |stub|
-        stub.get("/sections/#{section.to_param}") { |_env|
+        stub.get("/admin/sections/#{section.to_param}") { |_env|
           jsonapi_success_response('section', section.attributes)
         }
       }
 
       stub_api_for(Section::SearchReference) { |stub|
-        stub.get("/sections/#{section.to_param}/search_references") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [section_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -69,13 +69,13 @@ describe "Section Search Reference management" do
       verify search_reference_created_for(section, title: section_search_reference[:title])
 
       stub_api_for(Section::SearchReference) { |stub|
-        stub.get("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', section_search_reference.attributes)
         }
-        stub.delete("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
+        stub.delete("/admin/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/sections/#{section.to_param}/search_references") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -93,13 +93,13 @@ describe "Section Search Reference management" do
 
     specify do
       stub_api_for(Section) { |stub|
-        stub.get("/sections/#{section.to_param}") { |_env|
+        stub.get("/admin/sections/#{section.to_param}") { |_env|
           jsonapi_success_response('section', section.attributes)
         }
       }
 
       stub_api_for(Section::SearchReference) { |stub|
-        stub.get("/sections/#{section.to_param}/search_references") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references") { |_env|
           jsonapi_success_response('search_references', [section_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -107,13 +107,13 @@ describe "Section Search Reference management" do
       verify search_reference_created_for(section, title: section_search_reference[:title])
 
       stub_api_for(Section::SearchReference) { |stub|
-        stub.get("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', section_search_reference.attributes)
         }
-        stub.patch("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
+        stub.patch("/admin/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/sections/#{section.to_param}/search_references") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [section_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -121,7 +121,7 @@ describe "Section Search Reference management" do
       update_section_search_reference_for(section, section_search_reference, title: new_title)
 
       stub_api_for(Section::SearchReference) { |stub|
-        stub.get("/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
+        stub.get("/admin/sections/#{section.to_param}/search_references/#{section_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', section_search_reference.attributes.merge(title: new_title))
         }
       }

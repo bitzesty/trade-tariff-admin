@@ -12,13 +12,13 @@ describe "Commodity Search Reference management" do
 
     specify do
       stub_api_for(Commodity) { |stub|
-        stub.get("/commodities/#{commodity.to_param}") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}") { |_env|
           jsonapi_success_response('commodity', commodity.attributes)
         }
       }
 
       stub_api_for(Commodity::SearchReference) { |stub|
-        stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -26,11 +26,11 @@ describe "Commodity Search Reference management" do
       refute search_reference_created_for(commodity, title: title)
 
       stub_api_for(Commodity::SearchReference) { |stub|
-        stub.post("/commodities/#{commodity.to_param}/search_references") { |_env|
+        stub.post("/admin/commodities/#{commodity.to_param}/search_references") { |_env|
           api_created_response
         }
 
-        stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -47,13 +47,13 @@ describe "Commodity Search Reference management" do
 
     specify do
       stub_api_for(Commodity) { |stub|
-        stub.get("/commodities/#{commodity.to_param}") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}") { |_env|
           jsonapi_success_response('commodity', commodity.attributes)
         }
       }
 
       stub_api_for(Commodity::SearchReference) { |stub|
-        stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -61,13 +61,13 @@ describe "Commodity Search Reference management" do
       verify search_reference_created_for(commodity, title: commodity_search_reference[:title])
 
       stub_api_for(Commodity::SearchReference) { |stub|
-        stub.get("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', commodity_search_reference.attributes)
         }
-        stub.delete("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
+        stub.delete("/admin/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -85,13 +85,13 @@ describe "Commodity Search Reference management" do
 
     specify do
       stub_api_for(Commodity) { |stub|
-        stub.get("/commodities/#{commodity.to_param}") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}") { |_env|
           jsonapi_success_response('commodity', commodity.attributes)
         }
       }
 
       stub_api_for(Commodity::SearchReference) { |stub|
-        stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -99,13 +99,13 @@ describe "Commodity Search Reference management" do
       verify search_reference_created_for(commodity, title: commodity_search_reference[:title])
 
       stub_api_for(Commodity::SearchReference) { |stub|
-        stub.get("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', commodity_search_reference.attributes)
         }
-        stub.patch("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
+        stub.patch("/admin/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/commodities/#{commodity.to_param}/search_references") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [commodity_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -113,7 +113,7 @@ describe "Commodity Search Reference management" do
       update_commodity_search_reference_for(commodity, commodity_search_reference, title: new_title)
 
       stub_api_for(Commodity::SearchReference) { |stub|
-        stub.get("/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
+        stub.get("/admin/commodities/#{commodity.to_param}/search_references/#{commodity_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', commodity_search_reference.attributes.merge(title: new_title))
         }
       }
