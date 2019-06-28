@@ -22,7 +22,7 @@ class FootnotesController < ApplicationController
     end
   end
 
-private
+  private
 
   def footnote
     @footnote ||= Footnote.find(params[:id])

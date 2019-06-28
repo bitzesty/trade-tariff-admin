@@ -9,7 +9,7 @@ module Notes
       respond_with chapter
     end
 
-  private
+    private
 
     def chapter
       @chapter ||= Chapter.find(params[:id])

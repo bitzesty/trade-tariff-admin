@@ -3,7 +3,7 @@ require 'search_reference'
 
 describe "Chapter Search Reference management" do
   let!(:user)   { create :user, :gds_editor }
-  let(:section) { build :section }
+  let(:section)       { build :section }
 
   describe "Search Reference creation" do
     let(:title) { 'new title' }
@@ -13,13 +13,13 @@ describe "Chapter Search Reference management" do
 
     specify do
       stub_api_for(Chapter) { |stub|
-        stub.get("/chapters/#{chapter.to_param}") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}") { |_env|
           jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -27,11 +27,11 @@ describe "Chapter Search Reference management" do
       refute search_reference_created_for(chapter, title: title)
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.post("/chapters/#{chapter.to_param}/search_references") { |_env|
+        stub.post("/admin/chapters/#{chapter.to_param}/search_references") { |_env|
           api_created_response
         }
 
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -47,13 +47,13 @@ describe "Chapter Search Reference management" do
 
     specify do
       stub_api_for(Chapter) { |stub|
-        stub.get("/chapters/#{chapter.to_param}") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}") { |_env|
           jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference',[chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -61,13 +61,13 @@ describe "Chapter Search Reference management" do
       verify search_reference_created_for(chapter, title: chapter_search_reference[:title])
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', chapter_search_reference.attributes)
         }
-        stub.delete("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
+        stub.delete("/admin/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -86,13 +86,13 @@ describe "Chapter Search Reference management" do
 
     specify do
       stub_api_for(Chapter) { |stub|
-        stub.get("/chapters/#{chapter.to_param}") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}") { |_env|
           jsonapi_success_response('chapter', chapter.attributes)
         }
       }
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -100,13 +100,13 @@ describe "Chapter Search Reference management" do
       verify search_reference_created_for(chapter, title: chapter_search_reference[:title])
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', chapter_search_reference.attributes)
         }
-        stub.patch("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
+        stub.patch("/admin/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/chapters/#{chapter.to_param}/search_references") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [chapter_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -114,7 +114,7 @@ describe "Chapter Search Reference management" do
       update_chapter_search_reference_for(chapter, chapter_search_reference, title: new_title)
 
       stub_api_for(Chapter::SearchReference) { |stub|
-        stub.get("/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
+        stub.get("/admin/chapters/#{chapter.to_param}/search_references/#{chapter_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', chapter_search_reference.attributes.merge(title: new_title))
         }
       }

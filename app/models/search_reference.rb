@@ -1,11 +1,9 @@
 class SearchReference
   include Her::JsonApi::Model
 
-  include_root_in_json true
+  collection_path '/admin/search_references'
 
-  attributes :title
-  attributes :referenced_id
-  attributes :referenced_class
+  attributes :title, :referenced_id, :referenced_class
 
   validates :title, presence: true
 

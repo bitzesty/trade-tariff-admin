@@ -12,13 +12,13 @@ describe "Heading Search Reference management" do
 
     specify do
       stub_api_for(Heading) { |stub|
-        stub.get("/headings/#{heading.to_param}") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}") { |_env|
           jsonapi_success_response('heading', heading.attributes)
         }
       }
 
       stub_api_for(Heading::SearchReference) { |stub|
-        stub.get("/headings/#{heading.to_param}/search_references") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -26,11 +26,11 @@ describe "Heading Search Reference management" do
       refute search_reference_created_for(heading, title: title)
 
       stub_api_for(Heading::SearchReference) { |stub|
-        stub.post("/headings/#{heading.to_param}/search_references") { |_env|
+        stub.post("/admin/headings/#{heading.to_param}/search_references") { |_env|
           api_created_response
         }
 
-        stub.get("/headings/#{heading.to_param}/search_references") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [heading_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -47,13 +47,13 @@ describe "Heading Search Reference management" do
 
     specify do
       stub_api_for(Heading) { |stub|
-        stub.get("/headings/#{heading.to_param}") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}") { |_env|
           jsonapi_success_response('heading', heading.attributes)
         }
       }
 
       stub_api_for(Heading::SearchReference) { |stub|
-        stub.get("/headings/#{heading.to_param}/search_references") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references") { |_env|
           jsonapi_success_response('heading', [heading_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -61,13 +61,13 @@ describe "Heading Search Reference management" do
       verify search_reference_created_for(heading, title: heading_search_reference[:title])
 
       stub_api_for(Heading::SearchReference) { |stub|
-        stub.get("/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', heading_search_reference.attributes)
         }
-        stub.delete("/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
+        stub.delete("/admin/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/headings/#{heading.to_param}/search_references") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -85,13 +85,13 @@ describe "Heading Search Reference management" do
 
     specify do
       stub_api_for(Heading) { |stub|
-        stub.get("/headings/#{heading.to_param}") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}") { |_env|
           jsonapi_success_response('heading', heading.attributes)
         }
       }
 
       stub_api_for(Heading::SearchReference) { |stub|
-        stub.get("/headings/#{heading.to_param}/search_references") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [heading_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -99,13 +99,13 @@ describe "Heading Search Reference management" do
       verify search_reference_created_for(heading, title: heading_search_reference[:title])
 
       stub_api_for(Heading::SearchReference) { |stub|
-        stub.get("/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', heading_search_reference.attributes)
         }
-        stub.patch("/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
+        stub.patch("/admin/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
           api_no_content_response
         }
-        stub.get("/headings/#{heading.to_param}/search_references") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references") { |_env|
           jsonapi_success_response('search_reference', [heading_search_reference.attributes], 'x-meta' => { pagination: { total: 1 } }.to_json)
         }
       }
@@ -113,7 +113,7 @@ describe "Heading Search Reference management" do
       update_heading_search_reference_for(heading, heading_search_reference, title: new_title)
 
       stub_api_for(Heading::SearchReference) { |stub|
-        stub.get("/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
+        stub.get("/admin/headings/#{heading.to_param}/search_references/#{heading_search_reference.to_param}") { |_env|
           jsonapi_success_response('search_reference', heading_search_reference.attributes.merge(title: new_title))
         }
       }

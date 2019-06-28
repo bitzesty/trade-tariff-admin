@@ -9,13 +9,13 @@ describe "Measure Type management" do
 
     specify do
       stub_api_for(MeasureType) { |stub|
-        stub.get("/measure_types") { |_env|
+        stub.get("/admin/measure_types") { |_env|
           api_success_response(data: [{ type: 'measure_type', attributes: measure_type.attributes }])
         }
-        stub.get("/measure_types/#{measure_type.id}") { |_env|
+        stub.get("/admin/measure_types/#{measure_type.id}") { |_env|
           api_success_response(data: { type: 'measure_type', attributes: measure_type.attributes })
         }
-        stub.patch("/measure_types/#{measure_type.id}") { |_env|
+        stub.patch("/admin/measure_types/#{measure_type.id}") { |_env|
           api_no_content_response
         }
       }
@@ -25,7 +25,7 @@ describe "Measure Type management" do
       update_measure_type_for measure_type, description: new_description
 
       stub_api_for(MeasureType) { |stub|
-        stub.get("/measure_types/#{measure_type.id}") { |_env|
+        stub.get("/admin/measure_types/#{measure_type.id}") { |_env|
           api_success_response(data: { type: 'measure_type', attributes: measure_type.attributes.merge(description: new_description) })
         }
       }

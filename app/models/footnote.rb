@@ -1,7 +1,7 @@
 class Footnote
   include Her::JsonApi::Model
 
-  include_root_in_json true
+  collection_path '/admin/footnotes'
 
   attributes :footnote_id,
              :footnote_type_id,

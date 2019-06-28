@@ -3,9 +3,11 @@ require 'chapter/search_reference'
 class Chapter
   include Her::JsonApi::Model
 
-  attributes :chapter_note_id, :headings_from, :headings_to, :section_id
+  collection_path '/admin/chapters'
 
-  has_one :chapter_note, name: '_chapter_note', data_key: '_chapter_note_id', path: '/chapter_note'
+  attributes :chapter_note_id, :headings_from, :headings_to, :section_id, :goods_nomenclature_item_id
+
+  has_one :chapter_note, class_name: 'ChapterNote'
   has_many :headings
   has_many :search_references, class_name: 'Chapter::SearchReference'
   has_one :section
@@ -51,6 +53,6 @@ class Chapter
   end
 
   def request_path(_opts = {})
-    self.class.build_request_path("/chapters/#{to_param}", attributes.dup)
+    self.class.build_request_path("/admin/chapters/#{to_param}", attributes.dup)
   end
 end

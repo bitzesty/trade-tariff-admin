@@ -8,7 +8,7 @@ describe "Rollbacks management" do
 
     specify do
       stub_api_for(Rollback) { |stub|
-        stub.get("/rollbacks") { |_env|
+        stub.get("/admin/rollbacks") { |_env|
           api_success_response(data: [], meta: { pagination: pagination_params })
         }
       }
@@ -16,11 +16,11 @@ describe "Rollbacks management" do
       refute rollback_created(rollback)
 
       stub_api_for(Rollback) { |stub|
-        stub.post("/rollbacks") { |_env|
+        stub.post("/admin/rollbacks") { |_env|
           api_created_response
         }
 
-        stub.get("/rollbacks") { |_env|
+        stub.get("/admin/rollbacks") { |_env|
           api_success_response(
             data: [{type: 'rollback', attributes: rollback.attributes}],
             meta: { pagination: pagination_params(total_count: 1) }

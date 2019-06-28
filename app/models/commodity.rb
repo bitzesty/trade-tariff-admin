@@ -3,6 +3,8 @@ require 'commodity/search_reference'
 class Commodity
   include Her::JsonApi::Model
 
+  collection_path '/admin/commodities'
+
   attributes :leaf
 
   has_many :search_references, class_name: 'Commodity::SearchReference'
@@ -28,6 +30,6 @@ class Commodity
   end
 
   def request_path(_opts = {})
-    self.class.build_request_path("/commodities/#{to_param}", attributes.dup)
+    self.class.build_request_path("/admin/commodities/#{to_param}", attributes.dup)
   end
 end
