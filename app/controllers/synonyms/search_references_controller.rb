@@ -1,6 +1,6 @@
 module Synonyms
   class SearchReferencesController < ApplicationController
-    # before_action :authorize_user
+    before_action :authorize_user
 
     def index
       @search_references = search_reference_parent.search_references.all(page: page, per_page: per_page).reload
@@ -50,8 +50,7 @@ module Synonyms
         search_reference_parent.search_references
       )
       filename = "#{search_reference_parent.reference_title}-synonyms-#{Time.now.to_i}.csv"
-      send_data export_service.to_csv,
-                filename: filename
+      send_data export_service.to_csv, filename: filename
     end
 
     private

@@ -1,6 +1,7 @@
 module Synonyms
   module Commodities
     class SearchReferencesController < Synonyms::SearchReferencesController
+
       private
 
       def search_reference_parent

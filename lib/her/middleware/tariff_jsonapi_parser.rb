@@ -43,6 +43,7 @@ module Her
           relationships.each do |rel_name, linkage|
             linkage_data = linkage.fetch(:data, {})
             next if linkage_data.nil?
+
             built_relationship = if linkage_data.is_a? Array
                                    linkage_data.map { |l| included.detect { |i| i.values_at(:id, :type) == l.values_at(:id, :type) } }.compact
                                  else
