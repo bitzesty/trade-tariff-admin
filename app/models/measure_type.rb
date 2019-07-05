@@ -1,12 +1,9 @@
 class MeasureType
   include Her::JsonApi::Model
 
-  include_root_in_json true
+  collection_path '/admin/measure_types'
 
-  attributes :id,
-             :description,
-             :validity_start_date,
-             :validity_end_date
+  attributes :id, :description, :validity_start_date, :validity_end_date
 
   def description
     super.presence || ''

@@ -9,13 +9,13 @@ describe "Footnote management" do
 
     specify do
       stub_api_for(Footnote) { |stub|
-        stub.get("/footnotes") { |_env|
+        stub.get("/admin/footnotes") { |_env|
           api_success_response(data: [{ type: 'footnote', id: footnote.id, attributes: footnote.attributes }])
         }
-        stub.get("/footnotes/#{footnote.to_param}") { |_env|
+        stub.get("/admin/footnotes/#{footnote.to_param}") { |_env|
           api_success_response(data: { type: 'footnote', id: footnote.id,  attributes: footnote.attributes })
         }
-        stub.patch("/footnotes/#{footnote.to_param}") { |_env|
+        stub.patch("/admin/footnotes/#{footnote.to_param}") { |_env|
           api_no_content_response
         }
       }
@@ -25,7 +25,7 @@ describe "Footnote management" do
       update_footnote_for footnote, description: new_description
 
       stub_api_for(Footnote) { |stub|
-        stub.get("/footnotes/#{footnote.to_param}") { |_env|
+        stub.get("/admin/footnotes/#{footnote.to_param}") { |_env|
           api_success_response(data: { type: 'footnote', id: footnote.id,  attributes: footnote.attributes.merge(description: new_description) })
         }
       }

@@ -1,7 +1,8 @@
 module Synonyms
   module Sections
     class SearchReferencesController < Synonyms::SearchReferencesController
-    private
+
+      private
 
       def search_reference_parent
         # section_id is a position

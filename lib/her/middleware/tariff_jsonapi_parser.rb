@@ -42,10 +42,12 @@ module Her
         {}.tap do |built|
           relationships.each do |rel_name, linkage|
             linkage_data = linkage.fetch(:data, {})
+            next if linkage_data.nil?
+
             built_relationship = if linkage_data.is_a? Array
                                    linkage_data.map { |l| included.detect { |i| i.values_at(:id, :type) == l.values_at(:id, :type) } }.compact
                                  else
-                                   included.detect { |i| i.values_at(:id, :type) == linkage_data.values_at(:id, :type) }
+                                   included.detect { |i| i && (i.values_at(:id, :type) == linkage_data.values_at(:id, :type)) }
                                  end
 
             built[rel_name] = built_relationship
