@@ -22,7 +22,7 @@ class MeasureTypesController < ApplicationController
     end
   end
 
-private
+  private
 
   def measure_type
     @measure_type ||= MeasureType.find(params[:id])

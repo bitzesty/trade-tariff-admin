@@ -3,7 +3,8 @@ module Synonyms
     before_action :authorize_user
 
     def index
-      @search_references = search_reference_parent.search_references.all(page: page, per_page: per_page)
+      @search_references = search_reference_parent.search_references.all(page: page, per_page: per_page).reload
+      @search_references = Kaminari.paginate_array(@search_references, total_count: @search_references.metadata[:pagination][:total]).page(page).per(per_page)
     end
 
     def new
@@ -49,8 +50,7 @@ module Synonyms
         search_reference_parent.search_references
       )
       filename = "#{search_reference_parent.reference_title}-synonyms-#{Time.now.to_i}.csv"
-      send_data export_service.to_csv,
-                filename: filename
+      send_data export_service.to_csv, filename: filename
     end
 
     private

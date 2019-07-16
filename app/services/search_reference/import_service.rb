@@ -15,14 +15,14 @@ class SearchReference
       @search_reference = get_search_reference
     end
 
-    private
-
     def import!
       @search_reference.assign_attributes(
         title: @row["title"]
       )
       @search_reference.save
     end
+
+    private
 
     def get_search_reference
       if @row["id"].present?

@@ -41,7 +41,7 @@ module Notes
         redirect_to notes_section_chapters_url(section_id: chapter.section[:id]), notice: 'Chapter note was successfully removed.'
       end
 
-    private
+      private
 
       def chapter
         @chapter ||= Chapter.find(params[:chapter_id])

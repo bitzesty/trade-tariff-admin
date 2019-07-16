@@ -3,7 +3,9 @@ require 'section/search_reference'
 class Section
   include Her::JsonApi::Model
 
-  has_one :section_note, name: '_section_note', data_key: '_section_note'
+  collection_path '/admin/sections'
+
+  has_one :section_note, class_name: 'SectionNote'
   has_many :chapters
   has_many :search_references, class_name: 'Section::SearchReference'
 

@@ -2,22 +2,18 @@ class SectionNote
   include Her::JsonApi::Model
   extend ActiveModel::Naming
 
+  resource_path '/admin/sections/:section_id/section_note'
+  collection_path '/admin/sections/:section_id/section_note'
+
   attributes :content
 
   validates :content, presence: true
-
-  primary_key nil
-
-  resource_path "sections/:section_id/section_note"
-  collection_path "sections/:section_id/section_note"
-
-  include_root_in_json :section_note
 
   belongs_to :section
 
   # NOTE singular resource
   def request_path
-    self.class.build_request_path("/sections/:section_id/section_note", attributes.dup)
+    self.class.build_request_path("/admin/sections/:section_id/section_note", attributes.dup)
   end
 
   def section_title; end
