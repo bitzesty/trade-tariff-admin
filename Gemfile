@@ -40,7 +40,7 @@ gem "lograge"
 gem "sidekiq", "~> 4.1.1"
 gem "sidekiq-scheduler", "~> 2.0"
 gem "sinatra", "~> 2.0.2", require: nil
-gem "bootscale", "~> 0.5", require: false
+gem "bootsnap", require: false
 
 gem "nokogiri", "~> 1.8.1"
 
@@ -59,8 +59,7 @@ group :test do
   gem "ci_reporter_rspec"
   gem "factory_girl_rails", "~> 4.8.0"
   gem "shoulda-matchers", "~> 3.1.1"
-  gem "simplecov", "~> 0.14.1"
-  gem "simplecov-rcov", git: 'git@gitlab.bitzesty.com:open-source/simplecov-rcov.git' # monkey patch for ruby 2.5.0
+  gem "simplecov", "~> 0.15.0", require: false
   gem 'rspec-rails', '~> 3.5.2'
   gem "capybara", "~> 2.8"
   gem "webmock", "~> 3.0.1"
