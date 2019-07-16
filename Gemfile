@@ -40,7 +40,7 @@ gem "lograge"
 gem "sidekiq", "~> 4.1.1"
 gem "sidekiq-scheduler", "~> 2.0"
 gem "sinatra", "~> 2.0.2", require: nil
-gem "bootscale", "~> 0.5", require: false
+gem "bootsnap", require: false
 
 gem "nokogiri", "~> 1.8.1"
 

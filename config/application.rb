@@ -23,9 +23,5 @@ module TradeTariffAdmin
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
-    initializer :regenerate_require_cache, before: :load_environment_config do
-      Bootscale.regenerate
-    end
   end
 end
