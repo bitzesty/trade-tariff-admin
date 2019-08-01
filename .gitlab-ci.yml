@@ -6,6 +6,7 @@ variables:
   POSTGRES_DB: tariffadmin_test
   DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/$POSTGRES_DB"
   REDIS_URL: redis://localhost:6379
+  DOCKER_TLS_CERTDIR: ""
 
 services:
   - name: redis:3.2.11
