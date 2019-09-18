@@ -6,11 +6,12 @@ variables:
   POSTGRES_DB: tariffadmin_test
   DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/$POSTGRES_DB"
   REDIS_URL: redis://localhost:6379
+  BUNDLER_VERSION: 2.0.2
   DOCKER_TLS_CERTDIR: ""
 
 services:
   - name: redis:3.2.11
-  - name: postgres:9.6-alpine
+  - name: postgres:10-alpine
     alias: postgres
 
 stages:
@@ -31,6 +32,7 @@ test:
     - chmod 400 ~/.ssh/id_rsa
     - sudo apt-get update -qy
     - sudo apt-get install -y build-essential postgresql libpq-dev nodejs rake
+    - gem install bundler
     - bundle install --jobs 4 --retry 3 --path vendor
     - RAILS_ENV=test bundle exec rake db:migrate --trace
   script:
