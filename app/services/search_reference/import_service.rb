@@ -25,13 +25,9 @@ class SearchReference
     private
 
     def get_search_reference
-      if @row["id"].present?
-        referenced_resource.search_references.find(@row["id"])
-      else
-        referenced_resource.search_references.build(
-          referenced_id: referenced_resource.id
-        )
-      end
+      referenced_resource.search_references.build(
+        referenced_id: referenced_resource.id
+      )
     end
 
     def referenced_resource

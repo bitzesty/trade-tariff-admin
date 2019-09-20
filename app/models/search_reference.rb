@@ -14,4 +14,8 @@ class SearchReference
   def referenced_class
     attributes['referenced_class'].constantize
   end
+
+  # CSV export/import
+  alias :goodsnomenclature_code :referenced_id
+  alias :goodsnomenclature_type :referenced_class
 end
