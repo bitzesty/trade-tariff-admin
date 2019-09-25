@@ -32,13 +32,13 @@ class SearchReference
 
     def referenced_resource
       referenced_class.find(
-        @row["referenced_id"]
+        @row["goodsnomenclature_code"]
       )
     end
 
     def referenced_class
       allowed_classes = ["Commodity", "Section", "Chapter", "Heading"]
-      klass = allowed_classes & [@row["referenced_class"]]
+      klass = allowed_classes & [@row["goodsnomenclature_type"]]
       klass.first.constantize || fail("#{@row["referenced_class"]} not allowed!")
     end
   end

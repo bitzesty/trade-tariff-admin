@@ -2,6 +2,7 @@ class SearchReference
   include Her::JsonApi::Model
 
   collection_path '/admin/search_references'
+  type self.name.demodulize.tableize
 
   attributes :title, :referenced_id, :referenced_class
 
