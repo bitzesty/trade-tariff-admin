@@ -1,6 +1,6 @@
 module Synonyms
   class SearchReferencesController < ApplicationController
-    before_action :authorize_user
+    # before_action :authorize_user
 
     def index
       @search_references = search_reference_parent.search_references.all(page: page, per_page: per_page).reload
