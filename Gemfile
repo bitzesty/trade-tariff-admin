@@ -18,7 +18,7 @@ gem "pundit", "0.3.0"
 gem "redis-rails"
 
 gem "kaminari", "~> 1.0"
-gem "simple_form", "~> 3.5"
+gem "simple_form", ">= 5.0.0"
 gem "govspeak", "~> 5.6.0"
 
 gem 'govuk_admin_template', '6.7.0'
