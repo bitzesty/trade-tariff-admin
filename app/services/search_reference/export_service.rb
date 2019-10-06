@@ -3,9 +3,8 @@ require "csv"
 class SearchReference
   class ExportService
     ATTRIBUTES = [
-      :id,
-      :referenced_class,
-      :referenced_id,
+      :goodsnomenclature_type,
+      :goodsnomenclature_code,
       :title
     ].freeze
 

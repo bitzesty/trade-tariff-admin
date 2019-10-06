@@ -25,24 +25,20 @@ class SearchReference
     private
 
     def get_search_reference
-      if @row["id"].present?
-        referenced_resource.search_references.find(@row["id"])
-      else
-        referenced_resource.search_references.build(
-          referenced_id: referenced_resource.id
-        )
-      end
+      referenced_resource.search_references.build(
+        referenced_id: referenced_resource.id
+      )
     end
 
     def referenced_resource
       referenced_class.find(
-        @row["referenced_id"]
+        @row["goodsnomenclature_code"]
       )
     end
 
     def referenced_class
       allowed_classes = ["Commodity", "Section", "Chapter", "Heading"]
-      klass = allowed_classes & [@row["referenced_class"]]
+      klass = allowed_classes & [@row["goodsnomenclature_type"]]
       klass.first.constantize || fail("#{@row["referenced_class"]} not allowed!")
     end
   end
