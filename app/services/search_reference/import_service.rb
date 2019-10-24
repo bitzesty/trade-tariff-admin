@@ -12,6 +12,7 @@ class SearchReference
 
     def initialize(row)
       @row = row
+      @goods_nomenclature_item_id = @row['goods_nomenclature_item_id']
       @search_reference = get_search_reference
     end
 
@@ -32,14 +33,26 @@ class SearchReference
 
     def referenced_resource
       referenced_class.find(
-        @row["goodsnomenclature_code"]
+        referenced_id
       )
     end
 
     def referenced_class
-      allowed_classes = ["Commodity", "Section", "Chapter", "Heading"]
-      klass = allowed_classes & [@row["goodsnomenclature_type"]]
-      klass.first.constantize || fail("#{@row["referenced_class"]} not allowed!")
+      goods_nomenclature_item_id = @row['goods_nomenclature_item_id']
+      klass = if goods_nomenclature_item_id.ends_with?('00000000')
+                'Chapter'
+              elsif goods_nomenclature_item_id.ends_with?('000000')
+                'Heading'
+              elsif goods_nomenclature_item_id.length == 10
+                'Commodity'
+              else
+                'Section'
+              end
+      klass.constantize
+    end
+
+    def referenced_id
+      @row['goods_nomenclature_item_id'].gsub('00000000', '').gsub('000000', '')
     end
   end
 end
