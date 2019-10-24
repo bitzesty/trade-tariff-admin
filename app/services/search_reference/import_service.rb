@@ -12,7 +12,6 @@ class SearchReference
 
     def initialize(row)
       @row = row
-      @goods_nomenclature_item_id = @row['goods_nomenclature_item_id']
       @search_reference = get_search_reference
     end
 
