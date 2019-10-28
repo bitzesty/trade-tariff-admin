@@ -44,12 +44,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @import_tasks.each do |import_task| %>
-      <tr>
-        <td><%= import_task.file.metadata["filename"] %></td>
-        <td><%= import_task.created_at.strftime('%B %e %Y %l:%M%P') %></td>
-        <td><%= import_task.status.humanize %></td>
-      </tr>
-    <% end %>
+    <%= render @import_tasks %>
   </tbody>
 </table>
