@@ -23,10 +23,33 @@
   <p>Upload CSV with synonyms. Synonyms are overriden if ID is provided</p>
 
   <div>
-    <%= f.input :file, as: :file %>
+    <%= f.input :file, as: :file, accept: 'text/csv' %>
   </div>
 
   <div class='form-actions'>
     <%= f.submit 'Import synonyms from CSV', class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<hr>
+
+<p>Import Tasks:</p>
+
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Created</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @import_tasks.each do |import_task| %>
+      <tr>
+        <td><%= import_task.file.metadata["filename"] %></td>
+        <td><%= import_task.created_at.strftime('%B %e %Y %l:%M%P') %></td>
+        <td><%= import_task.status.humanize %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
