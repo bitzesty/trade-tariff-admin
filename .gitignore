@@ -13,3 +13,4 @@ cf-ssh.yml
 .idea/*
 REVISION
 .env
+public/uploads/*

@@ -77,6 +77,7 @@ GEM
       highline (~> 1.7.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.0)
+    content_disposition (1.0.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
@@ -87,6 +88,8 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
+    down (5.0.0)
+      addressable (~> 2.5)
     erubi (1.8.0)
     et-orbi (1.0.2)
       tzinfo
@@ -171,7 +174,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    marcel (0.3.3)
+      mimemagic (~> 0.3.2)
     method_source (0.8.2)
+    mimemagic (0.3.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
@@ -342,6 +348,9 @@ GEM
       faraday (>= 0.7.6, < 1.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
+    shrine (3.0.1)
+      content_disposition (~> 1.0)
+      down (~> 5.0)
     sidekiq (4.1.1)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -425,6 +434,7 @@ DEPENDENCIES
   kaminari (~> 1.0)
   lograge
   logstash-event
+  marcel
   newrelic_rpm
   nokogiri (>= 1.10.4)
   oj
@@ -443,6 +453,7 @@ DEPENDENCIES
   sass-rails (= 5.0.6)
   sentry-raven
   shoulda-matchers (~> 3.1.1)
+  shrine (~> 3.0)
   sidekiq (~> 4.1.1)
   sidekiq-scheduler (~> 2.0)
   simple_form (>= 5.0.0)

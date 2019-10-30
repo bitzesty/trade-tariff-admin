@@ -34,6 +34,9 @@ gem "bootstrap-datepicker-rails", "~> 1.4"
 gem "bootstrap-sass", ">= 3.4.1"
 gem "responders", "~> 2.4"
 
+gem "shrine", "~> 3.0"
+gem "marcel"
+
 gem "logstash-event"
 gem "lograge"
 
