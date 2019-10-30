@@ -5,8 +5,8 @@ module Synonyms
     end
 
     def create
-      import_task = ImportTask.create(file: params[:synonyms_import][:file])
-      if import_task.errors.blank?
+      import_task = ImportTask.new(file: params[:synonyms_import][:file])
+      if import_task.save
         ImportSearchReferencesJob.perform_later(import_task.id)
         redirect_to(synonyms_import_path, notice: 'Synonyms import have been scheduled')
       else
