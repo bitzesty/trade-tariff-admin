@@ -2,8 +2,8 @@ source "https://rubygems.org"
 
 ruby '~> 2.6.2'
 
-gem "rails", "5.2.4.1"
-gem "sass-rails", "5.0.6"
+gem "rails", "6.0.2.1"
+gem "sass-rails"
 
 gem "coffee-rails", "~> 4.2.2"
 gem "uglifier", "~> 2.7"
@@ -19,7 +19,7 @@ gem "redis-rails"
 
 gem "kaminari", "~> 1.0"
 gem "simple_form", ">= 5.0.0"
-gem "govspeak", "~> 5.6.0"
+gem "govspeak"
 
 gem 'govuk_admin_template', '6.7.0'
 
