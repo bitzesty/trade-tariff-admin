@@ -54,9 +54,8 @@ deploy_dev:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
-    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
-    - chmod +x autopilot
-    - cf install-plugin autopilot -f
+    - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    - cf install-plugin blue-green-deploy -r CF-Community -f
     - CF_SPACE=development CF_APP=tariff-admin-dev CF_APP_WORKER=tariff-admin-worker-dev ./bin/deploy
   only:
     - master
@@ -67,9 +66,8 @@ deploy_staging:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
-    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
-    - chmod +x autopilot
-    - cf install-plugin autopilot -f
+    - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    - cf install-plugin blue-green-deploy -r CF-Community -f
     - CF_SPACE=staging CF_APP=tariff-admin-staging CF_APP_WORKER=tariff-admin-worker-staging ./bin/deploy
   only:
     - staging
@@ -80,9 +78,8 @@ deploy_production:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
-    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
-    - chmod +x autopilot
-    - cf install-plugin autopilot -f
+    - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    - cf install-plugin blue-green-deploy -r CF-Community -f
     - CF_SPACE=production CF_APP=tariff-admin-production CF_APP_WORKER=tariff-admin-worker-production ./bin/deploy
   when: manual
   only:
