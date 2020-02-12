@@ -15,7 +15,7 @@ gem "her", "1.1.0"
 gem "faraday_middleware"
 gem "oj"
 gem "pundit", "0.3.0"
-gem "redis-rails"
+gem 'redis-activesupport'
 
 gem "kaminari", "~> 1.0"
 gem "simple_form", ">= 5.0.0"
@@ -40,7 +40,7 @@ gem "marcel"
 gem "logstash-event"
 gem "lograge"
 
-gem "sidekiq", "~> 4.1.1"
+gem "sidekiq", "~> 5.0"
 gem "sidekiq-scheduler", "~> 2.0"
 gem "sinatra", "~> 2.0.2", require: nil
 gem "bootsnap", require: false
