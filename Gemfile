@@ -5,7 +5,7 @@ ruby '~> 2.6.5'
 gem "rails", "6.0.2.1"
 gem "sass-rails"
 
-gem "coffee-rails", "~> 4.2.2"
+gem "coffee-rails", "~> 5.0"
 gem "uglifier", "~> 2.7"
 
 gem 'rake', '~> 12.0.0'
