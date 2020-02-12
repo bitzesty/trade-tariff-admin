@@ -1,11 +1,11 @@
 source "https://rubygems.org"
 
-ruby '~> 2.6.2'
+ruby '~> 2.6.5'
 
-gem "rails", "5.1.6.2"
-gem "sass-rails", "5.0.6"
+gem "rails", "6.0.2.1"
+gem "sass-rails"
 
-gem "coffee-rails", "~> 4.2.2"
+gem "coffee-rails", "~> 5.0"
 gem "uglifier", "~> 2.7"
 
 gem 'rake', '~> 12.0.0'
@@ -15,11 +15,11 @@ gem "her", "1.1.0"
 gem "faraday_middleware"
 gem "oj"
 gem "pundit", "0.3.0"
-gem "redis-rails"
+gem 'redis-activesupport'
 
 gem "kaminari", "~> 1.0"
 gem "simple_form", ">= 5.0.0"
-gem "govspeak", "~> 5.6.0"
+gem "govspeak"
 
 gem 'govuk_admin_template', '6.7.0'
 
@@ -32,7 +32,7 @@ gem "puma", "~> 3.4"
 gem "jquery-rails", "~> 4.3.1"
 gem "bootstrap-datepicker-rails", "~> 1.4"
 gem "bootstrap-sass", ">= 3.4.1"
-gem "responders", "~> 2.4"
+gem "responders"
 
 gem "shrine", "~> 3.0"
 gem "marcel"
@@ -40,7 +40,7 @@ gem "marcel"
 gem "logstash-event"
 gem "lograge"
 
-gem "sidekiq", "~> 4.1.1"
+gem "sidekiq", "~> 5.0"
 gem "sidekiq-scheduler", "~> 2.0"
 gem "sinatra", "~> 2.0.2", require: nil
 gem "bootsnap", require: false

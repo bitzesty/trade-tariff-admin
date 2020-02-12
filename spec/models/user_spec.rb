@@ -6,14 +6,14 @@ describe User do
     it_behaves_like "a gds-sso user class"
   end
 
-  describe "#update_attributes" do
+  describe "#update" do
     let!(:user) { create :user }
     let(:attrs) {
       attributes_for :user
     }
 
     before {
-      user.update_attributes(attrs)
+      user.update(attrs)
       user.reload
     }
 

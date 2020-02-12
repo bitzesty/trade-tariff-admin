@@ -1,6 +1,6 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -10,6 +10,11 @@ APP_SLUG = 'trade-tariff-admin'
 
 module TradeTariffAdmin
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 6.0
+
+    config.autoloader = :classic
+
     require 'trade_tariff_admin'
 
     # Settings in config/environments/* take precedence over those specified here.

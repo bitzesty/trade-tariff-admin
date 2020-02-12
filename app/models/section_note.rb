@@ -19,6 +19,6 @@ class SectionNote
   def section_title; end
 
   def preview
-    Govspeak::Document.new(content).to_sanitized_html.html_safe
+    Govspeak::Document.new(content, sanitize: true).to_html.html_safe
   end
 end
