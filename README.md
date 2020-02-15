@@ -1,6 +1,3 @@
-[![CircleCI](https://circleci.com/gh/bitzesty/trade-tariff-admin/tree/master.svg?style=svg)](https://circleci.com/gh/bitzesty/trade-tariff-admin/tree/master)
-[![Code Climate](https://codeclimate.com/github/bitzesty/trade-tariff-admin/badges/gpa.svg)](https://codeclimate.com/github/bitzesty/trade-tariff-admin)
-
 # Trade Tariff Admin
 
 The admin interface for the the Trade Tariff, to be used with:
