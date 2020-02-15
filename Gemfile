@@ -1,51 +1,62 @@
 source "https://rubygems.org"
 
 ruby '~> 2.6.5'
-
-gem "rails", "6.0.2.1"
-gem "sass-rails"
-
-gem "coffee-rails", "~> 5.0"
-gem "uglifier", "~> 2.7"
-
 gem 'rake', '~> 12.0.0'
 
-gem "pg", "~> 1.1.3"
-gem "her", "1.1.0"
-gem "faraday_middleware"
-gem "oj"
-gem "pundit", "0.3.0"
-gem 'redis-activesupport'
-
-gem "kaminari", "~> 1.0"
-gem "simple_form", ">= 5.0.0"
-gem "govspeak"
-
-gem 'govuk_admin_template', '6.7.0'
-
-gem "gds-sso", "~> 13.2"
-gem "plek", "~> 2.1.0"
-gem "addressable", "~> 2.3"
-
+# Server
 gem "puma", "~> 3.4"
+gem "rails", "6.0.2.1"
+gem "sinatra", "~> 2.0.2", require: nil
 
+# DB
+gem "pg", "~> 1.1.3"
+
+# Assets
+gem "sass-rails"
+gem "coffee-rails", "~> 5.0"
+gem "uglifier", "~> 2.7"
 gem "jquery-rails", "~> 4.3.1"
 gem "bootstrap-datepicker-rails", "~> 1.4"
 gem "bootstrap-sass", ">= 3.4.1"
+gem 'govuk_admin_template', '6.7.0'
+
+# Markdown
+gem "govspeak"
+gem "addressable", "~> 2.3"
+
+# API
+gem "her", "1.1.0"
+gem "faraday_middleware"
+gem "oj"
+
+# Cache
+gem 'redis-activesupport'
+
+# Authorization / SSO
+gem "pundit", "0.3.0"
+gem "gds-sso", "~> 13.2"
+gem "plek", "~> 2.1.0"
+
+# Helpers
+gem "kaminari", "~> 1.0"
+gem "simple_form", ">= 5.0.0"
 gem "responders"
 
+# File upload / mime type
 gem "shrine", "~> 3.0"
 gem "marcel"
 
+# Logging
 gem "logstash-event"
 gem "lograge"
 
-gem "sidekiq", "~> 5.0"
-gem "sidekiq-scheduler", "~> 2.0"
-gem "sinatra", "~> 2.0.2", require: nil
-gem "bootsnap", require: false
+# Background jobs
+gem "sidekiq", "< 5"
+gem "sidekiq-scheduler", "~> 2.2.2"
 
+# Misc
 gem "nokogiri", ">= 1.10.4"
+gem "bootsnap", require: false
 
 group :development, :test do
   gem "dotenv-rails"
@@ -71,8 +82,6 @@ group :test do
 end
 
 group :production do
-  gem "therubyracer", "~> 0.12"
   gem "rails_12factor"
   gem "sentry-raven"
-  gem "newrelic_rpm"
 end
