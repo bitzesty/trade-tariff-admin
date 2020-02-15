@@ -52,7 +52,7 @@ gem "logstash-event"
 gem "lograge"
 
 # Background jobs
-gem "sidekiq", '< 5'
+gem "sidekiq", '< 6'
 gem "sidekiq-scheduler", "~> 2.2.2"
 
 # Misc
