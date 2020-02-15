@@ -31,6 +31,7 @@ gem "oj"
 
 # Cache
 gem 'redis-activesupport'
+gem "redis", "~> 4.0"
 
 # Authorization / SSO
 gem "pundit", "0.3.0"
@@ -51,7 +52,7 @@ gem "logstash-event"
 gem "lograge"
 
 # Background jobs
-gem "sidekiq", "4.2.10"
+gem "sidekiq", '< 5'
 gem "sidekiq-scheduler", "~> 2.2.2"
 
 # Misc
