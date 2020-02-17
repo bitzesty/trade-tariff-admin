@@ -11,7 +11,7 @@ variables:
 
 services:
   - name: redis:3.2.11
-  - name: postgres:10-alpine
+  - name: postgres:10.11-alpine
     alias: postgres
 
 stages:
@@ -32,6 +32,7 @@ test:
     - chmod 400 ~/.ssh/id_rsa
     - sudo apt-get update -qy
     - sudo apt-get install -y build-essential postgresql libpq-dev nodejs rake
+    - dockerize -wait tcp://localhost:5432 -timeout 1m
     - gem install bundler
     - bundle install --jobs 4 --retry 3 --path vendor
     - RAILS_ENV=test bundle exec rake db:migrate --trace
