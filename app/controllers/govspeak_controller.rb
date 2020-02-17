@@ -5,10 +5,10 @@ class GovspeakController < ApplicationController
     flash.keep
 
     if params[:govspeak]
-      doc = Govspeak::Document.new params[:govspeak]
+      doc = Govspeak::Document.new(params[:govspeak], sanitize: true)
 
       respond_to do |format|
-        format.json { render json: { govspeak: doc.to_sanitized_html.to_s } }
+        format.json { render json: { govspeak: doc.to_html } }
       end
     else
       render nothing: true, status: :no_content
