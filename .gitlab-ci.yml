@@ -1,5 +1,5 @@
 image:
-  name: circleci/ruby:2.6.2-node-browsers
+  name: circleci/ruby:2.6.5-node-browsers
 
 variables:
   GOVUK_APP_DOMAIN: test
@@ -11,7 +11,7 @@ variables:
 
 services:
   - name: redis:3.2.11
-  - name: postgres:10-alpine
+  - name: postgres:10.11-alpine
     alias: postgres
 
 stages:
@@ -32,6 +32,7 @@ test:
     - chmod 400 ~/.ssh/id_rsa
     - sudo apt-get update -qy
     - sudo apt-get install -y build-essential postgresql libpq-dev nodejs rake
+    - dockerize -wait tcp://localhost:5432 -timeout 1m
     - gem install bundler
     - bundle install --jobs 4 --retry 3 --path vendor
     - RAILS_ENV=test bundle exec rake db:migrate --trace
@@ -50,39 +51,39 @@ include:
 
 deploy_dev:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
-    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
-    - chmod +x autopilot
-    - cf install-plugin autopilot -f
+    - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    - cf install-plugin blue-green-deploy -r CF-Community -f
     - CF_SPACE=development CF_APP=tariff-admin-dev CF_APP_WORKER=tariff-admin-worker-dev ./bin/deploy
   only:
     - master
 
 deploy_staging:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
-    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
-    - chmod +x autopilot
-    - cf install-plugin autopilot -f
+    - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    - cf install-plugin blue-green-deploy -r CF-Community -f
     - CF_SPACE=staging CF_APP=tariff-admin-staging CF_APP_WORKER=tariff-admin-worker-staging ./bin/deploy
   only:
     - staging
 
 deploy_production:
   stage: deploy
+  resource_group: paas
   script:
     - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
     - sudo dpkg -i cf-cli_amd64.deb
     - cf -v
-    - curl -v -L -o autopilot https://github.com/contraband/autopilot/releases/download/0.0.3/autopilot-linux
-    - chmod +x autopilot
-    - cf install-plugin autopilot -f
+    - cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    - cf install-plugin blue-green-deploy -r CF-Community -f
     - CF_SPACE=production CF_APP=tariff-admin-production CF_APP_WORKER=tariff-admin-worker-production ./bin/deploy
   when: manual
   only:

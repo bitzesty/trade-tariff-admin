@@ -10,6 +10,6 @@ module RedisResolver
       ENV["REDIS_URL"]
     end
     
-    { url: redis_url, db: 0 }
+    { url: redis_url, db: 0, id: nil }
   end
 end
