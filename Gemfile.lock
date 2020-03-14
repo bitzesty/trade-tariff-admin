@@ -232,7 +232,7 @@ GEM
       ruby2_keywords (~> 0.0.1)
     netrc (0.11.0)
     nio4r (2.5.2)
-    nokogiri (1.10.8)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     nokogumbo (2.0.2)
       nokogiri (~> 1.8, >= 1.8.4)
@@ -484,7 +484,7 @@ DEPENDENCIES
   lograge
   logstash-event
   marcel
-  nokogiri (>= 1.10.4)
+  nokogiri (>= 1.10.9)
   oj
   pg (~> 1.1.3)
   plek (~> 2.1.0)
