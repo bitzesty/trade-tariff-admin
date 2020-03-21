@@ -5,7 +5,7 @@ gem 'rake', '~> 12.0.0'
 
 # Server
 gem "puma", "~> 4.3.1"
-gem "rails", "6.0.2.1"
+gem "rails", "6.0.2.2"
 gem "sinatra", "~> 2.0.2", require: nil
 
 # DB
