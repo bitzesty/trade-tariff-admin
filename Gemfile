@@ -56,7 +56,7 @@ gem "sidekiq", '< 6'
 gem "sidekiq-scheduler", "~> 2.2.2"
 
 # Misc
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.9"
 gem "bootsnap", require: false
 
 group :development, :test do
