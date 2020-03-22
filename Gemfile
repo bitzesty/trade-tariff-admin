@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 ruby '~> 2.6.5'
-gem 'rake', '~> 12.0.0'
+gem 'rake', '~> 12.3.3'
 
 # Server
 gem "puma", "~> 4.3.3"
