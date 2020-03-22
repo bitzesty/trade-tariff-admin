@@ -4,7 +4,7 @@ ruby '~> 2.6.5'
 gem 'rake', '~> 12.0.0'
 
 # Server
-gem "puma", "~> 4.3.1"
+gem "puma", "~> 4.3.3"
 gem "rails", "6.0.2.2"
 gem "sinatra", "~> 2.0.2", require: nil
 
