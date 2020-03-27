@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
 ruby '~> 2.6.5'
-gem 'rake', '~> 12.0.0'
 
 # Server
 gem "puma", "~> 4.3.3"
@@ -15,7 +14,7 @@ gem "pg", "~> 1.1.3"
 gem "sass-rails"
 gem "coffee-rails", "~> 5.0"
 gem "uglifier", "~> 2.7"
-gem "jquery-rails", "~> 4.3.1"
+gem "jquery-rails", "~> 4.3.4"
 gem "bootstrap-datepicker-rails", "~> 1.4"
 gem "bootstrap-sass", ">= 3.4.1"
 gem 'govuk_admin_template', '6.7.0'
