@@ -4,23 +4,23 @@ ruby '~> 2.6.5'
 
 # Server
 gem "puma", "~> 4.3.3"
-gem "rails", "6.0.2.2"
+gem "rails", "6.0.3.1"
 gem "sinatra", "~> 2.0.2", require: nil
 
 # DB
 gem "pg", "~> 1.1.3"
 
 # Assets
-gem "sass-rails"
-gem "coffee-rails", "~> 5.0"
+gem "sass-rails", ">= 6.0.0"
+gem "coffee-rails", "~> 5.0", ">= 5.0.0"
 gem "uglifier", "~> 2.7"
-gem "jquery-rails", "~> 4.3.4"
-gem "bootstrap-datepicker-rails", "~> 1.4"
+gem "jquery-rails", "~> 4.3.5"
+gem "bootstrap-datepicker-rails", "~> 1.4", ">= 1.4.0"
 gem "bootstrap-sass", ">= 3.4.1"
 gem 'govuk_admin_template', '6.7.0'
 
 # Markdown
-gem "govspeak"
+gem "govspeak", ">= 6.5.2"
 gem "addressable", "~> 2.3"
 
 # API
@@ -29,18 +29,18 @@ gem "faraday_middleware"
 gem "oj"
 
 # Cache
-gem 'redis-activesupport'
+gem 'redis-activesupport', '>= 5.2.0'
 gem "redis", "~> 4.0"
 
 # Authorization / SSO
 gem "pundit", "0.3.0"
-gem "gds-sso", "~> 13.2"
+gem "gds-sso", "~> 13.2", ">= 13.2.0"
 gem "plek", "~> 2.1.0"
 
 # Helpers
-gem "kaminari", "~> 1.0"
+gem "kaminari", "~> 1.0", ">= 1.0.1"
 gem "simple_form", ">= 5.0.0"
-gem "responders"
+gem "responders", ">= 3.0.0"
 
 # File upload / mime type
 gem "shrine", "~> 3.0"
@@ -48,7 +48,7 @@ gem "marcel"
 
 # Logging
 gem "logstash-event"
-gem "lograge"
+gem "lograge", ">= 0.3.6"
 
 # Background jobs
 gem "sidekiq", '< 6'
@@ -59,7 +59,7 @@ gem "nokogiri", ">= 1.10.9"
 gem "bootsnap", require: false
 
 group :development, :test do
-  gem "dotenv-rails"
+  gem "dotenv-rails", ">= 2.7.5"
   gem "pry-rails"
   gem "brakeman", "~> 3.3", ">= 3.3.0", require: false
 end
