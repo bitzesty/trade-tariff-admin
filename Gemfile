@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby '~> 2.6.5'
 
 # Server
-gem "puma", "~> 4.3.3"
+gem "puma", "~> 4.3.5"
 gem "rails", ">= 6.0.3.1"
 gem "sinatra", "~> 2.0.2", require: nil
 
