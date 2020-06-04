@@ -38,7 +38,7 @@ gem "gds-sso", "~> 13.2"
 gem "plek", "~> 2.1.0"
 
 # Helpers
-gem "kaminari", "~> 1.0"
+gem "kaminari", "~> 1.2"
 gem "simple_form", ">= 5.0.0"
 gem "responders"
 
