@@ -20,7 +20,7 @@ gem "bootstrap-sass", ">= 3.4.1"
 gem 'govuk_admin_template', '6.7.0'
 
 # Markdown
-gem "govspeak"
+gem "govspeak", ">= 6.5.2"
 gem "addressable", "~> 2.3"
 
 # API
@@ -34,11 +34,11 @@ gem "redis", "~> 4.0"
 
 # Authorization / SSO
 gem "pundit", "0.3.0"
-gem "gds-sso", "~> 13.2"
+gem "gds-sso", "~> 13.2", ">= 13.2.0"
 gem "plek", "~> 2.1.0"
 
 # Helpers
-gem "kaminari", "~> 1.0"
+gem "kaminari", "~> 1.2", ">= 1.2.1"
 gem "simple_form", ">= 5.0.0"
 gem "responders"
 
