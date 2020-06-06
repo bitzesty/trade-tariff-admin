@@ -35,7 +35,7 @@ gem "redis", "~> 4.0"
 
 # Authorization / SSO
 gem "pundit", "0.3.0"
-gem "gds-sso", "~> 13.2"
+gem "gds-sso", "~> 13.6"
 gem "plek", "~> 2.1.0"
 
 # Helpers

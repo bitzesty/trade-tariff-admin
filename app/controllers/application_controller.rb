@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   prepend_before_action :authenticate_user!
-  before_action :require_signin_permission!
+  # before_action :require_signin_permission!
 
   unless Rails.env.test?
     rescue_from Pundit::NotAuthorizedError do |e|
