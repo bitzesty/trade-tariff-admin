@@ -20,7 +20,8 @@ gem "bootstrap-sass", ">= 3.4.1"
 gem 'govuk_admin_template', '6.7.0'
 
 # Markdown
-gem "govspeak"
+gem "govspeak", "6.5.3"
+gem "govuk_publishing_components", "21.5.0"
 gem "addressable", "~> 2.3"
 
 # API
