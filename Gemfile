@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby '~> 2.6.5'
+ruby '~> 2.7.1'
 
 # Server
 gem "puma", "~> 4.3.5"
@@ -51,8 +51,8 @@ gem "logstash-event"
 gem "lograge"
 
 # Background jobs
-gem "sidekiq", '< 6'
-gem "sidekiq-scheduler", "~> 2.2.2"
+gem "sidekiq", '< 7'
+gem "sidekiq-scheduler", "~> 3.0"
 
 # Misc
 gem "nokogiri", ">= 1.10.9"
@@ -74,10 +74,10 @@ group :test do
   gem "factory_girl_rails", "~> 4.8.0"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "simplecov", "~> 0.15.0", require: false
-  gem 'rspec-rails', '~> 3.5.2'
-  gem "capybara", "~> 2.8"
-  gem "webmock", "~> 3.0.1"
-  gem "database_cleaner", "~> 1.6"
+  gem 'rspec-rails', '~> 3.8.0'
+  gem "capybara", "~> 3"
+  gem "webmock", "~> 3.8.0"
+  gem "database_cleaner", "~> 1.8"
   gem "rspec_junit_formatter"
 end
 
