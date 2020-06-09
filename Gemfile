@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 
-ruby '~> 2.6.5'
+ruby '~> 2.7.1'
 
 # Server
-gem "puma", "~> 4.3.3"
-gem "rails", "6.0.2.2"
+gem "puma", "~> 4.3.5"
+gem "rails", ">= 6.0.3.1"
 gem "sinatra", "~> 2.0.2", require: nil
 
 # DB
@@ -20,7 +20,8 @@ gem "bootstrap-sass", ">= 3.4.1"
 gem 'govuk_admin_template', '6.7.0'
 
 # Markdown
-gem "govspeak"
+gem "govspeak", "6.5.3"
+gem "govuk_publishing_components", "21.5.0"
 gem "addressable", "~> 2.3"
 
 # API
@@ -34,7 +35,7 @@ gem "redis", "~> 4.0"
 
 # Authorization / SSO
 gem "pundit", "0.3.0"
-gem "gds-sso", "~> 13.2"
+gem "gds-sso", "~> 13.6"
 gem "plek", "~> 2.1.0"
 
 # Helpers
@@ -51,8 +52,8 @@ gem "logstash-event"
 gem "lograge"
 
 # Background jobs
-gem "sidekiq", '< 6'
-gem "sidekiq-scheduler", "~> 2.2.2"
+gem "sidekiq", '< 7'
+gem "sidekiq-scheduler", "~> 3.0"
 
 # Misc
 gem "nokogiri", ">= 1.10.9"
@@ -74,14 +75,13 @@ group :test do
   gem "factory_girl_rails", "~> 4.8.0"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "simplecov", "~> 0.15.0", require: false
-  gem 'rspec-rails', '~> 3.5.2'
-  gem "capybara", "~> 2.8"
-  gem "webmock", "~> 3.0.1"
-  gem "database_cleaner", "~> 1.6"
+  gem 'rspec-rails', '~> 3.8.0'
+  gem "capybara", "~> 3"
+  gem "webmock", "~> 3.8.0"
+  gem "database_cleaner", "~> 1.8"
   gem "rspec_junit_formatter"
 end
 
 group :production do
-  gem "rails_12factor"
   gem "sentry-raven"
 end
