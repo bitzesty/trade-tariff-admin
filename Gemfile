@@ -5,17 +5,17 @@ ruby '~> 2.7.1'
 # Server
 gem "puma", "~> 4.3.5"
 gem "rails", ">= 6.0.3.1"
-gem "sinatra", "~> 2.0.2", require: nil
+gem "sinatra", "~> 2.0.8", ">= 2.0.8.1", require: nil
 
 # DB
 gem "pg", "~> 1.1.3"
 
 # Assets
-gem "sass-rails"
-gem "coffee-rails", "~> 5.0"
+gem "sass-rails", ">= 6.0.0"
+gem "coffee-rails", "~> 5.0", ">= 5.0.0"
 gem "uglifier", "~> 2.7"
-gem "jquery-rails", "~> 4.3.4"
-gem "bootstrap-datepicker-rails", "~> 1.4"
+gem "jquery-rails", "~> 4.4.0"
+gem "bootstrap-datepicker-rails", "~> 1.9", ">= 1.9.0.1"
 gem "bootstrap-sass", ">= 3.4.1"
 gem 'govuk_admin_template', '6.7.0'
 
@@ -35,13 +35,13 @@ gem "redis", "~> 4.0"
 
 # Authorization / SSO
 gem "pundit", "0.3.0"
-gem "gds-sso", "~> 13.6"
+gem "gds-sso", "~> 13.6", ">= 13.6.0"
 gem "plek", "~> 2.1.0"
 
 # Helpers
 gem "kaminari", "~> 1.0"
-gem "simple_form", ">= 5.0.0"
-gem "responders"
+gem "simple_form", ">= 5.0.2"
+gem "responders", ">= 3.0.0"
 
 # File upload / mime type
 gem "shrine", "~> 3.0"
@@ -49,18 +49,18 @@ gem "marcel"
 
 # Logging
 gem "logstash-event"
-gem "lograge"
+gem "lograge", ">= 0.11.2"
 
 # Background jobs
-gem "sidekiq", '< 7'
-gem "sidekiq-scheduler", "~> 3.0"
+gem "sidekiq", ">= 6.0.7", "< 7"
+gem "sidekiq-scheduler", "~> 3.0", ">= 3.0.1"
 
 # Misc
 gem "nokogiri", ">= 1.10.9"
 gem "bootsnap", require: false
 
 group :development, :test do
-  gem "dotenv-rails"
+  gem "dotenv-rails", ">= 2.7.5"
   gem "pry-rails"
   gem "brakeman", "~> 3.3", ">= 3.3.0", require: false
 end
@@ -75,8 +75,8 @@ group :test do
   gem "factory_girl_rails", "~> 4.8.0"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "simplecov", "~> 0.15.0", require: false
-  gem 'rspec-rails', '~> 3.8.0'
-  gem "capybara", "~> 3"
+  gem 'rspec-rails', '~> 3.8.3'
+  gem "capybara", "~> 3", ">= 3.32.2"
   gem "webmock", "~> 3.8.0"
   gem "database_cleaner", "~> 1.8"
   gem "rspec_junit_formatter"
