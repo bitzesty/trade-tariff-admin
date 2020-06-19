@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:chapter_description) { |n| "description #{n}" }
   sequence(:sid) { |n| n }
 

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:chapter_note_id) { |n| n }
 
   factory :chapter_note do

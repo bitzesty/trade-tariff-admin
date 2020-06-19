@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :commodity do
     goods_nomenclature_item_id { 10.times.map { Random.rand(1..9) }.join }
 
