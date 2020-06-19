@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:measure_type_id) { |n| n }
   sequence(:measure_type_description) { |n| "measure_type description #{n}" }
 

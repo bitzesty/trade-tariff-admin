@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :tariff_update do
     update_type { ['TariffSynchronizer::TaricUpdate', 'TariffSynchronizer::ChiefUpdate'].sample }
     state { %w(A M P F).sample }
