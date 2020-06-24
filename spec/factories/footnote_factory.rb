@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:footnote_id) { |n| "%03d" % n }
   sequence(:footnote_type_id) { |n| "%02d" % n }
   sequence(:footnote_description) { |n| "footnote description #{n}" }

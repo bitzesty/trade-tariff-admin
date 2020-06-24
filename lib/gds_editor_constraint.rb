@@ -2,6 +2,7 @@ class GdsEditorConstraint
   attr_reader :request
 
   def matches?(request)
+    return true if Rails.env.development?
     @request = request
     warden.authenticate!
     current_user && current_user.gds_editor?
