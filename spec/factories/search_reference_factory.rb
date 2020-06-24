@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:search_reference_id) { |n| n }
   sequence(:search_reference_title) { |n| "title #{n}" }
 

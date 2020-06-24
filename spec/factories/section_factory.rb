@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:section_id) { |n| n }
 
   factory :section do

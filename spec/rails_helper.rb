@@ -23,7 +23,7 @@ RSpec.configure do |config|
 
   config.include Rails.application.routes.url_helpers
   config.include ApiResponsesHelper
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include FeaturesHelper, :type => :feature
 
   config.before(:suite) do

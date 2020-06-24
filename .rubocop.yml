@@ -1,6 +1,19 @@
 require: rubocop-rspec
 
 
+inherit_gem:
+  rubocop-govuk:
+    - config/default.yml
+    - config/rails.yml # add this line for Rails projects
+
+# If RuboCop finds any more Excludes: directives in rails.yml or in
+# the app's `.rubocop.yml`, merge them with the original ones instead of
+# overwriting.
+inherit_mode:
+  merge:
+    - Exclude
+
+
 # TARIC & CHIEF have long variable names, allow longer lines for our sanity
 Metrics/LineLength:
   Max: 180
