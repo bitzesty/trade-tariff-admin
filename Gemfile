@@ -4,7 +4,7 @@ ruby '~> 2.7.1'
 
 # Server
 gem "puma", "~> 5.0.0.beta1"
-gem "rails", ">= 6.0.3.2"
+gem "rails", ">= 6.0.3.3"
 gem "sinatra", "~> 2.0.8", require: nil
 
 # DB
