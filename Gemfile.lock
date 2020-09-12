@@ -260,6 +260,9 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-rails_csrf_protection (0.1.2)
+      actionpack (>= 4.2)
+      omniauth (>= 1.3.1)
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
@@ -495,6 +498,7 @@ DEPENDENCIES
   marcel
   nokogiri (>= 1.10.10)
   oj
+  omniauth-rails_csrf_protection
   pg (~> 1.1.3)
   plek (~> 2.1.0)
   pry-rails
