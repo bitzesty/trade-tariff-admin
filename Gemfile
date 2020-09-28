@@ -36,7 +36,6 @@ gem "redis", "~> 4.2"
 # Authorization / SSO
 gem "pundit", "0.3.0"
 gem "gds-sso", "~> 15"
-# gem "omniauth-rails_csrf_protection"
 gem "plek", "~> 2.1.0"
 
 # Helpers
