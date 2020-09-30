@@ -238,7 +238,7 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     netrc (0.11.0)
-    nio4r (2.5.3)
+    nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     nokogumbo (2.0.2)
@@ -260,9 +260,6 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    omniauth-rails_csrf_protection (0.1.2)
-      actionpack (>= 4.2)
-      omniauth (>= 1.3.1)
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
@@ -274,7 +271,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.5)
-    puma (5.0.0.beta2)
+    puma (5.0.2)
       nio4r (~> 2.0)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
@@ -498,11 +495,10 @@ DEPENDENCIES
   marcel
   nokogiri (>= 1.10.10)
   oj
-  omniauth-rails_csrf_protection
   pg (~> 1.1.3)
   plek (~> 2.1.0)
   pry-rails
-  puma (~> 5.0.0.beta2)
+  puma (~> 5.0.2)
   pundit (= 0.3.0)
   rails (>= 6.0.3.3)
   redis (~> 4.2)
