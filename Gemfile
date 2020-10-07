@@ -44,7 +44,7 @@ gem "simple_form", ">= 5.0.0"
 gem "responders"
 
 # File upload / mime type
-gem "shrine", "~> 3.0"
+gem "shrine", "~> 3.3", ">= 3.3.0"
 gem "marcel"
 
 # Logging
