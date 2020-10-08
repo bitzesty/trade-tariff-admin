@@ -4,7 +4,7 @@ class TariffUpdate
 
   collection_path '/admin/updates'
 
-  attributes :update_type, :state, :created_at, :updated_at, :applied_at, :filesize,
+  attributes :update_type, :state, :issue_date, :created_at, :updated_at, :applied_at, :filesize,
              :exception_backtrace, :exception_class, :exception_queries, :conformance_errors,
              :file_presigned_url, :log_presigned_urls, :presence_errors
 
@@ -21,6 +21,7 @@ class TariffUpdate
     case attributes[:update_type]
     when /Taric/ then 'TARIC'
     when /Chief/ then 'CHIEF'
+    when /Cds/   then 'CDS'
     end
   end
 
@@ -37,7 +38,11 @@ class TariffUpdate
   end
 
   def file_date
-    filename.try :slice, 0, 10
+    if update_type == 'CDS'
+      Date.parse(issue_date)
+    else
+      filename.try :slice, 0, 10
+    end
   end
 
   def created_at
