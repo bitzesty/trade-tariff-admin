@@ -9,6 +9,7 @@ vendor/bundle/*
 !/log/.keep
 /tmp/*
 .byebug_history
+.idea/*
 
 # Environment files
 .env
