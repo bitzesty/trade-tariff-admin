@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby '~> 2.7.1'
+ruby "~> 2.7.1"
 
 # Server
 gem "puma", "~> 5.0.2"
@@ -15,9 +15,9 @@ gem "sass-rails"
 gem "coffee-rails", "~> 5.0"
 gem "uglifier", "~> 2.7"
 gem "jquery-rails", "~> 4.3.4"
-gem "bootstrap-datepicker-rails", "~> 1.4"
+gem "bootstrap-datepicker-rails"
 gem "bootstrap-sass", ">= 3.4.1"
-gem 'govuk_admin_template', '6.7.0'
+gem "govuk_admin_template", "6.7.0"
 
 # Markdown
 gem "govspeak", "6.5.6"
@@ -30,7 +30,7 @@ gem "faraday_middleware"
 gem "oj"
 
 # Cache
-gem 'redis-activesupport'
+gem "redis-activesupport"
 gem "redis", "~> 4.2"
 
 # Authorization / SSO
@@ -52,7 +52,7 @@ gem "logstash-event"
 gem "lograge"
 
 # Background jobs
-gem "sidekiq", '< 7'
+gem "sidekiq", "< 7"
 gem "sidekiq-scheduler", "~> 3.0"
 
 # Misc
@@ -61,7 +61,6 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem "dotenv-rails"
-  gem "pry-rails"
   gem "brakeman", "~> 3.3", ">= 3.3.0", require: false
 end
 
@@ -75,7 +74,7 @@ group :test do
   gem "factory_bot_rails"
   gem "shoulda-matchers", "~> 3.1.1"
   gem "simplecov", "~> 0.18", require: false
-  gem 'rspec-rails', '~> 4'
+  gem "rspec-rails", "~> 4"
   gem "capybara", "~> 3"
   gem "webmock", "~> 3.8.0"
   gem "database_cleaner", "~> 1.8"
