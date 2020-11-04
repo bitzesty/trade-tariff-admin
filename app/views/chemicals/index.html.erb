@@ -1,0 +1,27 @@
+<h2>CAS Mappings</h2>
+
+<table class='table table-bordered table-striped table-condensed table-chemical'>
+  <thead>
+    <tr>
+      <th>CAS number</th>
+      <th>Mapped commodities</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @chemicals.each do |chemical| %>
+      <tr id='<%= dom_id(chemical) %>'>
+        <td>
+          <%= chemical.cas %>
+        </td>
+        <td>
+          <%= chemical.goods_nomenclature_map.values.join(', ') %>
+        </td>
+        <td align="center">
+          <%= link_to "Edit", chemical_edit_commodity_mapping_path(chemical), class: 'btn btn-small btn-warning', style: "margin: 0 1rem"%>
+          <%= link_to "Add", chemical_new_commodity_mapping_path(chemical), class: 'btn btn-small btn-success', style: "margin: 0 1rem"%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
