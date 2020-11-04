@@ -1,11 +1,8 @@
 FactoryBot.define do
-  sequence(:chapter_note_id) { |n| n }
-
-  factory :chapter_note do
-    content { "Content of note" }
-
-    trait :persisted do
-      id { generate(:chapter_note_id) }
-    end
+  factory :chemical do
+    sequence(:cas) { |n| "0-#{n}-0" }
+    sequence(:id) { |n| "#{n}" }
+    sequence(:name) { |n| "chemical-#{n}" }
+    goods_nomenclature_map { {} }
   end
 end
