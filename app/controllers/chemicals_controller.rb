@@ -30,7 +30,7 @@ class ChemicalsController < ApplicationController
     result = @chemical.update_map(params[:gn_id], chemical_params[:new_id])
 
     if result && result[:errors].blank?
-      redirect_to edit_chemical_path(@chemical), notice: "Mapping for #{chemical_params[:new_id]} was updated"
+      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:new_id]} was updated"
     else
       flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
       render :edit
