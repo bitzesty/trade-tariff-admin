@@ -10,7 +10,7 @@ class ChemicalsController < ApplicationController
     @chemical = Chemical.create(chemical_params)
 
     if @chemical && @chemical[:errors].blank?
-      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Chemical #{chemical_params[:new_id]} was created"
+      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Chemical #{chemical_params[:goods_nomenclature_item_id]} was created"
     else
       flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
       render :new_map
@@ -19,9 +19,7 @@ class ChemicalsController < ApplicationController
   
   def update
     update_params = { }
-    # chemical.update_attributes(
-    #   cas: chemical_params[:cas]
-    # ) 
+
     if chemical_params[:cas]
       update_params[:cas] = chemical_params[:cas]
     end
@@ -47,10 +45,10 @@ class ChemicalsController < ApplicationController
 
   def create_map
     @chemical = Chemical.find(params[:chemical_id])
-    result = @chemical.create_map(chemical_params[:new_id])
+    result = @chemical.create_map(chemical_params[:goods_nomenclature_item_id])
 
     if result && result[:errors].blank?
-      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:new_id]} was created"
+      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:goods_nomenclature_item_id]} was created"
     else
       flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
       render :new_map
@@ -62,11 +60,13 @@ class ChemicalsController < ApplicationController
   end
 
   def update_map
+    delete_map if params['delete_mapping_button_was_pressed'] == true
+    
     @chemical ||= Chemical.find(params[:chemical_id])
-    result = @chemical.update_map(params[:gn_id], chemical_params[:new_id])
+    result = @chemical.update_map(params[:gn_id], chemical_params[:goods_nomenclature_item_id])
 
     if result && result[:errors].blank?
-      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:new_id]} was updated"
+      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:goods_nomenclature_item_id]} was updated"
     else
       flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
       render :edit_map
@@ -88,7 +88,7 @@ class ChemicalsController < ApplicationController
   private
 
   def chemical_params
-    params.require(:chemical).permit(:new_id, :cas, :name, :chemical_name_id)
+    params.require(:chemical).permit(:goods_nomenclature_item_id, :cas, :name, :chemical_name_id)
   end
 
   def chemical

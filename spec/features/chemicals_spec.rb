@@ -43,7 +43,7 @@ describe "Chemical management" do
       }
       refute map_created_for(chemical)
 
-      create_map_for chemical, new_id: gn1.id
+      create_map_for chemical, goods_nomenclature_item_id: gn1.id
 
       expect(page).to have_content "Mapping for #{gn1.goods_nomenclature_item_id} was created"
       expect(page).to have_content "Commodity #{gn1.goods_nomenclature_item_id}"
@@ -65,7 +65,7 @@ describe "Chemical management" do
         stub_api_for(Chemical) { |stub|
           # PATCH     /admin/chemicals/:chemical_id/map/:goods_nomenclature_item_id
           # PUT       /admin/chemicals/:chemical_id/map/:goods_nomenclature_item_id
-          stub.patch("/admin/chemicals/#{chemical.id}/map/#{gn1.id}?#{gn2.goods_nomenclature_item_id}") { |_env|
+          stub.patch("/admin/chemicals/#{chemical.id}/map/#{gn1.id}?goods_nomenclature_item_id=#{gn2.goods_nomenclature_item_id}") { |_env|
             jsonapi_success_response('chemical', chemical_attributes(gn2))
           }
           # GET     /admin/chemicals/:id
@@ -73,9 +73,9 @@ describe "Chemical management" do
             jsonapi_success_response('chemical', chemical_attributes(gn2))
           }
           # DELETE /admin/chemicals/:id/map/:goods_nomenclature_item_id
-          stub.delete("/admin/chemicals/#{chemical.id}/map/#{gn1.goods_nomenclature_item_id}") { |_env|
-            jsonapi_success_response('chemical', chemical_attributes(gn1))
-          }
+          # stub.delete("/admin/chemicals/#{chemical.id}/map/#{gn1.id}") { |_env|
+          #   jsonapi_success_response('chemical', chemical_attributes(gn1))
+          # }
         }
       end
 

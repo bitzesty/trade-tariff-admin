@@ -63,11 +63,12 @@ Rails.application.routes.draw do
   resources :rollbacks, only: [:index, :new, :create]
   resources :footnotes, only: [:index, :edit, :update]
   resources :measure_types, only: [:index, :edit, :update]
-  resources :chemicals, only: [ :index ] do
-    get   'map/edit',   to: 'chemicals#edit_map',   as: :edit_commodity_mapping
-    get   'map/new',    to: 'chemicals#new_map',    as: :new_commodity_mapping
-    post  'map',        to: 'chemicals#create_map', as: :create_commodity_mapping
-    patch 'map/:gn_id', to: 'chemicals#update_map', as: :update_commodity_mapping
+  resources :chemicals, only: %i[index create show update] do
+    get    'map/edit',   to: 'chemicals#edit_map',   as: :edit_commodity_mapping
+    get    'map/new',    to: 'chemicals#new_map',    as: :new_commodity_mapping
+    post   'map',        to: 'chemicals#create_map', as: :create_commodity_mapping
+    patch  'map/:gn_id', to: 'chemicals#update_map', as: :update_commodity_mapping
+    delete 'map/:gn_id', to: 'chemicals#delete_map', as: :delete_commodity_mapping
   end
 
   post "govspeak" => "govspeak#govspeak", as: :govspeak

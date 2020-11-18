@@ -5,7 +5,7 @@
     <h4>Create new chemical</h4>
     <div class='row'>
       <div class='col-sm-6'>
-        <%= f.input :cas, input_html: { class: 'form-control' } %>
+        <%= f.input :cas, label: 'CAS number', input_html: { class: 'form-control readable-input' } %>
       </div>
       <div class='col-sm-6'>
         <%= f.input :name, as: :text, input_html: { class: 'form-control' } %>
@@ -39,8 +39,7 @@
           <%= chemical.goods_nomenclature_map.values.join(', ') %>
         </td>
         <td align="center">
-          <%= link_to "Edit", chemical_edit_commodity_mapping_path(chemical), class: 'btn btn-small btn-warning', style: "margin: 0 1rem"%>
-          <%= link_to "Add", chemical_new_commodity_mapping_path(chemical), class: 'btn btn-small btn-success', style: "margin: 0 1rem"%>
+          <%= link_to "Edit", chemical_edit_commodity_mapping_path(chemical), class: 'btn btn-small btn-warning'%>
         </td>
       </tr>
     <% end %>

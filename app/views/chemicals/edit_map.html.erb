@@ -15,7 +15,7 @@
   <div class='well'>
     <div class='row'>
       <div class='col-sm-6'>
-        <%= f.input :cas, label: 'CAS Number', input_html: { class: 'form-control', style: 'font-size: 120%; padding: 2rem 1rem; font-weight: bold; letter-spacing: 0.33rem;' }, hint: 'Enter a different CAS number for this chemical' %>
+        <%= f.input :cas, label: 'CAS Number', input_html: { class: 'form-control readable-input' }, hint: 'Enter a different CAS number for this chemical' %>
         <%= f.button :button, class: 'btn btn-warning', data: { 'disable-with' => 'Working' } do %>
           Update chemical
         <% end %>
@@ -47,37 +47,58 @@
   <% end %>
 </div>
 
+<h3><%= 'Commodity mapping'.pluralize(chemical.goods_nomenclature_map&.length) %></h3>
 <%- if chemical.goods_nomenclature_map.present? %>
-  <h3><%= 'Commodity mapping'.pluralize(chemical.goods_nomenclature_map.length) %></h3>
   <div class='row'>
     <%- chemical.goods_nomenclature_map.each do |gn| %>
       <div class='col-sm-6'>
         <%= simple_form_for chemical, url: chemical_update_commodity_mapping_path(chemical, gn_id: gn[0]), method: :patch do |f| %>
-            <%= f.input :new_id,
+            <%= f.input :goods_nomenclature_item_id,
               label: "Commodity #{gn[1]}",
-              input_html: { class: 'form-control', value: gn[1], id: "chemical_update_commodity_mapping_#{gn[1]}", style: 'padding: 2rem 1rem; letter-spacing: 0.33rem;' },
+              input_html: { class: 'form-control readable-input', value: gn[1], id: "chemical_update_commodity_mapping_#{gn[1]}" },
               hint: "Enter a different commodity to map to chemical <strong>#{chemical.cas}</strong>".html_safe
             %>
 
             <div class='form-actions'>
-              <%= f.button :button, class: 'btn btn-warning', data: { 'disable-with' => 'Working' } do %>
+              <%= f.button :button, class: 'btn btn-warning', data: { 'disable-with' => 'Working' }, name: 'update_mapping_button_was_pressed', value: true do %>
                 Update mapping
               <% end %>
 
               &nbsp;
 
-
+              <%#= f.button :button, class: 'btn btn-danger', data: { 'disable-with' => 'Working' }, name: 'delete_mapping_button_was_pressed', value: true do %>
+                <%# Delete mapping %>
+              <%# end %>
             </div>
 
         <% end %>
-
-        <%= simple_form_for chemical, url: chemical_delete_commodity_mapping_path(chemical, gn_id: gn[0]), method: :delete, style: "float: right;" do |f| %>
+        
+        <%= simple_form_for chemical, url: chemical_delete_commodity_mapping_path(chemical, gn_id: gn[0]), method: :delete do |f| %>
           <%= f.button :button, class: 'btn btn-danger', data: { 'disable-with' => 'Working' }, name: 'delete-mapping-button' do %>
             Delete mapping
           <% end %>
         <% end %>
-          
       </div>
     <% end %>
   </div>
+
 <%- end %>
+
+<div class='row'>
+  <div class='col-sm-6'>
+    <%= simple_form_for chemical, url: chemical_create_commodity_mapping_path(chemical_id: chemical.id), html: { id: "chemical_create_commodity_mapping", method: :post } do |f| %>
+      <%= f.input :goods_nomenclature_item_id,
+        label: "New commodity",
+        input_html: { class: 'form-control' },
+        hint: "Enter a new commodity to map to chemical <strong>#{chemical.cas}</strong>".html_safe,
+        input_html: { class: 'form-control readable-input' } %>
+
+      <div class='form-actions'>
+        <%= f.button :button, class: 'btn btn-success', data: { 'disable-with' => 'Working' } do %>
+          Add mapping
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

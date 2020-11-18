@@ -18,7 +18,7 @@
       html: { id: "chemical_create_commodity_mapping", method: :post } do |f| %>
   <div class='row'>
     <div class='col-sm-6'>
-      <%= f.input :new_id,
+      <%= f.input :goods_nomenclature_item_id,
         label: "New commodity",
         input_html: { class: 'form-control' },
         hint: "Enter a new commodity to map to chemical <strong>#{chemical.cas}</strong>".html_safe
@@ -30,6 +30,5 @@
     <%= f.button :button, class: 'btn btn-success', data: { 'disable-with' => 'Working' } do %>
       Add mapping
     <% end %>
-    <%#= link_to "Back", :back, class: 'btn' %>
   </div>
 <% end %>

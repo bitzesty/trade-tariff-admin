@@ -10,13 +10,13 @@ class Chemical
 
   has_many :chemical_names
 
-  attr_accessor :new_id
+  attr_accessor :goods_nomenclature_item_id
   attr_accessor :gn_id
   attr_accessor :chemical_name_id
   attr_accessor :new_name
 
-  def update_map(old_id, new_id)
-    Chemical.patch_raw "/admin/chemicals/#{id}/map/#{old_id}?new_id=#{new_id}" do |parsed_data, response|
+  def update_map(old_id, goods_nomenclature_item_id)
+    Chemical.patch_raw "/admin/chemicals/#{id}/map/#{old_id}?goods_nomenclature_item_id=#{goods_nomenclature_item_id}" do |parsed_data, response|
       unless response.success?
         return parsed_data
       end
@@ -24,8 +24,8 @@ class Chemical
     Chemical.find(id)
   end
 
-  def create_map(new_id)
-    Chemical.post_raw "/admin/chemicals/#{id}/map/#{new_id}" do |parsed_data, response|
+  def create_map(goods_nomenclature_item_id)
+    Chemical.post_raw "/admin/chemicals/#{id}/map/#{goods_nomenclature_item_id}" do |parsed_data, response|
       unless response.status == 201
         return parsed_data
       end
