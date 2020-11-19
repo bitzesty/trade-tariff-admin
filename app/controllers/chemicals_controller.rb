@@ -60,7 +60,7 @@ class ChemicalsController < ApplicationController
   end
 
   def update_map
-    delete_map if params['delete_mapping_button_was_pressed'] == true
+    delete_map and return if params['delete_mapping_button_was_pressed']
     
     @chemical ||= Chemical.find(params[:chemical_id])
     result = @chemical.update_map(params[:gn_id], chemical_params[:goods_nomenclature_item_id])

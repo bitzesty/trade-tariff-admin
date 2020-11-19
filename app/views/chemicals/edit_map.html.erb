@@ -15,7 +15,7 @@
   <div class='well'>
     <div class='row'>
       <div class='col-sm-6'>
-        <%= f.input :cas, label: 'CAS Number', input_html: { class: 'form-control readable-input' }, hint: 'Enter a different CAS number for this chemical' %>
+        <%= f.input :cas, label: 'CAS number', input_html: { class: 'form-control readable-input' }, hint: 'Enter a different CAS number for this chemical' %>
         <%= f.button :button, class: 'btn btn-warning', data: { 'disable-with' => 'Working' } do %>
           Update chemical
         <% end %>
@@ -66,17 +66,10 @@
 
               &nbsp;
 
-              <%#= f.button :button, class: 'btn btn-danger', data: { 'disable-with' => 'Working' }, name: 'delete_mapping_button_was_pressed', value: true do %>
-                <%# Delete mapping %>
-              <%# end %>
+              <%= f.button :button, class: 'btn btn-danger', data: { 'disable-with' => 'Working' }, name: 'delete_mapping_button_was_pressed', value: true do %>
+                Delete mapping
+              <% end %>
             </div>
-
-        <% end %>
-        
-        <%= simple_form_for chemical, url: chemical_delete_commodity_mapping_path(chemical, gn_id: gn[0]), method: :delete do |f| %>
-          <%= f.button :button, class: 'btn btn-danger', data: { 'disable-with' => 'Working' }, name: 'delete-mapping-button' do %>
-            Delete mapping
-          <% end %>
         <% end %>
       </div>
     <% end %>
@@ -90,7 +83,7 @@
       <%= f.input :goods_nomenclature_item_id,
         label: "New commodity",
         input_html: { class: 'form-control' },
-        hint: "Enter a new commodity to map to chemical <strong>#{chemical.cas}</strong>".html_safe,
+        hint: "Enter a commodity (by code) to map to chemical <strong>#{chemical.cas}</strong>".html_safe,
         input_html: { class: 'form-control readable-input' } %>
 
       <div class='form-actions'>

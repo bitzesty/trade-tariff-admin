@@ -220,7 +220,7 @@ describe 'Chemical management' do
 
     yield if block_given?
 
-    fill_in 'CAS Number', with: new_cas
+    fill_in 'CAS number', with: new_cas
     click_button 'Update chemical'
 
     fill_in 'Name', with: new_name

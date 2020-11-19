@@ -51,4 +51,3 @@ class Chemical
     Chemical.find(id)
   end
 end
- 
