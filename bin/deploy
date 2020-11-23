@@ -32,6 +32,13 @@ CF_BUILDPACK=$CF_BUILDPACK ruby -ryaml -e 'm = YAML.load(STDIN); m["applications
 
 cf bgd $CF_APP -f "$CF_APP"_patched_manifest.yml --delete-old-apps
 
+# Create network policy for fronted app
+# https://docs.cloud.service.gov.uk/deploying_apps.html#deploying-private-apps
+# $PRIVATE_APP - backend app
+# $PUBLIC_APP - admin app
+export PRIVATE_APP=`CF_APP=$CF_APP ruby -e 'puts ENV["CF_APP"].gsub("admin", "backend")'`
+cf add-network-policy $CF_APP --destination-app $PRIVATE_APP --protocol tcp --port 8080
+
 # Notify Slack deployment finished
 curl -X POST \
 --data-urlencode 'payload={"text": "'"Deployment finished for $CF_APP"'", "channel": "'"#$SLACK_CHANNEL"'", "username": "cf-deploy", "icon_emoji": ":cloud:", "fields": [{"title": "ENV", "value": "'"$CF_SPACE"'", "short": true}, {"title": "SHA1", "value": "'"<https://github.com/bitzesty/trade-tariff-admin/compare/$GIT_OLD_REVISION...$GIT_REVISION|$GIT_REVISION>"'", "short": true}]}' \
