@@ -12,7 +12,7 @@ class ChemicalsController < ApplicationController
     if @chemical && @chemical[:errors].blank?
       redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Chemical #{chemical_params[:goods_nomenclature_item_id]} was created"
     else
-      flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
+      flash.alert = stringify_errors(result[:errors])
       render :new_map
     end
   end
@@ -34,7 +34,7 @@ class ChemicalsController < ApplicationController
     if result && result[:errors].blank?
       redirect_to chemical_edit_commodity_mapping_path(chemical), notice: "Chemical #{chemical.cas} was updated"
     else
-      flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
+      flash.alert = stringify_errors(result[:errors])
       render :edit_map
     end
   end
@@ -50,7 +50,7 @@ class ChemicalsController < ApplicationController
     if result && result[:errors].blank?
       redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:goods_nomenclature_item_id]} was created"
     else
-      flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
+      flash.alert = stringify_errors(result[:errors])
       render :new_map
     end
   end
@@ -68,7 +68,7 @@ class ChemicalsController < ApplicationController
     if result && result[:errors].blank?
       redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:goods_nomenclature_item_id]} was updated"
     else
-      flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
+      flash.alert = stringify_errors(result[:errors])
       render :edit_map
     end
   end
@@ -80,7 +80,7 @@ class ChemicalsController < ApplicationController
     if result && result[:errors].blank?
       redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{params[:gn_id]} was deleted"
     else
-      flash.alert = result[:errors].map { |e| e[:title] }.join('<br/>').to_s.html_safe
+      flash.alert = stringify_errors(result[:errors])
       render :edit_map
     end
   end
@@ -95,4 +95,8 @@ class ChemicalsController < ApplicationController
     @chemical ||= Chemical.find(params[:id])
   end
   helper_method :chemical
+
+  def stringify_errors(errors)
+    errors.map { |e| e[:title] }.join('<br/>').to_s.html_safe
+  end
 end
