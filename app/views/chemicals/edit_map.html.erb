@@ -82,9 +82,8 @@
     <%= simple_form_for chemical, url: chemical_create_commodity_mapping_path(chemical_id: chemical.id), html: { id: "chemical_create_commodity_mapping", method: :post } do |f| %>
       <%= f.input :goods_nomenclature_item_id,
         label: "New commodity",
-        input_html: { class: 'form-control' },
-        hint: "Enter a commodity (by code) to map to chemical <strong>#{chemical.cas}</strong>".html_safe,
-        input_html: { class: 'form-control readable-input' } %>
+        input_html: { class: 'form-control readable-input' },
+        hint: "Enter a commodity (by code) to map to chemical <strong>#{chemical.cas}</strong>".html_safe %>
 
       <div class='form-actions'>
         <%= f.button :button, class: 'btn btn-success', data: { 'disable-with' => 'Working' } do %>

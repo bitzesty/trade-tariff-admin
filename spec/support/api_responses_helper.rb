@@ -25,6 +25,18 @@ module ApiResponsesHelper
     [200, headers, response.to_json]
   end
 
+  def jsonapi_success_response_with_meta(type, response = {}, headers = {})
+    response = if response.is_a? Hash
+      { data: { type: type, attributes: response } }
+    elsif response.is_a? Array
+      { data: response.map{ |r| { type: type, attributes: r } } }
+    else
+      response
+    end
+    response[:meta] = api_mock_meta
+    [200, headers, response.to_json]
+  end
+
   def api_created_response(body = {}, headers = {})
     api_response(201, headers, body)
   end
@@ -35,5 +47,15 @@ module ApiResponsesHelper
 
   def api_response(status, headers, body)
     [status, headers, body.to_json]
+  end
+
+  def api_mock_meta
+    {
+      pagination: {
+        page: 1,
+        per_page: 200,
+        total_count: 9504
+      }
+    }
   end
 end

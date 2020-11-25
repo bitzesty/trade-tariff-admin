@@ -1,5 +1,6 @@
 class Chemical
   include Her::JsonApi::Model
+  extend HerPaginatable
 
   resource_path "/admin/chemicals/:id/map"
   collection_path '/admin/chemicals'

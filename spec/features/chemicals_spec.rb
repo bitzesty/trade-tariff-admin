@@ -20,7 +20,7 @@ describe 'Chemical management' do
   before do
     stub_api_for(Chemical) do |stub|
       stub.get('/admin/chemicals') do |_env|
-        jsonapi_success_response('chemical', [])
+        jsonapi_success_response_with_meta('chemical', [])
       end
     end
     stub_request(:get, "http://api.example.org/admin/chemicals/#{chemical.id}/chemical_names").to_return(status: 200, body: chemical_name_mock_body.to_json, headers: {})
@@ -107,7 +107,7 @@ describe 'Chemical management' do
     specify do
       stub_api_for(Chemical) do |stub|
         stub.get('/admin/chemicals') do |_env|
-          jsonapi_success_response('chemicals', [chemical_attributes(gn1)])
+          response = jsonapi_success_response_with_meta('chemicals', [chemical_attributes(gn1)])
         end
       end
       new_cas = '7-7-7'
@@ -133,7 +133,7 @@ describe 'Chemical management' do
     specify do
       stub_api_for(Chemical) do |stub|
         stub.get('/admin/chemicals') do |_env|
-          jsonapi_success_response('chemicals', [chemical_attributes(gn1)])
+          jsonapi_success_response_with_meta('chemicals', [chemical_attributes(gn1)])
         end
         stub.get("/admin/chemicals/#{chemical.id}") do |_env|
           jsonapi_success_response('chemical', chemical_attributes(gn1))

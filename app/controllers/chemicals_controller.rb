@@ -2,7 +2,7 @@ class ChemicalsController < ApplicationController
   respond_to :json
 
   def index
-    @chemicals = Chemical.all
+    @chemicals = Chemical.all(page: current_page).fetch
     @chemical = Chemical.new
   end
 
