@@ -33,7 +33,7 @@ describe 'Chemical management' do
     specify do
       stub_api_for(Chemical) do |stub|
         stub.post("/admin/chemicals/#{chemical.id}/map/#{gn1.id}") do |_env|
-          jsonapi_success_response('chemical', [chemical_attributes(gn1)])
+          jsonapi_success_response('chemical', [chemical_attributes(gn1)], {}, 201)
         end
         stub.get("/admin/chemicals/#{chemical.id}") do |_env|
           jsonapi_success_response('chemical', chemical_attributes(gn1))
@@ -144,10 +144,10 @@ describe 'Chemical management' do
       update_for(chemical, new_cas, new_name) do
         stub_api_for(Chemical) do |stub|
           stub.patch("/admin/chemicals/#{chemical.id}?cas=#{new_cas}") do |_env|
-            jsonapi_success_response('chemical', chemical_attributes(gn1))
+            jsonapi_success_response('chemical', chemical_attributes(gn1), {}, 202)
           end
           stub.patch("/admin/chemicals/#{chemical.id}?chemical_name_id=#{chemical.chemical_names.first.id}&new_chemical_name=#{new_name}") do |_env|
-            jsonapi_success_response('chemical', chemical_attributes(gn1))
+            jsonapi_success_response('chemical', chemical_attributes(gn1), {}, 202)
           end
           stub.get("/admin/chemicals/#{chemical.id}") do |_env|
             jsonapi_success_response('chemical', chemical_attributes(gn1))

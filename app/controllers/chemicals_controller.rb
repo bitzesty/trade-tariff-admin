@@ -9,11 +9,11 @@ class ChemicalsController < ApplicationController
   def create
     @chemical = Chemical.create(chemical_params)
 
-    if @chemical && @chemical[:errors].blank?
-      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Chemical #{chemical_params[:goods_nomenclature_item_id]} was created"
-    else
-      flash.alert = stringify_errors(result[:errors])
+    if @chemical[:errors]&.any?
+      flash.alert = stringify_errors(@chemical[:errors])
       render :new_map
+    else
+      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Chemical #{chemical_params[:goods_nomenclature_item_id]} was created"
     end
   end
   
@@ -31,11 +31,11 @@ class ChemicalsController < ApplicationController
 
     result = chemical.update_chemical(chemical.id, update_params)
 
-    if result && result[:errors].blank?
-      redirect_to chemical_edit_commodity_mapping_path(chemical), notice: "Chemical #{chemical.cas} was updated"
-    else
+    if result[:errors].any?
       flash.alert = stringify_errors(result[:errors])
       render :edit_map
+    else
+      redirect_to chemical_edit_commodity_mapping_path(chemical), notice: "Chemical #{chemical.cas} was updated"
     end
   end
 
@@ -46,12 +46,13 @@ class ChemicalsController < ApplicationController
   def create_map
     @chemical = Chemical.find(params[:chemical_id])
     result = @chemical.create_map(chemical_params[:goods_nomenclature_item_id])
+    errors = result[:errors]
 
-    if result && result[:errors].blank?
-      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:goods_nomenclature_item_id]} was created"
-    else
+    if result[:errors].any?
       flash.alert = stringify_errors(result[:errors])
       render :new_map
+    else
+      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:goods_nomenclature_item_id]} was created"
     end
   end
 
@@ -64,12 +65,13 @@ class ChemicalsController < ApplicationController
     
     @chemical ||= Chemical.find(params[:chemical_id])
     result = @chemical.update_map(params[:gn_id], chemical_params[:goods_nomenclature_item_id])
+    errors = result[:errors]
 
-    if result && result[:errors].blank?
-      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:goods_nomenclature_item_id]} was updated"
-    else
-      flash.alert = stringify_errors(result[:errors])
+    if errors.any?
+      flash.alert = stringify_errors(errors)
       render :edit_map
+    else
+      redirect_to chemical_edit_commodity_mapping_path(@chemical), notice: "Mapping for #{chemical_params[:goods_nomenclature_item_id]} was updated"
     end
   end
 

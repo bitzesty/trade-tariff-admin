@@ -14,7 +14,7 @@ module ApiResponsesHelper
     [200, headers, response.to_json]
   end
 
-  def jsonapi_success_response(type, response = {}, headers = {})
+  def jsonapi_success_response(type, response = {}, headers = {}, status_code = 200)
     response = if response.is_a? Hash
       { data: { type: type, attributes: response } }
     elsif response.is_a? Array
@@ -22,7 +22,7 @@ module ApiResponsesHelper
     else
       response
     end
-    [200, headers, response.to_json]
+    [status_code, headers, response.to_json]
   end
 
   def jsonapi_success_response_with_meta(type, response = {}, headers = {})
