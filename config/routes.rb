@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   resources :rollbacks, only: [:index, :new, :create]
   resources :footnotes, only: [:index, :edit, :update]
   resources :measure_types, only: [:index, :edit, :update]
-  resources :chemicals, only: %i[index create show update] do
+  resources :chemicals, only: %i[index edit new create show update] do
     get    'map/edit',   to: 'chemicals#edit_map',   as: :edit_commodity_mapping
     get    'map/new',    to: 'chemicals#new_map',    as: :new_commodity_mapping
     post   'map',        to: 'chemicals#create_map', as: :create_commodity_mapping

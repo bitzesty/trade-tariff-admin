@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h1>Edit Chemical <%= chemical.cas %></h1>
+  <%= 'Name'.pluralize(chemical.name.split('; ').uniq.length)  %>
+  <ul>
+  <% chemical.name.split('; ').uniq.each do |name| %>
+    <li><%= name %></li>
+  <% end %>
+  </ul>
+  Commodity <%= ' mapping'.pluralize(chemical.goods_nomenclature_map&.length)  %>
+  <ul>
+  <% chemical.goods_nomenclature_map&.each do |gn| %>
+    <li><%= gn.last %></li>
+  <% end %>
+    <li><%= link_to "Edit#{' mapping'.pluralize(chemical.goods_nomenclature_map.length)}", chemical_edit_commodity_mapping_path(chemical), class: 'btn btn-small btn-warning'%></li>
+  </ul>
+</div>
+
+<h2>Chemical</h2>
+<%= simple_form_for chemical, url: chemical_path(chemical) do |f| %>
+  <div class='row'>
+    <div class='col-sm-6'>
+      <%= f.input :cas, label: 'CAS number', input_html: { class: 'form-control readable-input' }, hint: 'Enter a different CAS number for this chemical' %>
+      <%= f.button :button, class: 'btn btn-warning', data: { 'disable-with' => 'Working' } do %>
+        Update chemical
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<h3><%= 'Chemical name'.pluralize(chemical.chemical_names&.length) %></h3>
+<div class='row'>
+  <%- chemical.chemical_names&.each do |name| %>
+    <div class='col-sm-6'>
+      <%= simple_form_for chemical, url: chemical_path(chemical), method: :patch do |f| %>
+        <%= f.input :chemical_name_id, input_html: { value: name.id }, as: :hidden %>
+        <%= f.input :name,
+          as: :text,
+          input_html: { class: 'form-control', value: name.name },
+          hint: "Enter a different name for chemical <strong>#{chemical.cas}</strong>".html_safe
+        %>
+
+        <div class='form-actions'>
+          <%= f.button :button, class: 'btn btn-warning', data: { 'disable-with' => 'Working' } do %>
+            Update name
+          <% end %>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

@@ -4,6 +4,7 @@
   <% chemical.name.split('; ').uniq.each do |name| %>
     <li><%= name %></li>
   <% end %>
+    <li><%= link_to "Edit chemical", edit_chemical_path(chemical), class: 'btn btn-small btn-warning'%></li>
   </ul>
 
   <h3>Mapped commodities</h3>
@@ -11,6 +12,7 @@
   <% chemical.goods_nomenclature_map.each do |m| %>
     <li><%= m.second %></li>
   <% end %>
+    <li><%= link_to "Edit#{' mapping'.pluralize(chemical.goods_nomenclature_map.length)}", chemical_edit_commodity_mapping_path(chemical), class: 'btn btn-small btn-warning'%></li>
   </ul>
 </div>
 

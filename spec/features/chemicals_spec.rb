@@ -127,7 +127,7 @@ describe 'Chemical management' do
     end
   end
 
-  describe 'Chemical update' do
+  describe 'Chemical CAS update' do
     let(:gn1) { build :commodity }
     let(:chemical) { build :chemical }
     specify do
@@ -141,13 +141,39 @@ describe 'Chemical management' do
       end
       new_cas = '6-6-6'
       new_name = 'Kyber (crystal)'
-      update_for(chemical, new_cas, new_name) do
+      update_for_cas(chemical, new_cas) do
         stub_api_for(Chemical) do |stub|
           stub.patch("/admin/chemicals/#{chemical.id}?cas=#{new_cas}") do |_env|
-            jsonapi_success_response('chemical', chemical_attributes(gn1), {}, 202)
+            jsonapi_success_response('chemical', chemical_attributes(gn1), {}, 200)
           end
+          stub.get("/admin/chemicals/#{chemical.id}") do |_env|
+            jsonapi_success_response('chemical', chemical_attributes(gn1))
+          end
+        end
+      end
+
+      expect(page).to have_content "Chemical #{chemical.cas} was updated"
+    end
+  end
+
+  describe 'Chemical name update' do
+    let(:gn1) { build :commodity }
+    let(:chemical) { build :chemical }
+    specify do
+      stub_api_for(Chemical) do |stub|
+        stub.get('/admin/chemicals') do |_env|
+          jsonapi_success_response_with_meta('chemicals', [chemical_attributes(gn1)])
+        end
+        stub.get("/admin/chemicals/#{chemical.id}") do |_env|
+          jsonapi_success_response('chemical', chemical_attributes(gn1))
+        end
+      end
+      new_name = 'Kyber (crystal)'
+
+      update_for_name(chemical, new_name) do
+        stub_api_for(Chemical) do |stub|
           stub.patch("/admin/chemicals/#{chemical.id}?chemical_name_id=#{chemical.chemical_names.first.id}&new_chemical_name=#{new_name}") do |_env|
-            jsonapi_success_response('chemical', chemical_attributes(gn1), {}, 202)
+            jsonapi_success_response('chemical', chemical_attributes(gn1), {}, 200)
           end
           stub.get("/admin/chemicals/#{chemical.id}") do |_env|
             jsonapi_success_response('chemical', chemical_attributes(gn1))
@@ -205,7 +231,7 @@ describe 'Chemical management' do
   end
 
   def create_for(_chemical, new_cas, new_name)
-    ensure_on chemicals_path
+    ensure_on new_chemical_path
 
     fill_in 'CAS number', with: new_cas
     fill_in 'Name', with: new_name
@@ -215,15 +241,21 @@ describe 'Chemical management' do
     click_button 'Create new chemical'
   end
 
-  def update_for(chemical, new_cas, new_name)
-    ensure_on chemical_edit_commodity_mapping_path(chemical)
+  def update_for_cas(chemical, new_cas)
+    ensure_on edit_chemical_path(chemical)
 
     yield if block_given?
 
     fill_in 'CAS number', with: new_cas
     click_button 'Update chemical'
+  end
 
-    fill_in 'Name', with: new_name
+  def update_for_name(chemical, new_name)
+    ensure_on edit_chemical_path(chemical)
+
+    yield if block_given?
+
+    fill_in 'chemical_name', with: new_name
     click_button 'Update name'
   end
 

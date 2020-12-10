@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1>New Chemical</h1>
+</div>
+
+<%= simple_form_for @chemical, url: chemicals_path, method: :post do |f| %>
+  <div>
+    <div class='row'>
+      <div class='col-sm-6'>
+        <%= f.input :cas, label: 'CAS number', input_html: { class: 'form-control readable-input' } %>
+      </div>
+      <div class='col-sm-6'>
+        <%= f.input :name, as: :text, input_html: { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <%= f.button :button, class: 'btn btn-success', data: { 'disable-with' => 'Working' } do %>
+          Create new chemical
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

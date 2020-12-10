@@ -36,7 +36,7 @@ class Chemical
 
   def update_chemical(chemical_id, params)
     Chemical.patch_raw "/admin/chemicals/#{chemical_id}?#{params.to_query}" do |parsed_data, response|
-      handle_response(parsed_data, response, reference_object: chemical_id, expected: 202)
+      handle_response(parsed_data, response, reference_object: chemical_id)
     end
   end
 

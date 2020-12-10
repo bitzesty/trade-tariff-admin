@@ -6,6 +6,13 @@ class ChemicalsController < ApplicationController
     @chemical = Chemical.new
   end
 
+  def edit
+  end
+
+  def new
+    @chemical = Chemical.new
+  end
+
   def create
     @chemical = Chemical.create(chemical_params)
 
@@ -33,9 +40,9 @@ class ChemicalsController < ApplicationController
 
     if result[:errors].any?
       flash.alert = stringify_errors(result[:errors])
-      render :edit_map
+      render :edit
     else
-      redirect_to chemical_edit_commodity_mapping_path(chemical), notice: "Chemical #{chemical.cas} was updated"
+      redirect_to edit_chemical_path(chemical), notice: "Chemical #{chemical.cas} was updated"
     end
   end
 
